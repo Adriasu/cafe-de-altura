@@ -1,9 +1,7 @@
-//import { Inter } from "next/font/google";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 
-//const inter = Inter({ subsets: ["latin"] });
 const outfit = Outfit({subsets: ["latin"]}) 
 
 export const metadata = {
