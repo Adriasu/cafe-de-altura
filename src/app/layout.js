@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={outfit.className}>
+    <html lang="en" className={`${outfit.className} antialiased`}>
       <body>
         <NavBar/>
         {children}

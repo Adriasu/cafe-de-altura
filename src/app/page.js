@@ -1,11 +1,12 @@
-import React from 'react'
+import UserForm from "@/components/UserForm";
+import React from "react";
 
 const Home = () => {
   return (
-    <div>
-      Home
+    <div className="flex flex-col justify-center items-center">
+      <UserForm />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
