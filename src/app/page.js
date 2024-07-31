@@ -7,10 +7,13 @@ import React from "react";
 const Home = () => {
   return (
     <FormContextProvider>
-      <div className="flex flex-col justify-center items-center bg-[#E3DED7]">
-        <UserForm />
-        <SearchUser/>
-        <UserList/>
+      <div className=" flex flex-col justify-center items-center bg-[#E3DED7]">
+        <div className="flex">
+          <UserForm />
+          <SearchUser />
+        </div>
+
+        <UserList />
       </div>
     </FormContextProvider>
   );

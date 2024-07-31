@@ -1,17 +1,25 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import { FormContext } from "@/context/FormContext";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 const UserForm = () => {
   const { setDataUsers } = useContext(FormContext);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    age: "",
+    gender: "",
+    account: "",
+    publicity: false,
+  });
 
   const handleInput = (event) => {
-    const inputName = event.target.name;
+    const { name, type, checked, value } = event.target;
     setUser((prev) => {
       return {
         ...prev,
-        [inputName]: event.target.value,
+        [name]: type === "checkbox" ? checked : value,
       };
     });
   };
@@ -20,6 +28,14 @@ const UserForm = () => {
     event.preventDefault();
     setDataUsers((prev) => [...prev, user]);
     event.target.reset();
+    setUser({
+      name: "",
+      email: "",
+      age: "",
+      gender: "",
+      account: "",
+      publicity: false,
+    });
   };
 
   return (
@@ -63,6 +79,18 @@ const UserForm = () => {
               type="number"
               name="age"
               id="age"
+            />
+          </div>
+
+          <div className="flex flex-col gap-1 w-full">
+            <label htmlFor="phone">Telefono:</label>
+            <input
+              required
+              onChange={handleInput}
+              className="rounded-md px-2 border-[1px] border-[#D1D5DB] h-[34px]"
+              type="tel"
+              name="phone"
+              id="phone"
             />
           </div>
         </div>
