@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import { FormContext } from "@/context/FormContext";
+import React, { useState, useContext } from "react";
 
 const UserForm = () => {
+  const { setDataUsers } = useContext(FormContext);
   const [user, setUser] = useState({});
-  const [data, setData] = useState([]);
 
   const handleInput = (event) => {
     const inputName = event.target.name;
@@ -17,14 +18,13 @@ const UserForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setData((prev) => [...prev, user]);
+    setDataUsers((prev) => [...prev, user]);
     event.target.reset();
   };
 
-
   return (
     <div className="bg-[#E3DED7] w-full flex flex-col justify-center items-center h-[600px]">
-        <h1 className="pb-3">Nuevo usuario</h1>
+      <h1 className="pb-3">Nuevo usuario</h1>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col w-[500px] border-[1px] border-[#D1D5DB] rounded-lg gap-6 p-4 text-[#374151] bg-white text-sm"
@@ -60,7 +60,7 @@ const UserForm = () => {
               required
               onChange={handleInput}
               className="rounded-md px-2 border-[1px] border-[#D1D5DB] h-[34px]"
-              type="text"
+              type="number"
               name="age"
               id="age"
             />
