@@ -1,8 +1,8 @@
 import React from "react";
 
-const Buttons = ({ text, type }) => {
+const Buttons = ({ text, typeBtn }) => {
   const buttonStyle = () => {
-    switch (type) {
+    switch (typeBtn) {
       case "green":
         return "px-6 py-3 bg-[#2A5B45] rounded text-white";
       case "gray":
