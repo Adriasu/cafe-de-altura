@@ -15,7 +15,7 @@ const UserList = () => {
   };
 
   return (
-    <div className="flex flex-wrap gap-3 justify-center m-9">
+    <div className="flex flex-wrap gap-3 mt-3">
       {filterDataUser.map((user, i) => {
         return <UserCard key={i} userCard={user} funDelete={deletUser} />;
       })}

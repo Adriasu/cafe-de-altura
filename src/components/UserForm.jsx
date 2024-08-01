@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import { FormContext } from "@/context/FormContext";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 const UserForm = () => {
   const { setDataUsers } = useContext(FormContext);
@@ -27,7 +27,6 @@ const UserForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setDataUsers((prev) => [...prev, user]);
-    event.target.reset();
     setUser({
       name: "",
       email: "",
@@ -54,6 +53,7 @@ const UserForm = () => {
               className="rounded-md px-2 border-[1px] border-[#D1D5DB] h-[34px]"
               type="text"
               name="name"
+              value={user.name}
               id="name"
             />
           </div>
@@ -99,6 +99,7 @@ const UserForm = () => {
           <p>Género:</p>
           <div className="grid grid-cols-2 gap-1">
             <div className="flex gap-2">
+            <label htmlFor="famale">
               <input
                 required
                 onChange={handleInput}
@@ -107,7 +108,7 @@ const UserForm = () => {
                 name="gender"
                 value="female"
               />
-              <label htmlFor="famale">Mujer</label>
+              Mujer</label>
             </div>
             <div className="flex gap-2">
               <input
@@ -166,6 +167,7 @@ const UserForm = () => {
             type="checkbox"
             id="publicity"
             name="publicity"
+            value={user.publicity}
           />
         </div>
         <input

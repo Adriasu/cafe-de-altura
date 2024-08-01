@@ -7,24 +7,27 @@ const SearchUser = () => {
   const { dataUsers, setFilterDataUsers } = useContext(FormContext);
   const inputRef = useRef(null);
 
-  const filterUserEmail = (event) => {
-    event.preventDefault();
-    //console.log(inputRef.current.value);
-    const filterEmail = dataUsers.filter((user) => {
-      if (user.email.toLowerCase() === inputRef.current.value.toLowerCase()) {
-        return user;
-      } else if (inputRef.current.value.toLowerCase() === "" || user.email.toLowerCase() !== inputRef.current.value.toLowerCase()) {
-        return dataUsers
-      }
-      
-    });
+  const deleteUser = (email) => {
+    if (email) {
+      const filterEmail = dataUsers.filter((user) => {
+        return user.email.toLowerCase() === email;
+      });
+      return setFilterDataUsers(filterEmail);
+    } else {
+      return setFilterDataUsers(dataUsers);
+    }
+  };
 
-    setFilterDataUsers(filterEmail);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const emailUserSearch = inputRef.current.value.toLowerCase();
+    deleteUser(emailUserSearch);
+    event.target.reset();
   };
 
   return (
-    <form onSubmit={filterUserEmail}>
-      <div className="flex mt-12 w-full rounded-md px-2 border-[1px] border-[#D1D5DB] bg-white justify-center items-center">
+    <form onSubmit={handleSubmit}>
+      <div className="flex mt-12 w-[500px] rounded-md px-2 border-[1px] border-[#D1D5DB] bg-white justify-center items-center">
         <Search />
         <input
           ref={inputRef}

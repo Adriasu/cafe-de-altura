@@ -9,7 +9,7 @@ const Home = () => {
     <FormContextProvider>
       <div className=" grid grid-cols-2 gap-3 p-3 bg-[#E3DED7]">
         <UserForm />
-        <div className="">
+        <div className="flex flex-col justify-start items-start">
           <SearchUser />
           <UserList />
         </div>
