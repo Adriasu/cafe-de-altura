@@ -8,7 +8,7 @@ const UserCard = ({ userCard, funDelete }) => {
   };
 
   return (
-    <div className="p-3 border-[1px] border-[#D1D5DB] bg-white w-[400px] rounded-lg">
+    <div className="p-3 border-[1px] border-[#D1D5DB] bg-white w-[300px] rounded-lg">
       <h1>Nombre: {userCard.name} </h1>
       <p>Edad: {userCard.age}</p>
       <p>E-mail: {userCard.email}</p>

@@ -7,13 +7,12 @@ import React from "react";
 const Home = () => {
   return (
     <FormContextProvider>
-      <div className=" flex flex-col justify-center items-center bg-[#E3DED7]">
-        <div className="grid grid-cols-2 gap-20 border-[2px] border-black - p-3">
-          <UserForm />
+      <div className=" grid grid-cols-2 gap-3 p-3 bg-[#E3DED7]">
+        <UserForm />
+        <div className="">
           <SearchUser />
+          <UserList />
         </div>
-
-        <UserList />
       </div>
     </FormContextProvider>
   );
