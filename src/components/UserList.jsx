@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import UserCard from "./UserCard";
 
 const UserList = () => {
-  const { dataUsers, setDataUsers } = useContext(FormContext);
+  const { dataUsers, setDataUsers, filterDataUser } = useContext(FormContext);
 
   const deletUser = (phoneSelected) => {
     const deleteByPhone = dataUsers.findIndex((user) => {
