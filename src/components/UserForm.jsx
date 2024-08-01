@@ -4,12 +4,13 @@ import { FormContext } from "@/context/FormContext";
 import React, { useState, useContext } from "react";
 
 const UserForm = () => {
-  const { setDataUsers } = useContext(FormContext);
+  const { setDataUsers, setFilterDataUsers } = useContext(FormContext);
   const [user, setUser] = useState({
     name: "",
     email: "",
     age: "",
     gender: "",
+    phone: "",
     account: "",
     publicity: false,
   });
@@ -27,11 +28,14 @@ const UserForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setDataUsers((prev) => [...prev, user]);
+    setFilterDataUsers((prev) => [...prev, user]);
+    event.target.reset();
     setUser({
       name: "",
       email: "",
       age: "",
       gender: "",
+      phone: "",
       account: "",
       publicity: false,
     });
@@ -66,6 +70,7 @@ const UserForm = () => {
               className="rounded-md px-2 border-[1px] border-[#D1D5DB] h-[34px]"
               type="text"
               name="email"
+              value={user.email}
               id="email"
             />
           </div>
@@ -78,6 +83,7 @@ const UserForm = () => {
               className="rounded-md px-2 border-[1px] border-[#D1D5DB] h-[34px]"
               type="number"
               name="age"
+              value={user.age}
               id="age"
             />
           </div>
@@ -90,6 +96,7 @@ const UserForm = () => {
               className="rounded-md px-2 border-[1px] border-[#D1D5DB] h-[34px]"
               type="tel"
               name="phone"
+              value={user.phone}
               id="phone"
             />
           </div>
@@ -99,7 +106,6 @@ const UserForm = () => {
           <p>Género:</p>
           <div className="grid grid-cols-2 gap-1">
             <div className="flex gap-2">
-            <label htmlFor="famale">
               <input
                 required
                 onChange={handleInput}
@@ -108,7 +114,7 @@ const UserForm = () => {
                 name="gender"
                 value="female"
               />
-              Mujer</label>
+              <label htmlFor="famale">Mujer</label>
             </div>
             <div className="flex gap-2">
               <input

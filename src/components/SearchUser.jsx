@@ -12,7 +12,11 @@ const SearchUser = () => {
       const filterEmail = dataUsers.filter((user) => {
         return user.email.toLowerCase() === email;
       });
-      return setFilterDataUsers(filterEmail);
+      if (filterEmail.length) {
+        return setFilterDataUsers(filterEmail);
+      } else {
+        return setFilterDataUsers(dataUsers);
+      }
     } else {
       return setFilterDataUsers(dataUsers);
     }

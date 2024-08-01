@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import UserCard from "./UserCard";
 
 const UserList = () => {
-  const { dataUsers, setDataUsers, filterDataUser } = useContext(FormContext);
+  const { dataUsers, setDataUsers, filterDataUser, setFilterDataUsers } = useContext(FormContext);
 
   const deletUser = (phoneSelected) => {
     const deleteByPhone = dataUsers.findIndex((user) => {
@@ -12,6 +12,7 @@ const UserList = () => {
     });
     dataUsers.splice(deleteByPhone, 1);
     setDataUsers([...dataUsers]);
+    setFilterDataUsers([...dataUsers])
   };
 
   return (
