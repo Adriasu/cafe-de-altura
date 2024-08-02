@@ -13,10 +13,11 @@ const UserList = () => {
     dataUsers.splice(deleteByPhone, 1);
     setDataUsers([...dataUsers]);
     setFilterDataUsers([...dataUsers])
+    //localStorage.setItem("dataUser", JSON.stringify(...dataUsers))
   };
 
   return (
-    <div className="flex flex-wrap gap-3 mt-3">
+    <div className="flex flex-wrap gap-3 mt-3 overflow-auto h-[480px]">
       {filterDataUser.map((user, i) => {
         return <UserCard key={i} userCard={user} funDelete={deletUser} />;
       })}

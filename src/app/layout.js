@@ -1,8 +1,9 @@
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
+import FormContextProvider from "@/context/FormContext";
 
-const outfit = Outfit({subsets: ["latin"]}) 
+const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Café de Altura",
@@ -12,10 +13,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${outfit.className} antialiased`}>
-      <body>
-        <NavBar/>
-        {children}
-        </body>
+      <body className="h-screen bg-[#E3DED7]">
+        <FormContextProvider>
+          <NavBar />
+          {children}
+        </FormContextProvider>
+      </body>
     </html>
   );
 }

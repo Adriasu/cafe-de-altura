@@ -29,9 +29,13 @@ const SearchUser = () => {
     event.target.reset();
   };
 
+  const clearSearch = () => {
+    setFilterDataUsers(dataUsers)
+  }
+
   return (
     <form onSubmit={handleSubmit}>
-      <div className="flex mt-12 w-[500px] rounded-md px-2 border-[1px] border-[#D1D5DB] bg-white justify-center items-center">
+      <div className="flex w-[500px] rounded-md px-2 border-[1px] border-[#D1D5DB] bg-white justify-center items-center">
         <Search />
         <input
           ref={inputRef}
@@ -40,11 +44,16 @@ const SearchUser = () => {
           name="filterEmail"
         />
       </div>
-      <input
-        className="px-2 py-1 bg-[#2A5B45] rounded text-white mt-1"
-        type="submit"
-        value="buscar"
-      />
+      <div className="flex gap-3">
+        <input
+          className="font-semibold, leading-4 text-[14px] px-3 py-2 bg-[#2A5B45] rounded text-white mt-1"
+          type="submit"
+          value="buscar"
+        />
+        <button onClick={clearSearch} className="font-semibold, leading-4 text-[14px] px-3 py-2 bg-[#1F1815] rounded text-white mt-1">
+          Limpiar
+        </button>
+      </div>
     </form>
   );
 };

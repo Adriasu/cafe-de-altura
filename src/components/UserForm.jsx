@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import { FormContext } from "@/context/FormContext";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 const UserForm = () => {
-  const { setDataUsers, setFilterDataUsers } = useContext(FormContext);
+  const { setDataUsers, setFilterDataUsers, dataUsers } = useContext(FormContext);
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -25,10 +25,18 @@ const UserForm = () => {
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const addUser = (user) => {
     setDataUsers((prev) => [...prev, user]);
     setFilterDataUsers((prev) => [...prev, user]);
+    localStorage.setItem("dataUser", JSON.stringify(dataUsers))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addUser(user)
+    // setDataUsers((prev) => [...prev, user]);
+    // setFilterDataUsers((prev) => [...prev, user]);
+    //localStorage.setItem("dataUser", JSON.stringify(dataUsers))
     event.target.reset();
     setUser({
       name: "",
@@ -42,8 +50,7 @@ const UserForm = () => {
   };
 
   return (
-    <div className="bg-[#E3DED7] w-full flex flex-col justify-center items-center h-[600px]">
-      <h1 className="pb-3">Nuevo usuario</h1>
+    <div className="bg-[#E3DED7] w-full flex flex-col justify-start items-center h-[600px]">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col w-[500px] border-[1px] border-[#D1D5DB] rounded-lg gap-6 p-4 text-[#374151] bg-white text-sm"
