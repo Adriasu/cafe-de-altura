@@ -13,7 +13,7 @@ const UserList = () => {
     dataUsers.splice(deleteByPhone, 1);
     setDataUsers([...dataUsers]);
     setFilterDataUsers([...dataUsers])
-    //localStorage.setItem("dataUser", JSON.stringify(...dataUsers))
+    localStorage.setItem("dataUser", JSON.stringify(dataUsers))
   };
 
   return (
@@ -26,3 +26,4 @@ const UserList = () => {
 };
 
 export default UserList;
+

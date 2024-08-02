@@ -4,7 +4,7 @@ import { FormContext } from "@/context/FormContext";
 import React, { useState, useContext, useEffect } from "react";
 
 const UserForm = () => {
-  const { setDataUsers, setFilterDataUsers, dataUsers } = useContext(FormContext);
+  const { dataUsers, updateUser, setDataUsersLs } = useContext(FormContext);
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -25,18 +25,10 @@ const UserForm = () => {
     });
   };
 
-  const addUser = (user) => {
-    setDataUsers((prev) => [...prev, user]);
-    setFilterDataUsers((prev) => [...prev, user]);
-    localStorage.setItem("dataUser", JSON.stringify(dataUsers))
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    addUser(user)
-    // setDataUsers((prev) => [...prev, user]);
-    // setFilterDataUsers((prev) => [...prev, user]);
-    //localStorage.setItem("dataUser", JSON.stringify(dataUsers))
+    const addUser = [...dataUsers, user]
+    updateUser(addUser)
     event.target.reset();
     setUser({
       name: "",
