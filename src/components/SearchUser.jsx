@@ -1,22 +1,17 @@
 "use client";
 import { FormContext } from "@/context/FormContext";
 import { Search } from "lucide-react";
-import React, { useContext, useRef } from "react";
+import React, { useContext} from "react";
 
 const SearchUser = () => {
-  const { dataUsers, setFilterDataUsers, searchUserByEmail } =
+  const { clearSearch, searchUserByEmail, searchMessage,inputRef } =
     useContext(FormContext);
-  const inputRef = useRef(null);
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const emailUserSearch = inputRef.current.value.toLowerCase();
     searchUserByEmail(emailUserSearch);
-  };
-
-  const clearSearch = () => {
-    setFilterDataUsers(dataUsers);
-    inputRef.current.value = "";
   };
 
   return (
@@ -31,7 +26,6 @@ const SearchUser = () => {
             name="filterEmail"
           />
         </div>
-
         <div className="flex gap-2 justify-center items-center h-[34px]">
           <input
             className="cursor-pointer font-semibold, leading-4 text-[14px] px-3 py-2 bg-[#2A5B45] rounded text-white mt-1"
@@ -46,6 +40,7 @@ const SearchUser = () => {
           </button>
         </div>
       </div>
+      <p className="text-red-700 mt-3">{`${searchMessage}`}</p>
     </form>
   );
 };

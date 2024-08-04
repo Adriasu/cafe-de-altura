@@ -1,12 +1,13 @@
 "use client";
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useRef } from "react";
 
 export const FormContext = createContext(null);
 
 export default function FormContextProvider({ children }) {
   const [dataUsers, setDataUsers] = useState([]);
   const [filterDataUser, setFilterDataUsers] = useState([]);
-  const [searchMessage, setSearchMessage] = useState("")
+  const [searchMessage, setSearchMessage] = useState("");
+  const inputRef = useRef(null);
 
   useEffect(() => {
     const dataUserLs = JSON.parse(localStorage.getItem("dataUser") || "[]");
@@ -17,7 +18,7 @@ export default function FormContextProvider({ children }) {
   const updateUser = (user) => {
     setDataUsers(user);
     setFilterDataUsers(user);
-	localStorage.setItem("dataUser", JSON.stringify(user));
+    localStorage.setItem("dataUser", JSON.stringify(user));
   };
 
   const searchUserByEmail = (email) => {
@@ -26,17 +27,21 @@ export default function FormContextProvider({ children }) {
         return user.email.toLowerCase() === email;
       });
       if (filterEmail.length) {
-        setSearchMessage("Encontrado")
+        setSearchMessage("Encontrado");
         return setFilterDataUsers(filterEmail);
-        
       } else {
-        setSearchMessage(`El correo ${email} no ha sido encontrado`)
+        setSearchMessage(`El correo "${email}" no ha sido encontrado`);
         return setFilterDataUsers(dataUsers);
-        
       }
     } else {
       return setFilterDataUsers(dataUsers);
     }
+  };
+
+  const clearSearch = () => {
+    setFilterDataUsers(dataUsers);
+    setSearchMessage("");
+    inputRef.current.value = "";
   };
 
   return (
@@ -47,13 +52,13 @@ export default function FormContextProvider({ children }) {
         filterDataUser,
         setFilterDataUsers,
         updateUser,
-        searchUserByEmail
+        searchUserByEmail,
+        searchMessage,
+        clearSearch,
+        inputRef
       }}
     >
       {children}
     </FormContext.Provider>
   );
 }
-
-
-
