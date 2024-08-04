@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import { FormContext } from "@/context/FormContext";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 const UserForm = () => {
-  const { dataUsers, updateUser, setDataUsersLs } = useContext(FormContext);
+  const { dataUsers, updateUser} = useContext(FormContext);
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -27,8 +27,8 @@ const UserForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const addUser = [...dataUsers, user]
-    updateUser(addUser)
+    const addUser = [...dataUsers, user];
+    updateUser(addUser);
     event.target.reset();
     setUser({
       name: "",

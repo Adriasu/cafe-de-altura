@@ -6,15 +6,16 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="flex flex-col pt-5">
-      <h1>Nuevo usuario</h1>
-      <div className=" grid grid-cols-2 gap-3 p-3">
-      <UserForm />
-      <div className="flex flex-col justify-start items-start">
-        <SearchUser />
-        <UserList />
-      </div>
-
+    <div className="flex flex-col pt-5 justify-center items-center">
+      <h1 className="md:w-[1128px] sm:w-[500px] text-2xl">Nuevo usuario:</h1>
+      <div className=" md:flex justify-center items-start md:gap-32 p-3 sm:grid sm:grid-cols-1 sm:gap-1">
+        <div className="w-[500px]">
+          <UserForm />
+        </div>
+        <div className="flex flex-col justify-start items-center w-[500px]">
+          <SearchUser />
+          <UserList />
+        </div>
       </div>
     </div>
   );
