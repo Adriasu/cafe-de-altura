@@ -1,5 +1,5 @@
 import CardsConditions from "@/components/CardsConditions";
-import Hero from "@/components/Hero";
+import Hero from "@/app/(main)/Hero";
 import SearchUser from "@/components/SearchUser";
 import UserForm from "@/components/UserForm";
 import UserList from "@/components/UserList";
@@ -21,8 +21,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <CardsConditions/>
       <Hero/>
+      <CardsConditions/>
     </div>
   );
 };

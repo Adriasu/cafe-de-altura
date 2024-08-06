@@ -1,4 +1,4 @@
-import dbConnect from "../lib/mongodb.js";
+import dbConnect from "../lib/mongodb.mjs/index.js";
 import Product from "../models/Product.js";
 
 const products = [
