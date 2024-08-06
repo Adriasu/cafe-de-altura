@@ -1,5 +1,5 @@
 import dbConnect from "../lib/mongodb.mjs/index.js";
-import Product from "../models/Product.js";
+import Product from "../models/Product.mjs/index.js";
 
 const products = [
   {

@@ -2,17 +2,15 @@ import { NextResponse } from 'next/server';
 import dbConnect from '../../../../lib/mongodb.mjs';
 import Product from '../../../../models/Product';
 
-// Conectar a la base de datos una sola vez al iniciar el servidor
-dbConnect().catch(err => console.error('Failed to connect to MongoDB', err));
-
 export async function getProducts(page = 1, limit = 10) {
   const skip = (page - 1) * limit;
+  console.log(`Fetching products: page ${page}, limit ${limit}`);
   try {
-    const products = await Product.find()
-      .skip(skip)
-      .limit(limit)
-      .lean(); // .lean() para obtener objetos JavaScript planos, que son más rápidos
-    const total = await Product.countDocuments();
+    const [products, total] = await Promise.all([
+      Product.find().skip(skip).limit(limit).lean(),
+      Product.countDocuments()
+    ]);
+    console.log(`Fetched ${products.length} products`);
     return { products, total, page, limit };
   } catch (err) {
     console.error('Error fetching products:', err);
@@ -21,12 +19,22 @@ export async function getProducts(page = 1, limit = 10) {
 }
 
 export async function GET(request) {
-  const { searchParams } = new URL(request.url);
-  const page = parseInt(searchParams.get('page') || '1', 10);
-  const limit = parseInt(searchParams.get('limit') || '10', 10);
-
+  console.log('GET request received');
+  const start = Date.now();
+  
   try {
+    await dbConnect();
+    console.log('Connected to database');
+
+    const { searchParams } = new URL(request.url);
+    const page = parseInt(searchParams.get('page') || '1', 10);
+    const limit = parseInt(searchParams.get('limit') || '10', 10);
+
     const productsData = await getProducts(page, limit);
+    
+    const duration = Date.now() - start;
+    console.log(`Request processed in ${duration}ms`);
+
     return NextResponse.json(productsData);
   } catch (err) {
     console.error('Error in GET request:', err);
