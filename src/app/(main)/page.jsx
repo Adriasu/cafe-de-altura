@@ -5,6 +5,7 @@ import UserForm from "@/components/UserForm";
 import UserList from "@/components/UserList";
 
 import React from "react";
+import FeatureSection from "./FeatureSection";
 
 const Home = () => {
   return (
@@ -23,6 +24,7 @@ const Home = () => {
       </div>
       <Hero/>
       <CardsConditions/>
+      <FeatureSection/>
     </div>
   );
 };

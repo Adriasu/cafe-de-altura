@@ -13,12 +13,10 @@ export async function getProducts() {
   }
 }
 
-
-
 export async function GET(request) {
   await dbConnect();
   const { searchParams } = new URL(request.url);
-  console.log(searchParams);
+  //console.log(searchParams);
   
   const page = searchParams.get('page') ?? '1';
   const limit = searchParams.get('limit') ?? '10';
