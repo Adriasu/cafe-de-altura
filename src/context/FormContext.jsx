@@ -54,8 +54,7 @@ export default function FormContextProvider({ children }) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setDataCoffee(data);
-      console.log(data);
+      setDataCoffee(data.products);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -79,7 +78,8 @@ export default function FormContextProvider({ children }) {
         searchUserByEmail,
         searchMessage,
         clearSearch,
-        inputRef
+        inputRef,
+        dataCoffee
       }}
     >
       {children}
