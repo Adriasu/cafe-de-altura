@@ -3,19 +3,10 @@ import Image from "next/image";
 import React from "react";
 
 const FeatureSection = () => {
-  const fetchPrueba = async () => {
-    try {
-      const response = await fetch(
-        "https://cafe-de-altura-lovat.vercel.app/api/products"
-      );
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.log("error");
-    }
-  };
 
-  fetchPrueba()
+ 
+
+ 
 
   return (
     <div className="h-[480px] bg-[#F7F5F3] flex justify-center items-center">
