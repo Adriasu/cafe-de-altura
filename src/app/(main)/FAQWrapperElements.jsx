@@ -9,3 +9,5 @@ const FAQWrapperElements = () => {
 }
 
 export default FAQWrapperElements
+
+
