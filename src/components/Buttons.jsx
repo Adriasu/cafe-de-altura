@@ -10,7 +10,7 @@ const Buttons = ({ text, typeBtn }) => {
       case "brown":
         return "px-6 py-3 bg-[#1F1815] rounded text-white";
       case "add":
-        return "p-2 text-white rounded bg-[#2A5B45B2] hover:bg-[#2A5B45]";
+        return "p-2 text-white rounded bg-[#2A5B45B2] group-hover:bg-[#2A5B45]";
       case "white":
         return "px-6 py-3 rounded text-[#2A5B45]";
 
