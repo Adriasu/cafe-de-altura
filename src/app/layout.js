@@ -2,6 +2,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import FormContextProvider from "@/context/FormContext";
+import ProductsContextProvider from "@/context/ProductsContext";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -14,10 +15,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${outfit.className} antialiased`}>
       <body className="">
-        <FormContextProvider>
-          <NavBar />
-          {children}
-        </FormContextProvider>
+        <ProductsContextProvider>
+          <FormContextProvider>
+            <NavBar />
+            {children}
+          </FormContextProvider>
+        </ProductsContextProvider>
       </body>
     </html>
   );

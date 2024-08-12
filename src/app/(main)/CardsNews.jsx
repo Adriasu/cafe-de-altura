@@ -2,11 +2,11 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import React, { useContext } from "react";
-import { FormContext } from "@/context/FormContext";
+import { ProductsContext } from "@/context/ProductsContext";
 import CardProduct from "@/components/CardProduct";
 
 const CardsNews = () => {
-    const {dataCoffee} = useContext(FormContext)
+    const {dataCoffee} = useContext(ProductsContext)
   return (
     <div className="min-h-[603.39px] flex flex-col justify-center items-center gap-10">
       <h2 className="text-2xl font-medium text-[#2A5B45] leading-7 w-[120px]">
