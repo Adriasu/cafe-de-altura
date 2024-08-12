@@ -4,6 +4,7 @@ import React from "react";
 import FeatureSection from "./FeatureSection";
 import CardsNews from "./CardsNews";
 import FAQWrapperElements from "./FAQWrapperElements";
+import SplitTwoToneDesktop from "./SplitTwoToneDesktop";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <CardsNews/>
       <FAQWrapperElements/>
       <FeatureSection/>
+      <SplitTwoToneDesktop/>
     </div>
   );
 };
