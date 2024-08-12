@@ -71,7 +71,7 @@ const SplitTwoToneDesktop = () => {
             </div>
             <div className={inputText}>
               <label htmlFor="phone">Teléfono</label>
-              <div className="flex items-center text-sm border h-[34px] border-gray-300 shadow-[0px_1px_2px_0px_#0000000D] rounded-md border-solid hover:border hover:shadow-[0px_1px_2px_0px_#0000000D] hover:border-solid hover:border-[#9B9EA3] focus-within:border-2 focus-within:border-[#3F8F6B]">
+              <div className="flex items-center text-sm border h-[34px] border-gray-300 shadow-[0px_1px_2px_0px_#0000000D] rounded-md border-solid hover:border hover:shadow-[0px_1px_2px_0px_#0000000D] hover:border-solid hover:border-[#9B9EA3] focus-within:border-2 focus-within:border-[#3F8F6B] focus-within:hover:shadow-none focus-within:hover:border-[#3F8F6B] focus-within:hover:border-2">
                 <div className="w-[68px] flex items-center justify-center h-[38px] ">
                   <select className="outline-none" name="country" id="country">
                     <option value="US">US</option>
