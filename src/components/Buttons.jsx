@@ -12,28 +12,32 @@ const Buttons = ({ text, typeBtn, link, icon }) => {
         return "px-6 py-3 bg-[#1F1815] rounded text-white";
       case "add":
         return "p-2 text-white rounded bg-[#2A5B45B2] group-hover:bg-[#2A5B45]";
-        case "soldOut":
-          return "p-2 text-white rounded bg-[#E3DED7] cursor-default"
+      case "soldOut":
+        return "p-2 text-white rounded bg-[#E3DED7] cursor-default";
       case "white":
         return "px-6 py-3 rounded text-[#2A5B45]";
-
       default:
-        break;
+        return "";
     }
   };
+
+  const commonClasses = "font-semibold leading-4 text-[14px] flex justify-center items-center gap-2";
+
+  if (typeBtn === "soldOut") {
+    return (
+      <span className={`${commonClasses} ${buttonStyle()}`}>
+        {icon} {text}
+      </span>
+    );
+  }
+
   return (
     <Link
-      className={`font-semibold, leading-4 text-[14px] flex justify-center items-center gap-2 ${buttonStyle()}`}
-      href={{ link }}
+      className={`${commonClasses} ${buttonStyle()}`}
+      href={{link}}
     >
       {icon} {text}
     </Link>
-    // <a
-    //   className={`font-semibold, leading-4 text-[14px] ${buttonStyle()}`}
-    //   href=""
-    // >
-    //   {text}
-    // </a>
   );
 };
 
