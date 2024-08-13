@@ -5,7 +5,10 @@ import FormContextProvider from "@/context/FormContext";
 import ProductsContextProvider from "@/context/ProductsContext";
 import CopyRigth from "@/components/CopyRigth";
 
-const outfit = Outfit({ subsets: ["latin"] });
+const outfit = Outfit({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata = {
   title: "Café de Altura",
@@ -20,7 +23,7 @@ export default function RootLayout({ children }) {
           <FormContextProvider>
             <NavBar />
             {children}
-            <CopyRigth/>
+            
           </FormContextProvider>
         </ProductsContextProvider>
       </body>

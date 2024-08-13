@@ -2,6 +2,7 @@ import { Coffee, Phone, ShoppingBag } from "lucide-react";
 import React from "react";
 import Buttons from "./Buttons";
 import Link from "next/link";
+import Image from "next/image";
 
 const NavBar = () => {
   return (
@@ -11,7 +12,7 @@ const NavBar = () => {
           <p className="text-[23.46px] font-normal leading-[35.19px]">
             cafedealtura.com
           </p>
-          <Coffee className="w-6 h-6" />
+          <Image src="/images/Vector.png" alt="coffe" height={24.93} width={20.53}/>
         </div>
       </Link>
 
@@ -34,10 +35,11 @@ const NavBar = () => {
       </div>
 
       <div>
-        <ShoppingBag className="cursor-pointer" />
+        <Image className="cursor-pointer" src="/images/Carr.png" alt="bag" width={24} height={24}/>
       </div>
     </nav>
   );
 };
 
 export default NavBar;
+

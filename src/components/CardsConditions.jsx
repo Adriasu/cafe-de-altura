@@ -4,7 +4,7 @@ import CardConWrapper from "./CardConWrapper";
 const CardsConditions = () => {
   return (
     <div className="min-h-[380px] bg-[url('/images/backgroundCards.jpeg')] bg-center bg-no-repeat bg-cover flex flex-col items-center justify-center gap-6">
-      <h2 className="w-[350px] h-7 text-white text-2xl leading-7 font-medium">
+      <h2 className="h-7 text-white text-2xl leading-7 font-medium">
         Café con las mejores condiciones
       </h2>
       <div className="flex justify-between items-center max-w-[996px] min-h-[232px] gap-6">

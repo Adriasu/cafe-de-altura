@@ -19,7 +19,7 @@ const CardsNews = () => {
       </div>
       <div>
         <Link
-          className="flex justify-between items-center gap-4 text-sm font-semibold text-black"
+          className="flex justify-between items-center gap-4 text-sm font-semibold text-black underline"
           href={"/shop"}
         >
           Ver todos

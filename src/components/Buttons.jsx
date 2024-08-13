@@ -29,3 +29,4 @@ const Buttons = ({ text, typeBtn }) => {
 };
 
 export default Buttons;
+
