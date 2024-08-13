@@ -6,7 +6,7 @@ const LinksMenuWrapper = ({ direction }) => {
     if (direction === "row") {
       return "flex-row min-w-[512px] min-h-[32px] items-center";
     } else {
-      return "flex-col min-w-[96px] min-h-[144px]";
+      return "flex-col min-w-[96px] min-h-[144px] absolute top-[2.61px] left-[577px]";
     }
   };
 

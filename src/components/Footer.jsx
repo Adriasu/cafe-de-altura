@@ -41,11 +41,13 @@ const Footer = () => {
             </div>
           </div>
 
-          <LinksMenuWrapper direction={"col"}/>
+          <LinksMenuWrapper direction={"col"} />
 
-
-
-
+          <ul className="flex flex-col gap-4 absolute top-[3px] left-[800px]">
+            <li className="cursor-pointer">Política de privacidad</li>
+            <li className="cursor-pointer">Política de cookies</li>
+            <li className="cursor-pointer">Términos y condiciones</li>
+          </ul>
         </div>
       </div>
     </footer>

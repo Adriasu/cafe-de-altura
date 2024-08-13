@@ -27,7 +27,7 @@ const FAQWrapperElements = () => {
           <AccordionTrigger className="flex justify-between items-center min-w-[620px] min-h-[24px] text-lg font-semibold leading-6">
             ¿Cómo hago el pedido?
           </AccordionTrigger>
-          <AccordionContent className="flex flex-col gap-4">
+          <AccordionContent className="flex flex-col gap-4 text-xs">
           <hr className="w-[620px] border border-solid border-[#E3DED7]" />
             Selecciona el café que desees probar y completa el proceso de
             compra. Si lo prefieres, te preguntaremos cada cuánto quieres que te
@@ -41,7 +41,7 @@ const FAQWrapperElements = () => {
           <AccordionTrigger className="flex justify-between items-center min-w-[620px] min-h-[24px] text-lg font-semibold leading-6">
             ¿Por qué los precios son tan bajos?
           </AccordionTrigger>
-          <AccordionContent className="flex flex-col gap-4">
+          <AccordionContent className="flex flex-col gap-4 text-xs">
           <hr className="w-[620px] border border-solid border-[#E3DED7]" />
             Viajamos constantemente para encontrar los mejores granos y a los
             agricultores más exigentes. Si podemos ofrecerte estos precios es
@@ -58,7 +58,7 @@ const FAQWrapperElements = () => {
           <AccordionTrigger className="flex justify-between items-center min-w-[620px] min-h-[24px] text-lg font-semibold leading-6">
             ¿Es posible enviar café a mi oficina?
           </AccordionTrigger>
-          <AccordionContent className="flex flex-col gap-4">
+          <AccordionContent className="flex flex-col gap-4 text-xs">
           <hr className="w-[620px] border border-solid border-[#E3DED7]" />
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
             sit saepe dolores corporis tempore, nulla aut sunt delectus libero
