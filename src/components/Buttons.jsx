@@ -1,6 +1,7 @@
+import Link from "next/link";
 import React from "react";
 
-const Buttons = ({ text, typeBtn }) => {
+const Buttons = ({ text, typeBtn, link, icon }) => {
   const buttonStyle = () => {
     switch (typeBtn) {
       case "green":
@@ -19,14 +20,19 @@ const Buttons = ({ text, typeBtn }) => {
     }
   };
   return (
-    <a
-      className={`font-semibold, leading-4 text-[14px] ${buttonStyle()}`}
-      href=""
+    <Link
+      className={`font-semibold, leading-4 text-[14px] flex justify-center items-center gap-2 ${buttonStyle()}`}
+      href={{ link }}
     >
-      {text}
-    </a>
+      {icon} {text}
+    </Link>
+    // <a
+    //   className={`font-semibold, leading-4 text-[14px] ${buttonStyle()}`}
+    //   href=""
+    // >
+    //   {text}
+    // </a>
   );
 };
 
 export default Buttons;
-

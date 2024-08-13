@@ -5,6 +5,7 @@ import FeatureSection from "./FeatureSection";
 import CardsNews from "./CardsNews";
 import FAQWrapperElements from "./FAQWrapperElements";
 import SplitTwoToneDesktop from "./SplitTwoToneDesktop";
+import Footer from "@/components/Footer";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <FAQWrapperElements/>
       <FeatureSection/>
       <SplitTwoToneDesktop/>
+      <Footer/>
     </div>
   );
 };
