@@ -33,13 +33,15 @@ const NavBar = () => {
       </div>
 
       <div>
-        <Image
-          className="cursor-pointer"
-          src="/images/Carr.png"
-          alt="bag"
-          width={24}
-          height={24}
-        />
+        <Link href="/checkOut">
+          <Image
+            className="cursor-pointer"
+            src="/images/Carr.png"
+            alt="bag"
+            width={24}
+            height={24}
+          />
+        </Link>
       </div>
     </nav>
   );
