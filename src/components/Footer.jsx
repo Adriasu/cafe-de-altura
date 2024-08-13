@@ -6,7 +6,7 @@ import LinksMenuWrapper from "./LinksMenuWrapper";
 
 const Footer = () => {
   return (
-    <footer className="h-[310px] bg-[#1F1815] flex flex-col items-center justify-between text-white font-semibold text-sm leading-4 relative">
+    <footer className="h-[270px] bg-[#1F1815] flex flex-col items-center justify-between text-white font-semibold text-sm leading-4 relative">
       <div className="flex flex-col w-[1200px] min-h-[201px] gap-4 mt-[28.61px]">
         <div className="w-72 min-h-[36px] flex gap-[7.33px] items-center font-normal text-[23.46px] leading-[35.19px]">
           <p>cafedealtura.com</p>

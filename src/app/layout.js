@@ -3,8 +3,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import FormContextProvider from "@/context/FormContext";
 import ProductsContextProvider from "@/context/ProductsContext";
-
-
+import CopyRight from "@/components/CopyRight";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -24,7 +23,7 @@ export default function RootLayout({ children }) {
           <FormContextProvider>
             <NavBar />
             {children}
-          
+            <CopyRight />
           </FormContextProvider>
         </ProductsContextProvider>
       </body>
