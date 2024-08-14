@@ -23,9 +23,9 @@ const BagProductsSend = () => {
           <h3 className={`${styleH3ProductsSend}`}>Productos</h3>
 
           {dataCoffee.slice(0, 4).map((product, i) => {
-            return <CardsProductsSelected key={i} selectedProduct={product} />;
+            return <CardsProductsSelected key={i} selectedProduct={product} index={i} />;
           })}
-          
+
           <h3 className={`${styleH3ProductsSend}`}>Seleccionar envío</h3>
           <form className="flex flex-col gap-6">
             <div className={`${styleSend}`}>
