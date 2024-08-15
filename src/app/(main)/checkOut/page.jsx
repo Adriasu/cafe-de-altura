@@ -1,7 +1,12 @@
 import React from "react";
+import PaymentAndDelivery from "./PaymentAndDelivery";
 
-const CheckOut = () => {
-  return <div></div>;
+const page = () => {
+  return (
+    <div className="mt-[64px]">
+      <PaymentAndDelivery />
+    </div>
+  );
 };
 
-export default CheckOut;
+export default page;
