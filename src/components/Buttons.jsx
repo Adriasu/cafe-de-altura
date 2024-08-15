@@ -21,7 +21,8 @@ const Buttons = ({ text, typeBtn, link, icon }) => {
     }
   };
 
-  const commonClasses = "font-semibold leading-4 text-[14px] flex justify-center items-center gap-2";
+  const commonClasses =
+    "font-semibold leading-4 text-[14px] flex justify-center items-center gap-2";
 
   if (typeBtn === "soldOut") {
     return (
@@ -31,13 +32,20 @@ const Buttons = ({ text, typeBtn, link, icon }) => {
     );
   }
 
-  return (
-    <Link
-      className={`${commonClasses} ${buttonStyle()}`}
-      href={{link}}
-    >
+  const ButtonContent = () => (
+    <span className={`${commonClasses} ${buttonStyle()}`}>
       {icon} {text}
+    </span>
+  );
+
+  return link ? (
+    <Link href={link}>
+      <ButtonContent />
     </Link>
+  ) : (
+    <button className={`${commonClasses} ${buttonStyle()}`}>
+      {icon} {text}
+    </button>
   );
 };
 

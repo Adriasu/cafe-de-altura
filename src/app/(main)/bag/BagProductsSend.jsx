@@ -4,6 +4,7 @@ import TotalPrice from "@/components/TotalPrice";
 import React, { useContext } from "react";
 import { ProductsContext } from "@/context/ProductsContext";
 import CardsProductsSelected from "@/components/CardsProductsSelected";
+import Link from "next/link";
 
 const BagProductsSend = () => {
   const { dataCoffee } = useContext(ProductsContext);
@@ -14,7 +15,7 @@ const BagProductsSend = () => {
   const styleContainTextDelivery =
     "min-h-[36px] text-sm leading-4 flex flex-col gap-1 justify-center";
   return (
-    <section className="min-h-[772px] flex flex-col gap-6 items-center mt-16 p-10">
+    <section className="h-screen flex flex-col grow shrink gap-6 items-center mt-16 p-10">
       <h2 className="text-[#2A5B45] text-2xl font-medium leading-7">
         Cesta (2)
       </h2>
@@ -23,11 +24,17 @@ const BagProductsSend = () => {
           <h3 className={`${styleH3ProductsSend}`}>Productos</h3>
 
           {dataCoffee.slice(0, 4).map((product, i) => {
-            return <CardsProductsSelected key={i} selectedProduct={product} index={i} />;
+            return (
+              <CardsProductsSelected
+                key={i}
+                selectedProduct={product}
+                index={i}
+              />
+            );
           })}
 
           <h3 className={`${styleH3ProductsSend}`}>Seleccionar envío</h3>
-          <form className="flex flex-col gap-6">
+          <form className="flex flex-col gap-4">
             <div className={`${styleSend}`}>
               <div className={`${styleSelectorDelivery}`}>
                 <input type="radio" id="free" name="send" value={0} />
@@ -62,8 +69,10 @@ const BagProductsSend = () => {
         </div>
 
         <TotalPrice
-          btnOne={<Buttons text={"Ir a checkout"} typeBtn={"green"} />}
-          btnTwo={<Buttons text={"Seguir comprando"} typeBtn={"white"} />}
+          textBtnOne={"Ir a checkout"}
+          typeBtnOne={"green"}
+          textBtnTwo={"Seguir comprando"}
+          typeBtnTwo={"white"}
         />
       </div>
     </section>

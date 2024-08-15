@@ -16,7 +16,7 @@ const Hero = () => {
           </p>
           <div className="flex items-center min-w-[321px] min-h-[40px] gap-4 font-semibold text-sm leading-4">
             <Buttons text={"Descubrir orígenes"} typeBtn={"brown"} />
-            <Buttons text={"Comprar café"} typeBtn={"green"}/>
+            <Buttons text={"Comprar café"} typeBtn={"green"} link={"/shop"}/>
           </div>
         </div>
         <Image src="/images/HeroImage.png" alt="hero image" width={588} height={390}/>

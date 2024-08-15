@@ -1,6 +1,8 @@
+import Link from "next/link";
 import React from "react";
+import Buttons from "./Buttons";
 
-const TotalPrice = ({ btnOne, btnTwo }) => {
+const TotalPrice = ({ textBtnOne, typeBtnOne, textBtnTwo, typeBtnTwo }) => {
   const styleCarrDetails = "flex justify-between w-[336px]";
   const styleSubtotalAndSend = "text-sm leading-4";
   return (
@@ -27,7 +29,13 @@ const TotalPrice = ({ btnOne, btnTwo }) => {
           </div>
         </div>
         <div className="w-[310px] h-10 flex gap-4">
-          {btnOne} {btnTwo}
+          <Buttons
+            text={textBtnOne}
+            typeBtn={typeBtnOne}
+            link={typeBtnOne === "green" ? "/checkOut" : "/success"}
+          />
+
+          <Buttons text={textBtnTwo} typeBtn={typeBtnTwo} link={"/shop"} />
         </div>
       </div>
     </div>

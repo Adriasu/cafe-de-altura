@@ -8,9 +8,9 @@ const CardsProductsSelected = ({ selectedProduct, index }) => {
   return (
     <section className={`flex w-[776px] min-h-[55.66px] justify-between ${index > 0 ? 'border-t border-[#E3DED7] pt-6' : ''}`}>
       <div className="flex w-[88px] h-[55.66px] gap-2 items-center justify-center">
-        <Minus className="w-6 h-6" />
+        <Minus className="w-6 h-6 cursor-pointer" />
         <p className="w-6 h-6 bg-[#2A5B451A] flex justify-center items-center text-xs font-normal leading-4 text-[#2A5B45] rounded-[50%]">1</p>
-        <Plus className="w-6 h-6" />
+        <Plus className="w-6 h-6 cursor-pointer" />
       </div>
       <Image
         src={selectedProduct.img_url}

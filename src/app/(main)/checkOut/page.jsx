@@ -1,14 +1,7 @@
 import React from "react";
-import BagProductsSend from "./BagProductsSend";
 
 const CheckOut = () => {
- 
-  return (
-    <div>
-      <BagProductsSend/>
-    </div>
-
-  );
+  return <div></div>;
 };
 
 export default CheckOut;
