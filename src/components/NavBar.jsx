@@ -1,11 +1,28 @@
-import { Coffee, Phone, ShoppingBag } from "lucide-react";
-import React from "react";
+"use client";
+import { Phone } from "lucide-react";
+import React, { useState, useCallback } from "react";
 import Buttons from "./Buttons";
 import Link from "next/link";
 import Image from "next/image";
 import LinksMenuWrapper from "./LinksMenuWrapper";
+import Cart from "./Cart";
+import UseOutsideClick from "./UseOutsideClick";
 
 const NavBar = () => {
+  const [isCartVisible, setIsCartVisible] = useState(false);
+
+  const showHideCart = () => {
+    setIsCartVisible(!isCartVisible);
+  };
+
+  const closeCart = useCallback(() => {
+    if (isCartVisible) {
+      setIsCartVisible(false);
+    }
+  }, [isCartVisible]);
+
+  const cartRef = UseOutsideClick(closeCart)
+
   return (
     <nav className="bg-[#2B2A2B] min-h-16 flex justify-around items-center text-[#FFFFFF] w-full fixed z-[1] top-0">
       <Link href={"/"}>
@@ -32,17 +49,22 @@ const NavBar = () => {
         <Buttons text={"Iniciar sesión"} typeBtn={"gray"} />
       </div>
 
-      <div>
-        <Link href="/bag">
-          <Image
-            className="cursor-pointer"
-            src="/images/Carr.png"
-            alt="bag"
-            width={24}
-            height={24}
-          />
-        </Link>
+      <div onClick={showHideCart}>
+        <Image
+          className="cursor-pointer"
+          src="/images/Carr.png"
+          alt="bag"
+          width={24}
+          height={24}
+        />
+        <p></p>
       </div>
+
+      {isCartVisible && (
+        <div ref={cartRef} className={`absolute right-[30px] top-[55px]`}>
+          <Cart />
+        </div>
+      )}
     </nav>
   );
 };

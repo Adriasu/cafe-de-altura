@@ -1,10 +1,8 @@
 "use client";
-import Buttons from "@/components/Buttons";
 import TotalPrice from "@/components/TotalPrice";
 import React, { useContext } from "react";
 import { ProductsContext } from "@/context/ProductsContext";
 import CardsProductsSelected from "@/components/CardsProductsSelected";
-import Link from "next/link";
 
 const BagProductsSend = () => {
   const { dataCoffee } = useContext(ProductsContext);
