@@ -3,7 +3,7 @@ import PaymentAndDelivery from "./PaymentAndDelivery";
 
 const page = () => {
   return (
-    <div className="mt-[64px]">
+    <div>
       <PaymentAndDelivery />
     </div>
   );
