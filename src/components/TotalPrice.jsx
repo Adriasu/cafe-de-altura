@@ -32,7 +32,7 @@ const TotalPrice = ({ textBtnOne, typeBtnOne, textBtnTwo, typeBtnTwo }) => {
           <Buttons
             text={textBtnOne}
             typeBtn={typeBtnOne}
-            link={typeBtnOne === "green" ? "/checkOut" : "/success"}
+            link={textBtnOne === "Ir a checkout" ? "/checkOut" : "/success"}
           />
 
           <Buttons text={textBtnTwo} typeBtn={typeBtnTwo} link={"/shop"} />

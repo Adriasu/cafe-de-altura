@@ -10,7 +10,7 @@ const PaymentAndDelivery = () => {
       </h2>
       <form className="flex w-[1200px] min-h-[972px] gap-6">
         <FormCheckOut />
-        <TotalPrice />
+        <TotalPrice textBtnOne={"Pagar y realizar pedido"} typeBtnOne={"green"} />
       </form>
     </section>
   );
