@@ -1,16 +1,18 @@
 "use client";
 import { Phone } from "lucide-react";
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef, useContext } from "react";
 import Buttons from "./Buttons";
 import Link from "next/link";
 import Image from "next/image";
 import LinksMenuWrapper from "./LinksMenuWrapper";
 import Cart from "./Cart";
 import UseOutsideClick from "./UseOutsideClick";
+import { ProductsContext } from "@/context/ProductsContext";
 
 const NavBar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
   const CartIconRef = useRef(null);
+  const { totalOfProducts } = useContext(ProductsContext);
 
   const showHideCart = (event) => {
     event.stopPropagation();
@@ -51,19 +53,36 @@ const NavBar = () => {
         <Buttons text={"Iniciar sesión"} typeBtn={"gray"} />
       </div>
 
-      <div ref={CartIconRef} onClick={showHideCart}>
-        <Image
-          className="cursor-pointer"
-          src="/images/Carr.png"
-          alt="bag"
-          width={24}
-          height={24}
-        />
-        <p></p>
+      <div ref={CartIconRef} onClick={showHideCart} className="flex items-center gap-2">
+        {totalOfProducts === 0 ? (
+          <Image
+            className="cursor-pointer"
+            src="/images/Carr.png"
+            alt="bag"
+            width={24}
+            height={24}
+          />
+        ) : (
+          <Image
+            className="cursor-pointer"
+            src="/images/CarrLleno.png"
+            alt="bagFull"
+            width={24}
+            height={24}
+          />
+        )}
+
+        <p className={`${totalOfProducts > 0 ? "flex": "hidden"} w-6 h-6 text-white text-xs font-normal leading-4 items-center justify-center rounded-[50%] bg-[#F7F5F31A]`}>
+          {totalOfProducts}
+        </p>
       </div>
 
       {isCartVisible && (
-        <div onClick={(e) => e.stopPropagation()} ref={cartRef} className={`absolute right-[30px] top-[55px]`}>
+        <div
+          onClick={(e) => e.stopPropagation()}
+          ref={cartRef}
+          className={`absolute right-[30px] top-[55px]`}
+        >
           <Cart />
         </div>
       )}

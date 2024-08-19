@@ -5,7 +5,10 @@ import Buttons from "./Buttons";
 import { ProductsContext } from "@/context/ProductsContext";
 
 const CardProduct = ({ data }) => {
-  const { dataSelected, productCount } = useContext(ProductsContext);
+  const { dataSelected, productCount, setTotalOfProducts } =
+    useContext(ProductsContext);
+
+  let counterBag = 0;
 
   const handleClick = () => {
     const productSelect = {
@@ -15,6 +18,9 @@ const CardProduct = ({ data }) => {
       price: data.price,
       count: 1,
     };
+
+    setTotalOfProducts(prev => prev +=1)
+
     productCount(productSelect, dataSelected);
   };
 
