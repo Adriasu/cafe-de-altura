@@ -43,7 +43,6 @@ export default function ProductsContextProvider({ children }) {
       return acc;
     }, false);
     if (!productsCount) {
-      //const newProduct = [...dataSelected, productSelected];
       setDataSelected([...dataSelected, productSelected]);
     }
     return arraySelected;
@@ -52,7 +51,11 @@ export default function ProductsContextProvider({ children }) {
   useEffect(() => {
     localStorage.setItem("arrayProductsSelected", JSON.stringify(dataSelected));
     localStorage.setItem("totalProducts", JSON.stringify(totalOfProducts));
-  }, [dataSelected, totalOfProducts]);
+    localStorage.setItem("totalPrice", JSON.stringify(totalPrice))
+  }, [dataSelected, totalOfProducts, totalPrice]);
+
+  console.log(totalPrice);
+  
 
   return (
     <ProductsContext.Provider
@@ -63,7 +66,8 @@ export default function ProductsContextProvider({ children }) {
         totalOfProducts,
         productCount,
         setDataSelected,
-        setTotalOfProducts
+        setTotalOfProducts,
+        setTotalPrice
       }}
     >
       {children}

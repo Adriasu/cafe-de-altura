@@ -5,7 +5,7 @@ import { ProductsContext } from "@/context/ProductsContext";
 import CardProductsCart from "./CardProductsCart";
 
 const Cart = () => {
-  const { dataSelected } = useContext(ProductsContext);
+  const { dataSelected, totalPrice } = useContext(ProductsContext);
   return (
     <div className="w-[300px] min-h-[32px] max-h-[440px] bg-[white] gap-2.5 flex flex-col items-center justify-start p-[15px] rounded-[20px] border-2 border-solid border-[#2A5B45]">
       <h2 className="text-[#2A5B45] text-xl leading-7 font-semibold">Cesta</h2>
@@ -15,11 +15,7 @@ const Cart = () => {
         })}
       </div>
       <div className="flex items-center justify-between w-60">
-        <Buttons
-          text={"Check-Out: 0.00 €"}
-          typeBtn={"cart"}
-          link={"/bag"}
-        />
+        <Buttons text={`Check-Out: ${totalPrice.toFixed(2)} €`} typeBtn={"cart"} link={"/bag"} />
         <Buttons text={"Clear"} typeBtn={"cart"} />
       </div>
     </div>
