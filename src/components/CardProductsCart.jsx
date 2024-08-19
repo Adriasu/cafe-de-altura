@@ -5,9 +5,9 @@ import React from "react";
 const CardProductsCart = ({ product }) => {
   return (
     <div className="flex items-center bg-[white] w-[280px] min-h-[100px] justify-around border-[1px] rounded-[10px] border-[#E3DED7] hover:bg-[#F7F5F3]">
-      <Image src={product.img_url} alt={product.brand} width={80} height={80} />
+      <Image src={product.img} alt={product.nameProduct} width={80} height={80} />
       <div className="text-sm w-[150px] h-[50px] flex flex-col justify-between text-[black]">
-        <p className="font-semibold">{product.brand}</p>
+        <p className="font-semibold">{product.nameProduct}</p>
         <p>{product.price.toFixed(2)} €</p>
       </div>
       <div className="flex flex-col h-20 justify-between items-center bg-[white] rounded-[5px] border-[1px] border-[#E3DED7]">
