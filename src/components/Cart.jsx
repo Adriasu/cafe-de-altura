@@ -18,7 +18,7 @@ const Cart = () => {
         <Buttons
           text={"Check-Out: 0.00 €"}
           typeBtn={"cart"}
-          link={"/checkOut"}
+          link={"/bag"}
         />
         <Buttons text={"Clear"} typeBtn={"cart"} />
       </div>

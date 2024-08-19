@@ -1,6 +1,6 @@
 "use client";
 import { Phone } from "lucide-react";
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import Buttons from "./Buttons";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,8 +10,10 @@ import UseOutsideClick from "./UseOutsideClick";
 
 const NavBar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
+  const CartIconRef = useRef(null);
 
-  const showHideCart = () => {
+  const showHideCart = (event) => {
+    event.stopPropagation();
     setIsCartVisible(!isCartVisible);
   };
 
@@ -21,7 +23,7 @@ const NavBar = () => {
     }
   }, [isCartVisible]);
 
-  const cartRef = UseOutsideClick(closeCart)
+  const cartRef = UseOutsideClick(closeCart, CartIconRef);
 
   return (
     <nav className="bg-[#2B2A2B] min-h-16 flex justify-around items-center text-[#FFFFFF] w-full fixed z-[1] top-0">
@@ -49,7 +51,7 @@ const NavBar = () => {
         <Buttons text={"Iniciar sesión"} typeBtn={"gray"} />
       </div>
 
-      <div onClick={showHideCart}>
+      <div ref={CartIconRef} onClick={showHideCart}>
         <Image
           className="cursor-pointer"
           src="/images/Carr.png"
@@ -61,7 +63,7 @@ const NavBar = () => {
       </div>
 
       {isCartVisible && (
-        <div ref={cartRef} className={`absolute right-[30px] top-[55px]`}>
+        <div onClick={(e) => e.stopPropagation()} ref={cartRef} className={`absolute right-[30px] top-[55px]`}>
           <Cart />
         </div>
       )}

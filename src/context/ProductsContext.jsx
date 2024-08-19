@@ -5,6 +5,14 @@ export const ProductsContext = createContext(null);
 
 export default function ProductsContextProvider({ children }) {
   const [dataCoffee, setDataCoffee] = useState([]);
+  const [dataSelected, setDataSelected] = useState([]);
+
+  useEffect(() => {
+    const dataSelectedLS = JSON.parse(
+      localStorage.getItem("arrayProductsSelected") || "[]"
+    );
+    setDataSelected(dataSelectedLS)
+  }, []);
 
   const fetchPrueba = async () => {
     try {

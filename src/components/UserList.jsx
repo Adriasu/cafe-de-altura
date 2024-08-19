@@ -17,7 +17,7 @@ const UserList = () => {
   };
 
   return (
-    <div className="flex flex-wrap gap-3 mt-3 overflow-auto h-[480px]">
+    <div className="flex flex-wrap gap-3 mt-3 overflow-auto h-[480px] scrollbar-hide">
       {filterDataUser.map((user, i) => {
         return <UserCard key={i} userCard={user} funDelete={deletUser} />;
       })}
