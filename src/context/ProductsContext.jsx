@@ -60,10 +60,23 @@ export default function ProductsContextProvider({ children }) {
     setTotalPrice((prev) => prev + product.price);
   };
 
-  const btnSubtractProducts = (product) => {
+  const btnSubtractProducts = (product, dataSelected) => {
     if (product.count > 1) {
       product.count--;
+    } else {
+      const deleteProduct = dataSelected.findIndex((productFind) => {
+        return productFind.id === product.id;
+      });
+      dataSelected.splice(deleteProduct, 1);
     }
+    setTotalOfProducts((prev) => (prev -= 1));
+    setTotalPrice((prev) => prev - product.price);
+  };
+
+  const btnClearCart = (dataSelected) => {
+    dataSelected.splice(0, dataSelected.length);
+    setTotalOfProducts(0);
+    setTotalPrice(0);
   };
 
   // --------------- Actualizacion localStorage ------------------------ //
@@ -87,6 +100,7 @@ export default function ProductsContextProvider({ children }) {
         setTotalPrice,
         btnAddProducts,
         btnSubtractProducts,
+        btnClearCart
       }}
     >
       {children}

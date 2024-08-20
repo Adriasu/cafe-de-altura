@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import { ProductsContext } from "@/context/ProductsContext";
 
 const CardProductsCart = ({ product }) => {
-  const { btnAddProducts, btnSubtractProducts } = useContext(ProductsContext);
+  const { btnAddProducts, btnSubtractProducts, dataSelected } = useContext(ProductsContext);
 
   return (
     <div className="flex items-center bg-[white] w-[280px] min-h-[100px] justify-around border-[1px] rounded-[10px] border-[#E3DED7] hover:bg-[#F7F5F3]">
@@ -28,7 +28,7 @@ const CardProductsCart = ({ product }) => {
           {product.count}
         </p>
         <Minus
-          onClick={() => btnSubtractProducts(product)}
+          onClick={() => btnSubtractProducts(product, dataSelected)}
           className="cursor-pointer border-t-[1px] border-t-[#E3DED7] text-black"
         />
       </div>
