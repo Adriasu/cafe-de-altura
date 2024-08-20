@@ -16,6 +16,12 @@ export default function ProductsContextProvider({ children }) {
   const [totalOfProducts, setTotalOfProducts] = useState(() => {
     return JSON.parse(localStorage.getItem("totalProducts") || "0");
   });
+  const [totalDelivery, setTotalDelivery] = useState(() => {
+    return JSON.parse(localStorage.getItem("totalDelivery") || "0")
+  })
+  const [totalIVA, setTotalIVA] = useState(() => {
+    return JSON.parse(localStorage.getItem("IVA") || "0")
+  })
 
   // ----------- Fetch Data ---------------- //
 
@@ -85,7 +91,9 @@ export default function ProductsContextProvider({ children }) {
     localStorage.setItem("arrayProductsSelected", JSON.stringify(dataSelected));
     localStorage.setItem("totalProducts", JSON.stringify(totalOfProducts));
     localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
-  }, [dataSelected, totalOfProducts, totalPrice]);
+    localStorage.setItem("totalDelivery", JSON.stringify(totalDelivery));
+    localStorage.setItem("IVA", JSON.stringify(totalIVA));
+  }, [dataSelected, totalOfProducts, totalPrice, totalDelivery, totalIVA]);
 
   return (
     <ProductsContext.Provider

@@ -9,7 +9,7 @@ const BagProductsSend = () => {
 
   const styleH3ProductsSend = "text-lg font-semibold leading-6";
   const styleSend = "w-[776px] h-9 flex justify-between items-center gap-4";
-  const styleSelectorDelivery = "h-6 w-6 flex justify-center items-center";
+  const styleSelectorDelivery = "h-6 w-6 flex justify-center items-center accent-[#2A5B45]";
   const styleContainTextDelivery =
     "min-h-[36px] text-sm leading-4 flex flex-col gap-1 justify-center";
   return (
@@ -39,7 +39,7 @@ const BagProductsSend = () => {
           <form className="flex flex-col gap-4">
             <div className={`${styleSend}`}>
               <div className={`${styleSelectorDelivery}`}>
-                <input type="radio" id="free" name="send" value={0} />
+                <input type="radio" id="free" name="send" value={0}/>
               </div>
               <div className={`${styleContainTextDelivery} w-[657px]`}>
                 <label className="font-semibold" htmlFor="free">

@@ -1,8 +1,10 @@
-import Link from "next/link";
-import React from "react";
+"use client";
+import React, {useContext} from "react";
 import Buttons from "./Buttons";
+import { ProductsContext } from "@/context/ProductsContext";
 
 const TotalPrice = ({ textBtnOne, typeBtnOne, textBtnTwo, typeBtnTwo }) => {
+  const {totalPrice} = useContext(ProductsContext)
   const styleCarrDetails = "flex justify-between w-[336px]";
   const styleSubtotalAndSend = "text-sm leading-4";
   return (
@@ -14,7 +16,7 @@ const TotalPrice = ({ textBtnOne, typeBtnOne, textBtnTwo, typeBtnTwo }) => {
         <hr className="border-[1px] border-[#E3DED7]" />
         <div className={`${styleCarrDetails}`}>
           <p className={`${styleSubtotalAndSend}`}>SUBTOTAL</p>
-          <p className={`${styleSubtotalAndSend} font-semibold`}>0.00 €</p>
+          <p className={`${styleSubtotalAndSend} font-semibold`}>{totalPrice.toFixed(2)} €</p>
         </div>
         <div className={`${styleCarrDetails}`}>
           <p className={`${styleSubtotalAndSend}`}>ENVÍO</p>
