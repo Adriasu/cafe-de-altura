@@ -33,7 +33,14 @@ const TotalPrice = ({ textBtnOne, typeBtnOne, textBtnTwo, typeBtnTwo }) => {
             <p className={`${styleSubtotalAndSend} font-semibold`}>
               {(parseInt(totalPrice) + parseInt(totalDelivery)).toFixed(2)} €
             </p>
-            <p className="text-xs leading-4">Incluye {((parseInt(totalPrice) + parseInt(totalDelivery))*0.21).toFixed(2)}€ de IVA</p>
+            <p className="text-xs leading-4">
+              Incluye{" "}
+              {(
+                (parseInt(totalPrice) + parseInt(totalDelivery)) *
+                0.21
+              ).toFixed(2)}
+              € de IVA
+            </p>
           </div>
         </div>
         <div className="w-[310px] h-10 flex gap-4">
