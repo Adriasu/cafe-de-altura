@@ -8,7 +8,7 @@ const CardProduct = ({ data }) => {
   const { dataSelected, productCount, setTotalOfProducts, setTotalPrice } =
     useContext(ProductsContext);
 
-   const handleClick = () => {
+  const handleClick = () => {
     const productSelect = {
       id: data._id,
       img: data.img_url,
@@ -16,14 +16,10 @@ const CardProduct = ({ data }) => {
       price: data.price,
       count: 1,
     };
-
-    setTotalOfProducts(prev => prev += 1)
-    setTotalPrice(prev => prev + productSelect.price)
-
+    setTotalOfProducts((prev) => (prev += 1));
+    setTotalPrice((prev) => prev + productSelect.price);
     productCount(productSelect, dataSelected);
   };
-
-  console.log(dataSelected);
 
   const styleAvailable = () => {
     if (!data.available) {
@@ -65,18 +61,3 @@ const CardProduct = ({ data }) => {
 };
 
 export default CardProduct;
-
-// const exist = dataSelected.some((product) => product.id === productSelect.id);
-// if (exist) {
-//   const products = dataSelected.map((product) => {
-//     if (product.id === productSelect.id) {
-//       product.count++;
-//       return product;
-//     } else {
-//       return product;
-//     }
-//   });
-//   setDataSelected([...products]);
-// } else {
-//   setDataSelected([...dataSelected, productSelect]);
-// }
