@@ -8,11 +8,13 @@ import LinksMenuWrapper from "./LinksMenuWrapper";
 import Cart from "./Cart";
 import UseOutsideClick from "./UseOutsideClick";
 import { ProductsContext } from "@/context/ProductsContext";
+import { usePathname } from "next/navigation";
 
 const NavBar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
   const CartIconRef = useRef(null);
   const { totalOfProducts } = useContext(ProductsContext);
+  const pathName = usePathname();
 
   const showHideCart = (event) => {
     event.stopPropagation();
@@ -26,6 +28,8 @@ const NavBar = () => {
   }, [isCartVisible]);
 
   const cartRef = UseOutsideClick(closeCart, CartIconRef);
+
+  const isCartAvailable = pathName === "/" || pathName === "/shop";
 
   return (
     <nav className="bg-[#2B2A2B] min-h-16 flex justify-around items-center text-[#FFFFFF] w-full fixed z-[1] top-0">
@@ -53,7 +57,11 @@ const NavBar = () => {
         <Buttons text={"Iniciar sesión"} typeBtn={"gray"} />
       </div>
 
-      <div ref={CartIconRef} onClick={showHideCart} className="flex items-center gap-2">
+      <div
+        ref={CartIconRef}
+        onClick={showHideCart}
+        className="flex items-center gap-2"
+      >
         {totalOfProducts === 0 ? (
           <Image
             className="cursor-pointer"
@@ -72,12 +80,16 @@ const NavBar = () => {
           />
         )}
 
-        <p className={`${totalOfProducts > 0 ? "flex": "hidden"} w-6 h-6 text-white text-xs font-normal leading-4 items-center justify-center rounded-[50%] bg-[#F7F5F31A]`}>
+        <p
+          className={`${
+            totalOfProducts > 0 ? "flex" : "hidden"
+          } w-6 h-6 text-white text-xs font-normal leading-4 items-center justify-center rounded-[50%] bg-[#F7F5F31A]`}
+        >
           {totalOfProducts}
         </p>
       </div>
 
-      {isCartVisible && (
+      {isCartVisible && isCartAvailable && (
         <div
           onClick={(e) => e.stopPropagation()}
           ref={cartRef}

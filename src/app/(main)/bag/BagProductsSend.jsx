@@ -5,7 +5,7 @@ import { ProductsContext } from "@/context/ProductsContext";
 import CardsProductsSelected from "@/components/CardsProductsSelected";
 
 const BagProductsSend = () => {
-  const { dataCoffee } = useContext(ProductsContext);
+  const { dataSelected } = useContext(ProductsContext);
 
   const styleH3ProductsSend = "text-lg font-semibold leading-6";
   const styleSend = "w-[776px] h-9 flex justify-between items-center gap-4";
@@ -13,7 +13,7 @@ const BagProductsSend = () => {
   const styleContainTextDelivery =
     "min-h-[36px] text-sm leading-4 flex flex-col gap-1 justify-center";
   return (
-    <section className="h-screen flex flex-col grow shrink gap-6 items-center mt-16 p-10">
+    <section className="min-h-[772px] flex flex-col grow shrink gap-6 items-center mt-16 p-10">
       <h2 className="text-[#2A5B45] text-2xl font-medium leading-7">
         Cesta (2)
       </h2>
@@ -21,15 +21,19 @@ const BagProductsSend = () => {
         <div className="w-[792PX] min-h-[415.32px] flex flex-col gap-4 p-2 justify-start">
           <h3 className={`${styleH3ProductsSend}`}>Productos</h3>
 
-          {dataCoffee.slice(0, 4).map((product, i) => {
-            return (
-              <CardsProductsSelected
-                key={i}
-                selectedProduct={product}
-                index={i}
-              />
-            );
-          })}
+          {dataSelected.length === 0 ? (
+            <p className="text-[rgba(0,0,0,0.4)]">El carrito está vacío.</p>
+          ) : (
+            dataSelected.map((product, i) => {
+              return (
+                <CardsProductsSelected
+                  key={i}
+                  selectedProduct={product}
+                  index={i}
+                />
+              );
+            })
+          )}
 
           <h3 className={`${styleH3ProductsSend}`}>Seleccionar envío</h3>
           <form className="flex flex-col gap-4">
