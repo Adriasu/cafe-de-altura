@@ -1,15 +1,27 @@
 "use client";
 import TotalPrice from "@/components/TotalPrice";
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ProductsContext } from "@/context/ProductsContext";
 import CardsProductsSelected from "@/components/CardsProductsSelected";
 
 const BagProductsSend = () => {
-  const { dataSelected } = useContext(ProductsContext);
+  const {
+    dataSelected,
+    setTotalDelivery,
+    selectedShipping,
+    setSelectedShipping,
+  } = useContext(ProductsContext);
+ 
+
+  const handleShippingChange = (event) => {
+    setSelectedShipping(event.target.id);
+    setTotalDelivery(event.target.value);
+  };
 
   const styleH3ProductsSend = "text-lg font-semibold leading-6";
   const styleSend = "w-[776px] h-9 flex justify-between items-center gap-4";
-  const styleSelectorDelivery = "h-6 w-6 flex justify-center items-center accent-[#2A5B45]";
+  const styleSelectorDelivery =
+    "h-6 w-6 flex justify-center items-center accent-[#2A5B45]";
   const styleContainTextDelivery =
     "min-h-[36px] text-sm leading-4 flex flex-col gap-1 justify-center";
   return (
@@ -39,7 +51,14 @@ const BagProductsSend = () => {
           <form className="flex flex-col gap-4">
             <div className={`${styleSend}`}>
               <div className={`${styleSelectorDelivery}`}>
-                <input type="radio" id="free" name="send" value={0}/>
+                <input
+                  type="radio"
+                  id="free"
+                  name="send"
+                  value={0}
+                  checked={selectedShipping === "free"}
+                  onChange={handleShippingChange}
+                />
               </div>
               <div className={`${styleContainTextDelivery} w-[657px]`}>
                 <label className="font-semibold" htmlFor="free">
@@ -54,18 +73,25 @@ const BagProductsSend = () => {
 
             <div className={`${styleSend}`}>
               <div className={`${styleSelectorDelivery}`}>
-                <input type="radio" id="urgent" name="send" value={9} />
+                <input
+                  type="radio"
+                  id="urgent"
+                  name="send"
+                  value={9}
+                  checked={selectedShipping === "urgent"}
+                  onChange={handleShippingChange}
+                />
               </div>
               <div className={`${styleContainTextDelivery} w-[666px]`}>
-                <label className="font-semibold" htmlFor="">
-                  Envío urgente 24h{" "}
+                <label className="font-semibold" htmlFor="urgent">
+                  Envío urgente 24h
                 </label>
                 <p className="font-normal">
                   Recibe tu pedido en las siguientes 24h (Para pedidos
                   realizados antes de las 13:00).
                 </p>
               </div>
-              <h3 className={`${styleH3ProductsSend}`}>9,00 €</h3>
+              <h3 className={`${styleH3ProductsSend}`}>9.00 €</h3>
             </div>
           </form>
         </div>

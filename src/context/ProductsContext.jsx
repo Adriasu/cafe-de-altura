@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { createContext, useState, useEffect, useRef } from "react";
 
@@ -17,11 +18,9 @@ export default function ProductsContextProvider({ children }) {
     return JSON.parse(localStorage.getItem("totalProducts") || "0");
   });
   const [totalDelivery, setTotalDelivery] = useState(() => {
-    return JSON.parse(localStorage.getItem("totalDelivery") || "0")
-  })
-  const [totalIVA, setTotalIVA] = useState(() => {
-    return JSON.parse(localStorage.getItem("IVA") || "0")
-  })
+    return JSON.parse(localStorage.getItem("totalDelivery") || "0");
+  });
+  const [selectedShipping, setSelectedShipping] = useState("");
 
   // ----------- Fetch Data ---------------- //
 
@@ -92,8 +91,20 @@ export default function ProductsContextProvider({ children }) {
     localStorage.setItem("totalProducts", JSON.stringify(totalOfProducts));
     localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
     localStorage.setItem("totalDelivery", JSON.stringify(totalDelivery));
-    localStorage.setItem("IVA", JSON.stringify(totalIVA));
-  }, [dataSelected, totalOfProducts, totalPrice, totalDelivery, totalIVA]);
+  }, [dataSelected, totalOfProducts, totalPrice, totalDelivery]);
+
+  // -------------- Estado del envio --------------------------- //
+
+  useEffect(() => {
+    const checkDelivery = () => {
+      if (totalDelivery == "0") {
+        setSelectedShipping("free");
+      } else {
+        setSelectedShipping("urgent");
+      }
+    };
+    checkDelivery();
+  }, []);
 
   return (
     <ProductsContext.Provider
@@ -102,13 +113,17 @@ export default function ProductsContextProvider({ children }) {
         dataSelected,
         totalPrice,
         totalOfProducts,
+        totalDelivery,
+        selectedShipping,
         productCount,
         setDataSelected,
         setTotalOfProducts,
         setTotalPrice,
         btnAddProducts,
         btnSubtractProducts,
-        btnClearCart
+        btnClearCart,
+        setTotalDelivery,
+        setSelectedShipping,
       }}
     >
       {children}

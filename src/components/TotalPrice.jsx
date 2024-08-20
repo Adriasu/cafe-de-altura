@@ -1,10 +1,10 @@
 "use client";
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import Buttons from "./Buttons";
 import { ProductsContext } from "@/context/ProductsContext";
 
 const TotalPrice = ({ textBtnOne, typeBtnOne, textBtnTwo, typeBtnTwo }) => {
-  const {totalPrice} = useContext(ProductsContext)
+  const { totalPrice, totalDelivery } = useContext(ProductsContext);
   const styleCarrDetails = "flex justify-between w-[336px]";
   const styleSubtotalAndSend = "text-sm leading-4";
   return (
@@ -16,18 +16,24 @@ const TotalPrice = ({ textBtnOne, typeBtnOne, textBtnTwo, typeBtnTwo }) => {
         <hr className="border-[1px] border-[#E3DED7]" />
         <div className={`${styleCarrDetails}`}>
           <p className={`${styleSubtotalAndSend}`}>SUBTOTAL</p>
-          <p className={`${styleSubtotalAndSend} font-semibold`}>{totalPrice.toFixed(2)} €</p>
+          <p className={`${styleSubtotalAndSend} font-semibold`}>
+            {totalPrice.toFixed(2)} €
+          </p>
         </div>
         <div className={`${styleCarrDetails}`}>
           <p className={`${styleSubtotalAndSend}`}>ENVÍO</p>
-          <p className={`${styleSubtotalAndSend} font-semibold`}>GRATIS</p>
+          <p className={`${styleSubtotalAndSend} font-semibold`}>
+            {totalDelivery == "0" ? "GRATIS" : "9.00 €"}
+          </p>
         </div>
         <hr className="border-[1px] border-[#E3DED7]" />
         <div className={`${styleCarrDetails}`}>
           <p className={`${styleSubtotalAndSend} font-semibold`}>TOTAL</p>
           <div className="flex flex-col justify-center gap-2 items-end">
-            <p className={`${styleSubtotalAndSend} font-semibold`}>0.00 €</p>
-            <p className="text-xs leading-4">Incluye 0.00€ de IVA</p>
+            <p className={`${styleSubtotalAndSend} font-semibold`}>
+              {(parseInt(totalPrice) + parseInt(totalDelivery)).toFixed(2)} €
+            </p>
+            <p className="text-xs leading-4">Incluye {((parseInt(totalPrice) + parseInt(totalDelivery))*0.21).toFixed(2)}€ de IVA</p>
           </div>
         </div>
         <div className="w-[310px] h-10 flex gap-4">
