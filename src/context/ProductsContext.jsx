@@ -82,6 +82,8 @@ export default function ProductsContextProvider({ children }) {
     dataSelected.splice(0, dataSelected.length);
     setTotalOfProducts(0);
     setTotalPrice(0);
+    setTotalDelivery(0)
+    setSelectedShipping("free")
   };
 
   // --------------- Actualizacion localStorage ------------------------ //

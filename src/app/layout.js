@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar";
 import FormContextProvider from "@/context/FormContext";
 import ProductsContextProvider from "@/context/ProductsContext";
 import CopyRight from "@/components/CopyRight";
+import FormInfoContextProvider from "@/context/FormInfoContext";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -20,11 +21,13 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${outfit.className} antialiased`}>
       <body className="">
         <ProductsContextProvider>
-          <FormContextProvider>
-            <NavBar />
-            {children}
-            <CopyRight />
-          </FormContextProvider>
+          <FormInfoContextProvider>
+            <FormContextProvider>
+              <NavBar />
+              {children}
+              <CopyRight />
+            </FormContextProvider>
+          </FormInfoContextProvider>
         </ProductsContextProvider>
       </body>
     </html>

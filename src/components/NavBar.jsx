@@ -29,7 +29,8 @@ const NavBar = () => {
 
   const cartRef = UseOutsideClick(closeCart, CartIconRef);
 
-  const isCartAvailable = pathName === "/" || pathName === "/shop";
+  const cartPointerAvailable = pathName === "/" || pathName === "/shop";
+  const bagEmpty = pathName === "/success"
 
   return (
     <nav className="bg-[#2B2A2B] min-h-16 flex justify-around items-center text-[#FFFFFF] w-full fixed z-[1] top-0">
@@ -62,9 +63,11 @@ const NavBar = () => {
         onClick={showHideCart}
         className="flex items-center gap-2"
       >
-        {totalOfProducts === 0 ? (
+        {totalOfProducts === 0 || bagEmpty ? (
           <Image
-            className="cursor-pointer"
+            className={`${
+              cartPointerAvailable ? "cursor-pointer" : "cursor-default"
+            }`}
             src="/images/Carr.png"
             alt="bag"
             width={24}
@@ -72,7 +75,9 @@ const NavBar = () => {
           />
         ) : (
           <Image
-            className="cursor-pointer"
+            className={`${
+              cartPointerAvailable ? "cursor-pointer" : "cursor-default"
+            }`}
             src="/images/CarrLleno.png"
             alt="bagFull"
             width={24}
@@ -82,14 +87,14 @@ const NavBar = () => {
 
         <p
           className={`${
-            totalOfProducts > 0 ? "flex" : "hidden"
+            totalOfProducts === 0 || bagEmpty ? "hidden" : "flex"
           } w-6 h-6 text-white text-xs font-normal leading-4 items-center justify-center rounded-[50%] bg-[#F7F5F31A]`}
         >
           {totalOfProducts}
         </p>
       </div>
 
-      {isCartVisible && isCartAvailable && (
+      {isCartVisible && cartPointerAvailable && (
         <div
           onClick={(e) => e.stopPropagation()}
           ref={cartRef}
