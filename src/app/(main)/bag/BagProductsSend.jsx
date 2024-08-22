@@ -42,6 +42,7 @@ const BagProductsSend = () => {
                   key={i}
                   selectedProduct={product}
                   index={i}
+                  component={"bag"}
                 />
               );
             })
