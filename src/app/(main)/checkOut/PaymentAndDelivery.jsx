@@ -4,7 +4,7 @@ import TotalPrice from "@/components/TotalPrice";
 
 const PaymentAndDelivery = () => {
   return (
-    <section className="flex flex-col justify-center items-center gap-6 min-h-[1108px] mt-16">
+    <section className="flex flex-col justify-center items-center gap-6 h-[1108px] mt-16">
       <h2 className="text-[#2A5B45] text-2xl font-medium leading-7">
         Checkout
       </h2>

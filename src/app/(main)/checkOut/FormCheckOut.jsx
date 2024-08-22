@@ -5,7 +5,14 @@ import dayjs from "dayjs";
 import { useForm, Controller } from "react-hook-form";
 
 const FormCheckOut = () => {
-  const { register, handleSubmit, control } = useForm();
+  const { register, handleSubmit, watch, control } = useForm({
+    mode: "onChange",
+    defaultValues: {
+      paymentMethod: 'card',
+    }
+  });
+
+  const watchShowPaymentMethod = watch("paymentMethod");
 
   const styleTitleH3 = "text-lg font-semibold leading-[27px]";
   const styleRadios =
@@ -19,76 +26,86 @@ const FormCheckOut = () => {
   const styleDetailsAddress = "flex flex-col w-[112.25px] h-[55px] gap-[3px]";
 
   return (
-    <div className="flex flex-col w-[792px] min-h-[972px] gap-6 p-2">
+    <div className="flex flex-col w-[792px] h-[972px] gap-6 p-2">
       <h3 className={`${styleTitleH3}`}>Seleccionar método de pago</h3>
 
       <div className="flex justify-between items-center">
         <div className={`${styleRadios}`}>
-          <input type="radio" id="card" {...register("paymentMethod")} />
+          <input
+            type="radio"
+            id="card"
+            {...register("paymentMethod")}
+            value={"card"}
+            defaultChecked
+          />
         </div>
-        <div className=" flex flex-col w-[665px] h-9 gap-1 text-sm leading-4">
+        <div className=" flex flex-col w-[665px] h-9 gap-1 text-sm leading-4 justify-center">
           <label className="font-semibold" htmlFor="card">
             Tarjeta de débito
           </label>
-          <p className="font-normal">Opción estándar sin seguimiento</p>
+          {watchShowPaymentMethod === "card" && (
+            <p className="font-normal">Opción estándar sin seguimiento</p>
+          )}
         </div>
         <div className="h-6 w-[55px] rou">
           <p></p>
         </div>
       </div>
 
-      <div className="w-[279px] h-[181px] flex flex-col gap-2 justify-between">
-        <div className="flex flex-col w-[279px] h-[55px] gap-[3px]">
-          <label className={`${styleLabel}`} htmlFor="holderName">
-            Titular
-          </label>
-          <input
-            className={`${styleInputs} ${stylePlaceholder}`}
-            type="text"
-            {...register("holderName")}
-            id="holderName"
-            placeholder="Nombre del titular"
-          />
-        </div>
-        <div className="flex flex-col w-[279px] h-[55px] gap-[3px]">
-          <label className={`${styleLabel}`} htmlFor="numCard">
-            Número de la tarjeta
-          </label>
-          <input
-            className={`${styleInputs} ${stylePlaceholder}`}
-            type="number"
-            {...register("numCard")}
-            id="numCard"
-            placeholder="1234 1234 1234 1234"
-          />
-        </div>
-        <div className="w-[279px] h-[55px] gap-6 flex justify-between">
-          <div className="w-[127.5PX] h-[55PX] flex flex-col gap-[3px]">
-            <label className={`${styleLabel}`} htmlFor="expirationDate">
-              Fecha de caducidad
+      {watchShowPaymentMethod === "card" && (
+        <div className="w-[279px] h-[181px] flex flex-col gap-2 justify-between">
+          <div className="flex flex-col w-[279px] h-[55px] gap-[3px]">
+            <label className={`${styleLabel}`} htmlFor="holderName">
+              Titular
             </label>
             <input
               className={`${styleInputs} ${stylePlaceholder}`}
               type="text"
-              {...register("expirationDate")}
-              id="expirationDate"
-              placeholder="MM / YY"
+              {...register("holderName")}
+              id="holderName"
+              placeholder="Nombre del titular"
             />
           </div>
-          <div className="w-[127.5PX] h-[55PX] flex flex-col gap-[3px]">
-            <label className={`${styleLabel}`} htmlFor="cvc">
-              CVC
+          <div className="flex flex-col w-[279px] h-[55px] gap-[3px]">
+            <label className={`${styleLabel}`} htmlFor="numCard">
+              Número de la tarjeta
             </label>
             <input
               className={`${styleInputs} ${stylePlaceholder}`}
               type="number"
-              {...register("cvc")}
-              id="cvc"
-              placeholder="123"
+              {...register("numCard")}
+              id="numCard"
+              placeholder="1234 1234 1234 1234"
             />
           </div>
+          <div className="w-[279px] h-[55px] gap-6 flex justify-between">
+            <div className="w-[127.5PX] h-[55PX] flex flex-col gap-[3px]">
+              <label className={`${styleLabel}`} htmlFor="expirationDate">
+                Fecha de caducidad
+              </label>
+              <input
+                className={`${styleInputs} ${stylePlaceholder}`}
+                type="text"
+                {...register("expirationDate")}
+                id="expirationDate"
+                placeholder="MM / YY"
+              />
+            </div>
+            <div className="w-[127.5PX] h-[55PX] flex flex-col gap-[3px]">
+              <label className={`${styleLabel}`} htmlFor="cvc">
+                CVC
+              </label>
+              <input
+                className={`${styleInputs} ${stylePlaceholder}`}
+                type="number"
+                {...register("cvc")}
+                id="cvc"
+                placeholder="123"
+              />
+            </div>
+          </div>
         </div>
-      </div>
+      )}
 
       <hr className="border-[1px] w-[776px] border-[#E3DED7]" />
 
@@ -98,16 +115,19 @@ const FormCheckOut = () => {
             type="radio"
             {...register("paymentMethod")}
             id="paymentBankTransfer"
+            value={"bankTransfer"}
           />
         </div>
-        <div className="flex flex-col gap-1 w-[736px] h-9 text-sm leading-4">
+        <div className="flex flex-col gap-1 w-[736px] h-9 text-sm leading-4 justify-center">
           <label className="font-semibold" htmlFor="paymentBankTransfer">
             Transferencia bancaria a la cuenta ES12 1234 1234 123457890
           </label>
-          <p className="font-normal">
-            Será necesario recibir el comprobante de la transferencia para
-            preparar tu pedido
-          </p>
+          {watchShowPaymentMethod === "bankTransfer" && (
+            <p className="font-normal">
+              Será necesario recibir el comprobante de la transferencia para
+              preparar tu pedido
+            </p>
+          )}
         </div>
       </div>
 
@@ -119,16 +139,19 @@ const FormCheckOut = () => {
             type="radio"
             {...register("paymentMethod")}
             id="bizumPayment"
+            value={"bizum"}
           />
         </div>
-        <div>
+        <div className="flex flex-col justify-center">
           <label className="font-semibold" htmlFor="bizumPayment">
             Bizum
           </label>
-          <p className="font-normal">
-            Será necesario recibir el comprobante de la transferencia para
-            preparar tu pedido
-          </p>
+          {watchShowPaymentMethod === "bizum" && (
+            <p className="font-normal">
+              Será necesario recibir el comprobante de la transferencia para
+              preparar tu pedido
+            </p>
+          )}
         </div>
         <Image
           src={"/images/bizum.png"}
