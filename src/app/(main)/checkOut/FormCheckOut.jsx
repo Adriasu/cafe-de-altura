@@ -162,7 +162,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
                   CVC no válido, ingrese 3 dígitos.
                 </span>
               )}
-                {errors.cvc?.type === "maxLength" && (
+              {errors.cvc?.type === "maxLength" && (
                 <span className={`${styleLabel} text-red-600`}>
                   CVC no válido, ingrese 3 dígitos.
                 </span>
@@ -239,10 +239,14 @@ const FormCheckOut = ({ register, watch, errors }) => {
           <input
             className={`${styleInputs}`}
             type="text"
-            {...register("nameUser")}
+            {...register("nameUser", { required: true })}
             id="nameUser"
-            required
           />
+          {errors.nameUser?.type === "required" && (
+            <span className={`${styleLabel} text-red-600`}>
+              Este campo no puede estar vacío.
+            </span>
+          )}
         </div>
         <div className={`${styleFormAddress}`}>
           <label className={`${styleLabel}`} for="lastName">
@@ -251,10 +255,14 @@ const FormCheckOut = ({ register, watch, errors }) => {
           <input
             className={`${styleInputs}`}
             type="text"
-            {...register("lastName")}
+            {...register("lastName", { required: true })}
             id="lastName"
-            required
           />
+          {errors.lastName?.type === "required" && (
+            <span className={`${styleLabel} text-red-600`}>
+              Este campo no puede estar vacío.
+            </span>
+          )}
         </div>
         <div className={`${styleFormAddress}`}>
           <label className={`${styleLabel}`} for="phone">
@@ -263,11 +271,20 @@ const FormCheckOut = ({ register, watch, errors }) => {
           <input
             className={`${styleInputs} ${stylePlaceholder}`}
             type="tel"
-            {...register("phone")}
+            {...register("phone", { required: true, pattern: /^[0-9]+$/ })}
             id="phone"
             placeholder="+34 600 6000 600"
-            required
           />
+          {errors.phone?.type === "required" && (
+            <span className={`${styleLabel} text-red-600`}>
+              Este campo no puede estar vacío.
+            </span>
+          )}
+          {errors.phone?.type === "pattern" && (
+            <span className={`${styleLabel} text-red-600`}>
+              Este campo sólo acepta números.
+            </span>
+          )}
         </div>
         <div className={`${styleFormAddress}`}>
           <label className={`${styleLabel}`} for="email">
@@ -276,10 +293,14 @@ const FormCheckOut = ({ register, watch, errors }) => {
           <input
             className={`${styleInputs}`}
             type="email"
-            {...register("email")}
+            {...register("email", { required: true })}
             id="email"
-            required
           />
+          {errors.email?.type === "required" && (
+            <span className={`${styleLabel} text-red-600`}>
+              Este campo no puede estar vacío.
+            </span>
+          )}
         </div>
         <div className={`${styleFormAddress}`}>
           <label className={`${styleLabel}`} for="country">
@@ -287,9 +308,8 @@ const FormCheckOut = ({ register, watch, errors }) => {
           </label>
           <select
             className={`${styleInputs} ${styleLabel} text-[#515051]`}
-            {...register("country")}
+            {...register("country", { required: true })}
             id="country"
-            required
           >
             <option value="" hidden>
               Seleccionar
@@ -298,6 +318,11 @@ const FormCheckOut = ({ register, watch, errors }) => {
             <option value="CO">Colombia</option>
             <option value="ES">España</option>
           </select>
+          {errors.country?.type === "required" && (
+            <span className={`${styleLabel} text-red-600`}>
+              Este campo no puede estar vacío.
+            </span>
+          )}
         </div>
         <div className="w-[521px] h-[55px] flex gap-6 justify-between items-center">
           <div className="flex flex-col w-[248.5px] h-[55px] gap-[3px]">
@@ -307,10 +332,14 @@ const FormCheckOut = ({ register, watch, errors }) => {
             <input
               className={`${styleInputs}`}
               type="text"
-              {...register("population")}
+              {...register("population", { required: true })}
               id="population"
-              required
             />
+            {errors.population?.type === "required" && (
+              <span className={`${styleLabel} text-red-600`}>
+                Este campo no puede estar vacío.
+              </span>
+            )}
           </div>
           <div className="flex flex-col w-[248.5px] h-[55px] gap-[3px]">
             <label className={`${styleLabel}`} for="cp">
@@ -319,10 +348,14 @@ const FormCheckOut = ({ register, watch, errors }) => {
             <input
               className={`${styleInputs}`}
               type="number"
-              {...register("cp")}
+              {...register("cp", { required: true })}
               id="cp"
-              required
             />
+            {errors.cp?.type === "required" && (
+              <span className={`${styleLabel} text-red-600`}>
+                Este campo no puede estar vacío.
+              </span>
+            )}
           </div>
         </div>
         <div className="flex w-[521px] h-[55px] gap-6">
@@ -333,10 +366,14 @@ const FormCheckOut = ({ register, watch, errors }) => {
             <input
               className={`${styleInputs}`}
               type="text"
-              {...register("street")}
+              {...register("street", { required: true })}
               id="street"
-              required
             />
+            {errors.street?.type === "required" && (
+              <span className={`${styleLabel} text-red-600`}>
+                Este campo no puede estar vacío.
+              </span>
+            )}
           </div>
           <div className={`${styleDetailsAddress}`}>
             <label className={`${styleLabel}`} for="numStreet">
@@ -345,10 +382,14 @@ const FormCheckOut = ({ register, watch, errors }) => {
             <input
               className={`${styleInputs}`}
               type="number"
-              {...register("numStreet")}
+              {...register("numStreet", { required: true })}
               id="numStreet"
-              required
             />
+            {errors.numStreet?.type === "required" && (
+              <span className={`${styleLabel} text-red-600`}>
+                Este campo no puede estar vacío.
+              </span>
+            )}
           </div>
           <div className={`${styleDetailsAddress}`}>
             <label className={`${styleLabel}`} for="apartment">
