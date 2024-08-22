@@ -1,7 +1,8 @@
 import React from 'react'
-import SearchUser from "@/components/SearchUser";
-import UserForm from "@/components/UserForm";
-import UserList from "@/components/UserList";
+import UserForm from './UserForm'
+import SearchUser from './SearchUser'
+import UserList from './UserList'
+
 
 const ForCompanies = () => {
   return (
@@ -12,8 +13,8 @@ const ForCompanies = () => {
         <UserForm/>
       </div>
       <div className="flex flex-col justify-start items-center w-[500px]">
-        <SearchUser />
-        <UserList />
+        <SearchUser/>
+        <UserList/>
       </div>
     </div>
   </div>

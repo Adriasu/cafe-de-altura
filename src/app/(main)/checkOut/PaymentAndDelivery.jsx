@@ -41,7 +41,6 @@ const PaymentAndDelivery = () => {
         <TotalPrice
           textBtnOne={"Pagar y realizar pedido"}
           typeBtnOne={"green"}
-          //onSubmitForm={handleSubmit(onSubmit)}
         />
       </form>
     </section>
