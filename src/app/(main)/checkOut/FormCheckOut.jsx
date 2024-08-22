@@ -1,18 +1,16 @@
-"use client";
 import Image from "next/image";
 import React from "react";
 import dayjs from "dayjs";
-import { useForm, Controller } from "react-hook-form";
 
-const FormCheckOut = () => {
-  const { register, handleSubmit, watch, control } = useForm({
-    mode: "onChange",
-    defaultValues: {
-      paymentMethod: 'card',
-    }
-  });
+
+const FormCheckOut = ({register, watch }) => {
+
 
   const watchShowPaymentMethod = watch("paymentMethod");
+
+ 
+
+  // ------------------- estilos comunes ---------------------- //
 
   const styleTitleH3 = "text-lg font-semibold leading-[27px]";
   const styleRadios =

@@ -9,7 +9,7 @@ const TotalPrice = ({
   typeBtnOne,
   textBtnTwo,
   typeBtnTwo,
-  onSubmit,
+  onSubmitForm,
 }) => {
   const { totalPrice, totalDelivery } = useContext(ProductsContext);
 
@@ -58,7 +58,7 @@ const TotalPrice = ({
                 text={textBtnOne}
                 typeBtn={typeBtnOne}
                 type="submit"
-                
+                onClick={onSubmitForm}
               />
             </Link>
           ) : (
@@ -68,6 +68,7 @@ const TotalPrice = ({
               link={textBtnOne === "Ir a checkout" ? "/checkOut" : "/success"}
             />
           )}
+          {/* <Buttons text={textBtnOne} typeBtn={typeBtnOne} onClick={onSubmitForm} link="/success"/> */}
 
           <Buttons text={textBtnTwo} typeBtn={typeBtnTwo} link={"/shop"} />
         </div>

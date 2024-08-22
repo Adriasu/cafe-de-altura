@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { FormInfoContext } from "@/context/FormInfoContext";
 
 const ContactForm = () => {
-  const { updateUser, dataUsers } = useContext(FormInfoContext);
+  const { dataUsers, setDataUsers, formSubmit } = useContext(FormInfoContext);
   const {
     register,
     handleSubmit,
@@ -15,18 +15,13 @@ const ContactForm = () => {
   } = useForm({
     mode: "onChange",
     defaultValues: {
-      fullName: "",
-      email: "",
       country: "US",
-      phone: "",
-      comments: "",
       conditions: false,
     },
   });
 
   const onSubmit = (data) => {
-    const addUser = [...dataUsers, data];
-    updateUser(addUser);
+   formSubmit(data, setDataUsers, "dataUsers", dataUsers)
     reset();
   };
 
