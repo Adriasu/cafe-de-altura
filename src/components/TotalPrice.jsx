@@ -2,14 +2,12 @@
 import React, { useContext } from "react";
 import Buttons from "./Buttons";
 import { ProductsContext } from "@/context/ProductsContext";
-import Link from "next/link";
 
 const TotalPrice = ({
   textBtnOne,
   typeBtnOne,
   textBtnTwo,
   typeBtnTwo,
-  onSubmitForm,
 }) => {
   const { totalPrice, totalDelivery } = useContext(ProductsContext);
 
@@ -53,22 +51,14 @@ const TotalPrice = ({
         </div>
         <div className="w-[310px] h-10 flex gap-4">
           {textBtnOne === "Pagar y realizar pedido" ? (
-            <Link href="/success">
-              <Buttons
-                text={textBtnOne}
-                typeBtn={typeBtnOne}
-                type="submit"
-                onClick={onSubmitForm}
-              />
-            </Link>
-          ) : (
             <Buttons
               text={textBtnOne}
               typeBtn={typeBtnOne}
-              link={textBtnOne === "Ir a checkout" ? "/checkOut" : "/success"}
+              type="submit"
             />
+          ) : (
+            <Buttons text={textBtnOne} typeBtn={typeBtnOne} link="/checkOut" />
           )}
-          {/* <Buttons text={textBtnOne} typeBtn={typeBtnOne} onClick={onSubmitForm} link="/success"/> */}
 
           <Buttons text={textBtnTwo} typeBtn={typeBtnTwo} link={"/shop"} />
         </div>

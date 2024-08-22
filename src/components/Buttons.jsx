@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const Buttons = ({ text, typeBtn, link, icon, onClick, type = "button" }) => {
+const Buttons = ({ text, typeBtn, link, icon, type = "button" }) => {
   const buttonStyle = () => {
     switch (typeBtn) {
       case "green":
@@ -26,6 +26,7 @@ const Buttons = ({ text, typeBtn, link, icon, onClick, type = "button" }) => {
   const commonClasses =
     "font-semibold leading-4 text-[14px] flex justify-center items-center gap-2";
 
+
   if (typeBtn === "soldOut") {
     return (
       <span className={`${commonClasses} ${buttonStyle()}`}>
@@ -40,20 +41,12 @@ const Buttons = ({ text, typeBtn, link, icon, onClick, type = "button" }) => {
     </span>
   );
 
-  if (link) {
-    return (
-      <Link href={link}>
-        <ButtonContent />
-      </Link>
-    );
-  }
-
-   return (
-    <button
-      className={`${commonClasses} ${buttonStyle()}`}
-      type={type}
-      onClick={onClick}
-    >
+  return link ? (
+    <Link href={link}>
+      <ButtonContent />
+    </Link>
+  ) : (
+    <button className={`${commonClasses} ${buttonStyle()}`} type={type}>
       {icon} {text}
     </button>
   );
