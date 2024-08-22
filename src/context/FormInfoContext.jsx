@@ -22,12 +22,15 @@ export default function FormInfoContextProvider({ children }) {
     localStorage.setItem(`${keyLS}`, JSON.stringify(addUser));
   };
 
-  console.log(dataPayment);
-  
-
   return (
     <FormInfoContext.Provider
-      value={{ dataUsers, dataPayment, setDataUsers, formSubmit, setDataPayment }}
+      value={{
+        dataUsers,
+        dataPayment,
+        setDataUsers,
+        formSubmit,
+        setDataPayment,
+      }}
     >
       {children}
     </FormInfoContext.Provider>

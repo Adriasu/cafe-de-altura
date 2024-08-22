@@ -2,13 +2,18 @@ import Image from "next/image";
 import React from "react";
 import dayjs from "dayjs";
 
-
-const FormCheckOut = ({register, watch }) => {
-
-
+const FormCheckOut = ({ register, watch, errors }) => {
   const watchShowPaymentMethod = watch("paymentMethod");
 
- 
+  const validateExpirationDate = (value) => {
+    const [month, year] = value.split("/");
+    const expirationDate = dayjs(`20${year}-${month}-01`);
+    const today = dayjs().startOf("month");
+    return (
+      expirationDate.isAfter(today) ||
+      "La fecha de caducidad debe ser posterior la actual"
+    );
+  };
 
   // ------------------- estilos comunes ---------------------- //
 
@@ -51,55 +56,117 @@ const FormCheckOut = ({register, watch }) => {
       </div>
 
       {watchShowPaymentMethod === "card" && (
-        <div className="w-[279px] h-[181px] flex flex-col gap-2 justify-between">
-          <div className="flex flex-col w-[279px] h-[55px] gap-[3px]">
+        <div className="w-[279px] min-h-[181px] flex flex-col gap-2 justify-between">
+          <div className="flex flex-col w-[279px] min-h-[55px] gap-[3px]">
             <label className={`${styleLabel}`} htmlFor="holderName">
               Titular
             </label>
             <input
               className={`${styleInputs} ${stylePlaceholder}`}
               type="text"
-              {...register("holderName")}
+              {...register("holderName", { required: true })}
               id="holderName"
               placeholder="Nombre del titular"
             />
+            {errors.holderName?.type === "required" && (
+              <span className={`${styleLabel} text-red-600`}>
+                Este campo no puede estar vacío.
+              </span>
+            )}
           </div>
-          <div className="flex flex-col w-[279px] h-[55px] gap-[3px]">
+          <div className="flex flex-col w-[279px] min-h-[55px] gap-[3px]">
             <label className={`${styleLabel}`} htmlFor="numCard">
               Número de la tarjeta
             </label>
             <input
               className={`${styleInputs} ${stylePlaceholder}`}
               type="number"
-              {...register("numCard")}
+              {...register("numCard", {
+                required: true,
+                minLength: 16,
+                maxLength: 16,
+              })}
               id="numCard"
               placeholder="1234 1234 1234 1234"
             />
+            {errors.numCard?.type === "required" && (
+              <span className={`${styleLabel} text-red-600`}>
+                Este campo no puede estar vacío.
+              </span>
+            )}
+            {errors.numCard?.type === "minLength" && (
+              <span className={`${styleLabel} text-red-600`}>
+                No es un número valido, ingrese los 16 dígitos.
+              </span>
+            )}
+            {errors.numCard?.type === "maxLength" && (
+              <span className={`${styleLabel} text-red-600`}>
+                No es un número valido, ingrese los 16 dígitos.
+              </span>
+            )}
           </div>
-          <div className="w-[279px] h-[55px] gap-6 flex justify-between">
-            <div className="w-[127.5PX] h-[55PX] flex flex-col gap-[3px]">
+          <div className="w-[279px] min-h-[55px] gap-6 flex justify-between">
+            <div className="w-[127.5PX] min-h-[55PX] flex flex-col gap-[3px]">
               <label className={`${styleLabel}`} htmlFor="expirationDate">
                 Fecha de caducidad
               </label>
               <input
                 className={`${styleInputs} ${stylePlaceholder}`}
                 type="text"
-                {...register("expirationDate")}
+                {...register("expirationDate", {
+                  required: true,
+                  pattern: { value: /^(0[1-9]|1[0-2])\/\d{2}$/ },
+                  validate: validateExpirationDate,
+                })}
                 id="expirationDate"
                 placeholder="MM / YY"
               />
+              {errors.expirationDate?.type === "required" && (
+                <span className={`${styleLabel} text-red-600`}>
+                  Este campo no puede estar vacío.
+                </span>
+              )}
+              {errors.expirationDate?.type === "pattern" && (
+                <span className={`${styleLabel} text-red-600`}>
+                  Formato inválido. Use MM/YY
+                </span>
+              )}
+              {errors.expirationDate?.type === "validate" && (
+                <span className={`${styleLabel} text-red-600`}>
+                  La fecha de caducidad debe ser posterior al mes actual.
+                </span>
+              )}
             </div>
-            <div className="w-[127.5PX] h-[55PX] flex flex-col gap-[3px]">
+            <div className="w-[127.5PX] min-h-[55PX] flex flex-col gap-[3px]">
               <label className={`${styleLabel}`} htmlFor="cvc">
                 CVC
               </label>
               <input
                 className={`${styleInputs} ${stylePlaceholder}`}
                 type="number"
-                {...register("cvc")}
+                {...register("cvc", {
+                  required: true,
+                  minLength: 3,
+                  maxLength: 3,
+                })}
                 id="cvc"
                 placeholder="123"
               />
+              {errors.cvc?.type === "required" && (
+                <span className={`${styleLabel} text-red-600`}>
+                  Este campo no puede estar vacío.
+                </span>
+              )}
+              {errors.cvc?.type === "minLength" && (
+                <span className={`${styleLabel} text-red-600`}>
+                  CVC no válido, ingrese 3 dígitos.
+                </span>
+              )}
+                {errors.cvc?.type === "maxLength" && (
+                <span className={`${styleLabel} text-red-600`}>
+                  CVC no válido, ingrese 3 dígitos.
+                </span>
+              )}
             </div>
           </div>
         </div>

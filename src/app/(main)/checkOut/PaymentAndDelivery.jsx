@@ -9,7 +9,14 @@ const PaymentAndDelivery = () => {
   const { formSubmit, dataPayment, setDataPayment } =
     useContext(FormInfoContext);
 
-  const { register, handleSubmit, watch, reset, control } = useForm({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+    control,
+  } = useForm({
     mode: "onChange",
     defaultValues: {
       paymentMethod: "card",
@@ -18,7 +25,7 @@ const PaymentAndDelivery = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    formSubmit(data, setDataPayment, "dataPayment", dataPayment )
+    formSubmit(data, setDataPayment, "dataPayment", dataPayment);
     reset();
   };
 
@@ -28,7 +35,7 @@ const PaymentAndDelivery = () => {
         Checkout
       </h2>
       <form className="flex w-[1200px] min-h-[972px] gap-6">
-        <FormCheckOut register={register} watch={watch} />
+        <FormCheckOut register={register} watch={watch} errors={errors} />
         <TotalPrice
           textBtnOne={"Pagar y realizar pedido"}
           typeBtnOne={"green"}
@@ -40,5 +47,3 @@ const PaymentAndDelivery = () => {
 };
 
 export default PaymentAndDelivery;
-
-//onSubmit={handleSubmit(onSubmit)}
