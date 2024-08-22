@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import { useForm, Controller } from "react-hook-form";
 
 const FormCheckOut = () => {
-const {register, handleSubmit, control} = useForm()
+  const { register, handleSubmit, control } = useForm();
 
   const styleTitleH3 = "text-lg font-semibold leading-[27px]";
   const styleRadios =
@@ -17,13 +17,14 @@ const {register, handleSubmit, control} = useForm()
     "placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-[#515051]";
   const styleFormAddress = "flex flex-col gap-[3px] w-[521px] h-[55px]";
   const styleDetailsAddress = "flex flex-col w-[112.25px] h-[55px] gap-[3px]";
+
   return (
     <div className="flex flex-col w-[792px] min-h-[972px] gap-6 p-2">
       <h3 className={`${styleTitleH3}`}>Seleccionar método de pago</h3>
 
       <div className="flex justify-between items-center">
         <div className={`${styleRadios}`}>
-          <input type="radio" name="paymentMethod" id="card" />
+          <input type="radio" id="card" {...register("paymentMethod")} />
         </div>
         <div className=" flex flex-col w-[665px] h-9 gap-1 text-sm leading-4">
           <label className="font-semibold" htmlFor="card">
@@ -44,7 +45,7 @@ const {register, handleSubmit, control} = useForm()
           <input
             className={`${styleInputs} ${stylePlaceholder}`}
             type="text"
-            name="holderName"
+            {...register("holderName")}
             id="holderName"
             placeholder="Nombre del titular"
           />
@@ -56,7 +57,7 @@ const {register, handleSubmit, control} = useForm()
           <input
             className={`${styleInputs} ${stylePlaceholder}`}
             type="number"
-            name="numCard"
+            {...register("numCard")}
             id="numCard"
             placeholder="1234 1234 1234 1234"
           />
@@ -69,7 +70,7 @@ const {register, handleSubmit, control} = useForm()
             <input
               className={`${styleInputs} ${stylePlaceholder}`}
               type="text"
-              name="expirationDate"
+              {...register("expirationDate")}
               id="expirationDate"
               placeholder="MM / YY"
             />
@@ -81,7 +82,7 @@ const {register, handleSubmit, control} = useForm()
             <input
               className={`${styleInputs} ${stylePlaceholder}`}
               type="number"
-              name="cvc"
+              {...register("cvc")}
               id="cvc"
               placeholder="123"
             />
@@ -93,7 +94,11 @@ const {register, handleSubmit, control} = useForm()
 
       <div className="flex justify-between w-[776x] h-9 gap-4 items-center">
         <div className={`${styleRadios}`}>
-          <input type="radio" name="paymentMethod" id="paymentBankTransfer" />
+          <input
+            type="radio"
+            {...register("paymentMethod")}
+            id="paymentBankTransfer"
+          />
         </div>
         <div className="flex flex-col gap-1 w-[736px] h-9 text-sm leading-4">
           <label className="font-semibold" htmlFor="paymentBankTransfer">
@@ -110,7 +115,11 @@ const {register, handleSubmit, control} = useForm()
 
       <div className="flex w-[776px] gap-4 items-center text-sm font-semibold">
         <div className={`${styleRadios}`}>
-          <input type="radio" name="paymentMethod" id="bizumPayment" />
+          <input
+            type="radio"
+            {...register("paymentMethod")}
+            id="bizumPayment"
+          />
         </div>
         <div>
           <label className="font-semibold" htmlFor="bizumPayment">
@@ -142,7 +151,7 @@ const {register, handleSubmit, control} = useForm()
           <input
             className={`${styleInputs}`}
             type="text"
-            name="nameUser"
+            {...register("nameUser")}
             id="nameUser"
             required
           />
@@ -154,7 +163,7 @@ const {register, handleSubmit, control} = useForm()
           <input
             className={`${styleInputs}`}
             type="text"
-            name="lastName"
+            {...register("lastName")}
             id="lastName"
             required
           />
@@ -166,7 +175,7 @@ const {register, handleSubmit, control} = useForm()
           <input
             className={`${styleInputs} ${stylePlaceholder}`}
             type="tel"
-            name="phone"
+            {...register("phone")}
             id="phone"
             placeholder="+34 600 6000 600"
             required
@@ -179,7 +188,7 @@ const {register, handleSubmit, control} = useForm()
           <input
             className={`${styleInputs}`}
             type="email"
-            name="email"
+            {...register("email")}
             id="email"
             required
           />
@@ -190,7 +199,7 @@ const {register, handleSubmit, control} = useForm()
           </label>
           <select
             className={`${styleInputs} ${styleLabel} text-[#515051]`}
-            name="country"
+            {...register("country")}
             id="country"
             required
           >
@@ -210,7 +219,7 @@ const {register, handleSubmit, control} = useForm()
             <input
               className={`${styleInputs}`}
               type="text"
-              name="population"
+              {...register("population")}
               id="population"
               required
             />
@@ -222,7 +231,7 @@ const {register, handleSubmit, control} = useForm()
             <input
               className={`${styleInputs}`}
               type="number"
-              name="cp"
+              {...register("cp")}
               id="cp"
               required
             />
@@ -236,7 +245,7 @@ const {register, handleSubmit, control} = useForm()
             <input
               className={`${styleInputs}`}
               type="text"
-              name="street"
+              {...register("street")}
               id="street"
               required
             />
@@ -248,7 +257,7 @@ const {register, handleSubmit, control} = useForm()
             <input
               className={`${styleInputs}`}
               type="number"
-              name="numStreet"
+              {...register("numStreet")}
               id="numStreet"
               required
             />
@@ -260,7 +269,7 @@ const {register, handleSubmit, control} = useForm()
             <input
               className={`${styleInputs}`}
               type="text"
-              name="apartment"
+              {...register("apartment")}
               id="apartment"
             />
           </div>
@@ -271,7 +280,7 @@ const {register, handleSubmit, control} = useForm()
             <input
               className={`${styleInputs}`}
               type="text"
-              name="door"
+              {...register("door")}
               id="door"
             />
           </div>
