@@ -2,9 +2,17 @@
 import React, { useContext } from "react";
 import Buttons from "./Buttons";
 import { ProductsContext } from "@/context/ProductsContext";
+import Link from "next/link";
 
-const TotalPrice = ({ textBtnOne, typeBtnOne, textBtnTwo, typeBtnTwo }) => {
+const TotalPrice = ({
+  textBtnOne,
+  typeBtnOne,
+  textBtnTwo,
+  typeBtnTwo,
+  onSubmit,
+}) => {
   const { totalPrice, totalDelivery } = useContext(ProductsContext);
+
   const styleCarrDetails = "flex justify-between w-[336px]";
   const styleSubtotalAndSend = "text-sm leading-4";
   return (
@@ -44,11 +52,22 @@ const TotalPrice = ({ textBtnOne, typeBtnOne, textBtnTwo, typeBtnTwo }) => {
           </div>
         </div>
         <div className="w-[310px] h-10 flex gap-4">
-          <Buttons
-            text={textBtnOne}
-            typeBtn={typeBtnOne}
-            link={textBtnOne === "Ir a checkout" ? "/checkOut" : "/success"}
-          />
+          {textBtnOne === "Pagar y realizar pedido" ? (
+            <Link href="/success">
+              <Buttons
+                text={textBtnOne}
+                typeBtn={typeBtnOne}
+                type="submit"
+                
+              />
+            </Link>
+          ) : (
+            <Buttons
+              text={textBtnOne}
+              typeBtn={typeBtnOne}
+              link={textBtnOne === "Ir a checkout" ? "/checkOut" : "/success"}
+            />
+          )}
 
           <Buttons text={textBtnTwo} typeBtn={typeBtnTwo} link={"/shop"} />
         </div>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const Buttons = ({ text, typeBtn, link, icon }) => {
+const Buttons = ({ text, typeBtn, link, icon, onClick, type = "button" }) => {
   const buttonStyle = () => {
     switch (typeBtn) {
       case "green":
@@ -16,8 +16,8 @@ const Buttons = ({ text, typeBtn, link, icon }) => {
         return "p-2 text-white rounded bg-[#E3DED7] cursor-default";
       case "white":
         return "px-6 py-3 rounded text-[#2A5B45]";
-        case "cart":
-          return "min-w-[60px] p-2 text-white rounded bg-[#2A5B45B2] hover:bg-[#2A5B45]"
+      case "cart":
+        return "min-w-[60px] p-2 text-white rounded bg-[#2A5B45B2] hover:bg-[#2A5B45]";
       default:
         return "";
     }
@@ -40,12 +40,20 @@ const Buttons = ({ text, typeBtn, link, icon }) => {
     </span>
   );
 
-  return link ? (
-    <Link href={link}>
-      <ButtonContent />
-    </Link>
-  ) : (
-    <button className={`${commonClasses} ${buttonStyle()}`}>
+  if (link) {
+    return (
+      <Link href={link}>
+        <ButtonContent />
+      </Link>
+    );
+  }
+
+   return (
+    <button
+      className={`${commonClasses} ${buttonStyle()}`}
+      type={type}
+      onClick={onClick}
+    >
       {icon} {text}
     </button>
   );

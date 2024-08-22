@@ -1,7 +1,12 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import dayjs from "dayjs";
+import { useForm, Controller } from "react-hook-form";
 
 const FormCheckOut = () => {
+const {register, handleSubmit, control} = useForm()
+
   const styleTitleH3 = "text-lg font-semibold leading-[27px]";
   const styleRadios =
     "w-6 h-6 flex justify-center items-center accent-[#2A5B45]";
