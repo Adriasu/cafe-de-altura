@@ -8,6 +8,7 @@ const TotalPrice = ({
   typeBtnOne,
   textBtnTwo,
   typeBtnTwo,
+  isFormValid,
 }) => {
   const { totalPrice, totalDelivery } = useContext(ProductsContext);
 
@@ -51,11 +52,9 @@ const TotalPrice = ({
         </div>
         <div className="w-[310px] h-10 flex gap-4">
           {textBtnOne === "Pagar y realizar pedido" ? (
-            <Buttons
-              text={textBtnOne}
-              typeBtn={typeBtnOne}
-              type="submit"
-            />
+            <div className={`${isFormValid ? "" : "opacity-30"}`}>
+              <Buttons text={textBtnOne} typeBtn={typeBtnOne} type="submit" disabled={!isFormValid} />
+            </div>
           ) : (
             <Buttons text={textBtnOne} typeBtn={typeBtnOne} link="/checkOut" />
           )}

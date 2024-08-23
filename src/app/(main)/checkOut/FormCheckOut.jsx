@@ -59,7 +59,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
         <div className="w-[279px] min-h-[181px] flex flex-col gap-2 justify-between">
           <div className="flex flex-col w-[279px] min-h-[55px] gap-[3px]">
             <label className={`${styleLabel}`} htmlFor="holderName">
-              Titular
+              Titular*
             </label>
             <input
               className={`${styleInputs} ${stylePlaceholder}`}
@@ -76,7 +76,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
           </div>
           <div className="flex flex-col w-[279px] min-h-[55px] gap-[3px]">
             <label className={`${styleLabel}`} htmlFor="numCard">
-              Número de la tarjeta
+              Número de la tarjeta*
             </label>
             <input
               className={`${styleInputs} ${stylePlaceholder}`}
@@ -108,7 +108,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
           <div className="w-[279px] min-h-[55px] gap-6 flex justify-between">
             <div className="w-[127.5PX] min-h-[55PX] flex flex-col gap-[3px]">
               <label className={`${styleLabel}`} htmlFor="expirationDate">
-                Fecha de caducidad
+                Fecha de caducidad*
               </label>
               <input
                 className={`${styleInputs} ${stylePlaceholder}`}
@@ -139,7 +139,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
             </div>
             <div className="w-[127.5PX] min-h-[55PX] flex flex-col gap-[3px]">
               <label className={`${styleLabel}`} htmlFor="cvc">
-                CVC
+                CVC*
               </label>
               <input
                 className={`${styleInputs} ${stylePlaceholder}`}
@@ -234,7 +234,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
       <div className="w-[521px] h-[433px] flex flex-col gap-2">
         <div className={`${styleFormAddress}`}>
           <label className={`${styleLabel}`} htmlFor="nameUser">
-            Nombre
+            Nombre*
           </label>
           <input
             className={`${styleInputs}`}
@@ -250,7 +250,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
         </div>
         <div className={`${styleFormAddress}`}>
           <label className={`${styleLabel}`} for="lastName">
-            Apellidos
+            Apellidos*
           </label>
           <input
             className={`${styleInputs}`}
@@ -266,7 +266,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
         </div>
         <div className={`${styleFormAddress}`}>
           <label className={`${styleLabel}`} for="phone">
-            Teléfono
+            Teléfono*
           </label>
           <input
             className={`${styleInputs} ${stylePlaceholder}`}
@@ -288,7 +288,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
         </div>
         <div className={`${styleFormAddress}`}>
           <label className={`${styleLabel}`} for="email">
-            Email
+            Email*
           </label>
           <input
             className={`${styleInputs}`}
@@ -304,7 +304,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
         </div>
         <div className={`${styleFormAddress}`}>
           <label className={`${styleLabel}`} for="country">
-            País
+            País*
           </label>
           <select
             className={`${styleInputs} ${styleLabel} text-[#515051]`}
@@ -327,7 +327,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
         <div className="w-[521px] h-[55px] flex gap-6 justify-between items-center">
           <div className="flex flex-col w-[248.5px] h-[55px] gap-[3px]">
             <label className={`${styleLabel}`} for="population">
-              Población
+              Población*
             </label>
             <input
               className={`${styleInputs}`}
@@ -343,7 +343,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
           </div>
           <div className="flex flex-col w-[248.5px] h-[55px] gap-[3px]">
             <label className={`${styleLabel}`} for="cp">
-              CP
+              CP*
             </label>
             <input
               className={`${styleInputs}`}
@@ -361,7 +361,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
         <div className="flex w-[521px] h-[55px] gap-6">
           <div className={`${styleDetailsAddress}`}>
             <label className={`${styleLabel}`} for="street">
-              Calle
+              Calle*
             </label>
             <input
               className={`${styleInputs}`}
@@ -377,7 +377,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
           </div>
           <div className={`${styleDetailsAddress}`}>
             <label className={`${styleLabel}`} for="numStreet">
-              Nº
+              Nº*
             </label>
             <input
               className={`${styleInputs}`}
@@ -415,6 +415,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
           </div>
         </div>
       </div>
+      <p className="text-[10px] font-normal leading-4">* Campos obligatorios</p>
     </div>
   );
 };
