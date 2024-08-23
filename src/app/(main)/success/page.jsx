@@ -1,9 +1,10 @@
 import React from 'react'
+import OrderPlaced from './OrderPlaced'
 
 const Success = () => {
   return (
     <div>
-      Success
+      <OrderPlaced/>
     </div>
   )
 }

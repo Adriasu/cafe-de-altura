@@ -1,6 +1,6 @@
 import { MailCheckIcon } from "lucide-react";
 import React from "react";
-import Buttons from "./Buttons";
+import Buttons from "../../../components/Buttons";
 
 const UserCard = ({ userCard, funDelete }) => {
   return (

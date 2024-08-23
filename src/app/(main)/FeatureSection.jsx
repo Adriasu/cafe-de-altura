@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const FeatureSection = () => {
@@ -15,12 +16,12 @@ const FeatureSection = () => {
             granos de café antes de hacer tu pedido y llévate un descuento
           </p>
           <div>
-            <a
-              className="leading-4 font-semibold text-black flex gap-4 items-center text-sm"
-              href=""
+            <Link
+              className="leading-4 font-semibold text-black flex gap-4 items-center text-sm underline"
+              href={"/"}
             >
               Cómo llegar <ArrowRight />
-            </a>
+            </Link>
           </div>
         </div>
         <Image

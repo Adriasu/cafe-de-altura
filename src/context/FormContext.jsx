@@ -4,7 +4,6 @@ import React, { createContext, useState, useEffect, useRef } from "react";
 export const FormContext = createContext(null);
 
 export default function FormContextProvider({ children }) {
-  const [dataCoffee, setDataCoffee] = useState([])
   const [dataUsers, setDataUsers] = useState([]);
   const [filterDataUser, setFilterDataUsers] = useState([]);
   const [searchMessage, setSearchMessage] = useState("");
@@ -45,28 +44,6 @@ export default function FormContextProvider({ children }) {
     inputRef.current.value = "";
   };
 
-  const fetchPrueba = async () => {
-    try {
-      const response = await fetch(
-        "https://cafe-de-altura-lovat.vercel.app/api/products"
-      );
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      setDataCoffee(data.products);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchPrueba()
-  },[])
-
-  console.log(dataCoffee);
-  
-
   return (
     <FormContext.Provider
       value={{
@@ -79,7 +56,6 @@ export default function FormContextProvider({ children }) {
         searchMessage,
         clearSearch,
         inputRef,
-        dataCoffee
       }}
     >
       {children}

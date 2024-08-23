@@ -1,6 +1,15 @@
+import Link from "next/link";
 import React from "react";
 
-const Buttons = ({ text, typeBtn }) => {
+const Buttons = ({
+  text,
+  typeBtn,
+  link,
+  icon,
+  type = "button",
+  onClick,
+  disabled,
+}) => {
   const buttonStyle = () => {
     switch (typeBtn) {
       case "green":
@@ -10,21 +19,48 @@ const Buttons = ({ text, typeBtn }) => {
       case "brown":
         return "px-6 py-3 bg-[#1F1815] rounded text-white";
       case "add":
-        return "p-2 text-white rounded bg-[#2A5B45B2] hover:bg-[#2A5B45]";
+        return "p-2 text-white rounded bg-[#2A5B45B2] group-hover:bg-[#2A5B45]";
+      case "soldOut":
+        return "p-2 text-white rounded bg-[#E3DED7] cursor-default";
       case "white":
         return "px-6 py-3 rounded text-[#2A5B45]";
-
+      case "cart":
+        return "min-w-[60px] p-2 text-white rounded bg-[#2A5B45B2] hover:bg-[#2A5B45]";
       default:
-        break;
+        return "";
     }
   };
-  return (
-    <a
-      className={`font-semibold, leading-4 text-[14px] ${buttonStyle()}`}
-      href=""
+
+  const commonClasses =
+    "font-semibold leading-4 text-[14px] flex justify-center items-center gap-2";
+
+  if (typeBtn === "soldOut") {
+    return (
+      <span className={`${commonClasses} ${buttonStyle()}`}>
+        {icon} {text}
+      </span>
+    );
+  }
+
+  const ButtonContent = () => (
+    <span className={`${commonClasses} ${buttonStyle()}`}>
+      {icon} {text}
+    </span>
+  );
+
+  return link ? (
+    <Link href={link}>
+      <ButtonContent />
+    </Link>
+  ) : (
+    <button
+      className={`${commonClasses} ${buttonStyle()}`}
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
     >
-      {text}
-    </a>
+      {icon} {text}
+    </button>
   );
 };
 
