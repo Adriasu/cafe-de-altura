@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const Buttons = ({ text, typeBtn, link, icon, type = "button" }) => {
+const Buttons = ({ text, typeBtn, link, icon, type = "button", onClick }) => {
   const buttonStyle = () => {
     switch (typeBtn) {
       case "green":
@@ -42,11 +42,11 @@ const Buttons = ({ text, typeBtn, link, icon, type = "button" }) => {
   );
 
   return link ? (
-    <Link href={link}>
+    <Link href={link} >
       <ButtonContent />
     </Link>
   ) : (
-    <button className={`${commonClasses} ${buttonStyle()}`} type={type}>
+    <button className={`${commonClasses} ${buttonStyle()}`} type={type} onClick={onClick}>
       {icon} {text}
     </button>
   );

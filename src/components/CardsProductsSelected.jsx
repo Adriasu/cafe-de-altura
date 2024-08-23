@@ -12,7 +12,7 @@ const CardsProductsSelected = ({ selectedProduct, index, component }) => {
 
   return (
     <section
-      className={`flex w-[776px] max-h-[80.45px] justify-between ${
+      className={`flex min-w-[776px] max-h-[80.45px] justify-between gap-6 ${
         index > 0 ? "border-t border-[#E3DED7] pt-6" : ""
       }`}
     >
@@ -40,13 +40,13 @@ const CardsProductsSelected = ({ selectedProduct, index, component }) => {
         height={55.66}
         width={55.66}
       />
-      <div className="w-[506.34px] h-9 flex flex-col gap-1">
+      <div className={`${component === "bag" ? "w-[506.34px]" : "w-[994.34px]"} h-9 flex flex-col justify-start gap-1`}>
         <p className={`${styleTextDescription} font-semibold`}>
           {selectedProduct.nameProduct}
         </p>
         <p className={`${styleTextDescription}`}>Paquete de café, 250 gr</p>
       </div>
-      <p className="text-lg font-semibold leading-6">
+      <p className="text-lg font-semibold leading-6 min-w-[64px] flex justify-end">
         {selectedProduct.price.toFixed(2)} €
       </p>
     </section>
@@ -54,3 +54,4 @@ const CardsProductsSelected = ({ selectedProduct, index, component }) => {
 };
 
 export default CardsProductsSelected;
+
