@@ -12,7 +12,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "./ui/alert-dialog";
 
 const CardsProductsSelected = ({ selectedProduct, index, component }) => {
@@ -22,10 +21,10 @@ const CardsProductsSelected = ({ selectedProduct, index, component }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleSubtract = () => {
-    if (selectedProduct.count > 1) {
-      btnSubtractProducts(selectedProduct, dataSelected);
-    } else {
+    if (selectedProduct.count === 1) {
       setIsDialogOpen(true);
+    } else {
+      btnSubtractProducts(selectedProduct, dataSelected);
     }
   };
 
@@ -45,11 +44,6 @@ const CardsProductsSelected = ({ selectedProduct, index, component }) => {
       {component === "bag" ? (
         <div className="flex w-[88px] h-[55.66px] gap-2 items-center justify-center">
           <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <AlertDialogTrigger asChild>
-            <button onClick={handleSubtract} className="w-6 h-6 cursor-pointer">
-                <Minus />
-              </button>
-            </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
                 <AlertDialogTitle>Quitar artículo</AlertDialogTitle>
@@ -58,15 +52,24 @@ const CardsProductsSelected = ({ selectedProduct, index, component }) => {
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel onClick={() => setIsDialogOpen(false)}>Cancelar</AlertDialogCancel>
-                <AlertDialogAction onClick={handleConfirmDelete}>Continuar</AlertDialogAction>
+                <AlertDialogCancel onClick={() => setIsDialogOpen(false)}>
+                  Cancelar
+                </AlertDialogCancel>
+                <AlertDialogAction onClick={handleConfirmDelete}>
+                  Continuar
+                </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
 
+          <button onClick={handleSubtract} className="w-6 h-6 cursor-pointer">
+            <Minus />
+          </button>
+
           <p className="w-6 h-6 bg-[#2A5B451A] flex justify-center items-center text-xs font-normal leading-4 text-[#2A5B45] rounded-[50%]">
             {selectedProduct.count}
           </p>
+
           <Plus
             onClick={() => btnAddProducts(selectedProduct, dataSelected)}
             className="w-6 h-6 cursor-pointer"

@@ -87,14 +87,12 @@ export default function ProductsContextProvider({ children }) {
     if (product.count > 1) {
       product.count--;
     } else {
-      const deleteIndex = dataSelected.findIndex(
-        (productFind) => productFind.id === product.id
-      );
-      if (deleteIndex !== -1) {
-        dataSelected.splice(deleteIndex, 1);
-      }
+      const deleteProduct = dataSelected.findIndex((productFind) => {
+        return productFind.id === product.id;
+      });
+      dataSelected.splice(deleteProduct, 1);
     }
-    setTotalOfProducts((prev) => prev - 1);
+    setTotalOfProducts((prev) => (prev -= 1));
     setTotalPrice((prev) => prev - product.price);
   };
 
