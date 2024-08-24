@@ -28,7 +28,7 @@ const FAQWrapperElements = () => {
             ¿Cómo hago el pedido?
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-xs">
-          <hr className="w-[620px] border border-solid border-[#E3DED7]" />
+            <hr className="w-[620px] border border-solid border-[#E3DED7]" />
             Selecciona el café que desees probar y completa el proceso de
             compra. Si lo prefieres, te preguntaremos cada cuánto quieres que te
             lo mandemos a casa y así nunca te quedarás sin café.
@@ -42,7 +42,7 @@ const FAQWrapperElements = () => {
             ¿Por qué los precios son tan bajos?
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-xs">
-          <hr className="w-[620px] border border-solid border-[#E3DED7]" />
+            <hr className="w-[620px] border border-solid border-[#E3DED7]" />
             Viajamos constantemente para encontrar los mejores granos y a los
             agricultores más exigentes. Si podemos ofrecerte estos precios es
             porque tratamos directamente con los productores de café, sin
@@ -59,7 +59,7 @@ const FAQWrapperElements = () => {
             ¿Es posible enviar café a mi oficina?
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-xs">
-          <hr className="w-[620px] border border-solid border-[#E3DED7]" />
+            <hr className="w-[620px] border border-solid border-[#E3DED7]" />
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
             sit saepe dolores corporis tempore, nulla aut sunt delectus libero
             adipisci, quasi temporibus quis quos! Non nobis laudantium mollitia
@@ -70,7 +70,9 @@ const FAQWrapperElements = () => {
 
       <div className="w-[178px] h-[72px]">
         <Link
-          href={"/"}
+          scroll={false}
+          target="_SplitTwoToneDesktop"
+          href={""}
           className="h-6 items-center gap-4 flex justify-center text-sm font-semibold leading-4 text-white underline"
         >
           Resolvemos tus dudas

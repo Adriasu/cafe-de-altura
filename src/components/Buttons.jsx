@@ -43,9 +43,9 @@ const Buttons = ({
   }
 
   const ButtonContent = () => (
-    <span className={`${commonClasses} ${buttonStyle()}`}>
+    <button disabled={disabled} className={`${commonClasses} ${buttonStyle()}`}>
       {icon} {text}
-    </span>
+    </button>
   );
 
   return link ? (
