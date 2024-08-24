@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useContext } from "react";
 import Buttons from "./Buttons";
 import { ProductsContext } from "@/context/ProductsContext";
+import { toast } from "sonner";
 
 const CardProduct = ({ data }) => {
   const {
@@ -27,6 +28,7 @@ const CardProduct = ({ data }) => {
     setTotalOfProducts((prev) => (prev += 1));
     setTotalPrice((prev) => prev + productSelect.price);
     productCount(productSelect, dataSelected);
+    toast("Producto añadido")
   };
 
   const styleAvailable = () => {

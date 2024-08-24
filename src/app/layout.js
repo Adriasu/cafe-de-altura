@@ -5,6 +5,7 @@ import FormContextProvider from "@/context/FormContext";
 import ProductsContextProvider from "@/context/ProductsContext";
 import CopyRight from "@/components/CopyRight";
 import FormInfoContextProvider from "@/context/FormInfoContext";
+import { Toaster } from "@/components/ui/sonner";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
             <FormContextProvider>
               <NavBar />
               {children}
+              <Toaster/>
               <CopyRight />
             </FormContextProvider>
           </FormInfoContextProvider>

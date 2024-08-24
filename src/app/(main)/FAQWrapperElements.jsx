@@ -70,8 +70,6 @@ const FAQWrapperElements = () => {
 
       <div className="w-[178px] h-[72px]">
         <Link
-          scroll={false}
-          target="_SplitTwoToneDesktop"
           href={""}
           className="h-6 items-center gap-4 flex justify-center text-sm font-semibold leading-4 text-white underline"
         >
