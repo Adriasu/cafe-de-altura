@@ -8,19 +8,26 @@ export default function ProductsContextProvider({ children }) {
   // --------------- Estados iniciales al cargar pagina ----------------- //
 
   const [dataCoffee, setDataCoffee] = useState([]);
-  const [dataSelected, setDataSelected] = useState(() => {
-    return JSON.parse(localStorage.getItem("arrayProductsSelected") || "[]");
-  });
-  const [totalPrice, setTotalPrice] = useState(() => {
-    return JSON.parse(localStorage.getItem("totalPrice") || "0");
-  });
-  const [totalOfProducts, setTotalOfProducts] = useState(() => {
-    return JSON.parse(localStorage.getItem("totalProducts") || "0");
-  });
-  const [totalDelivery, setTotalDelivery] = useState(() => {
-    return JSON.parse(localStorage.getItem("totalDelivery") || "0");
-  });
+  const [dataSelected, setDataSelected] = useState([])
+  const [totalPrice, setTotalPrice] = useState(0)
+  const [totalOfProducts, setTotalOfProducts] = useState(0)
+  const [totalDelivery, setTotalDelivery] = useState(0)
   const [selectedShipping, setSelectedShipping] = useState("");
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // ----------- Estado Inicial con LocalStorage -------------- //
+
+  useEffect(() => {
+    const dataSelectedLS = JSON.parse(localStorage.getItem("arrayProductsSelected") || "[]")
+    const totalPriceLS = JSON.parse(localStorage.getItem("totalPrice") || "0");
+    const totalProductsLS = JSON.parse(localStorage.getItem("totalProducts") || "0");
+    const totalDeliveryLS = JSON.parse(localStorage.getItem("totalDelivery") || "0");
+    setDataSelected(dataSelectedLS)
+    setTotalPrice(totalPriceLS)
+    setTotalOfProducts(totalProductsLS)
+    setTotalDelivery(totalDeliveryLS)
+    setIsInitialized(true);
+  }, [])
 
   // ----------- Fetch Data ---------------- //
 
@@ -54,7 +61,8 @@ export default function ProductsContextProvider({ children }) {
       return acc;
     }, false);
     if (!productsCount) {
-      setDataSelected([...dataSelected, productSelected]);
+      const newDataSelected = [...dataSelected, productSelected]
+      setDataSelected(newDataSelected);
     }
     return arraySelected;
   };
@@ -89,10 +97,12 @@ export default function ProductsContextProvider({ children }) {
   // --------------- Actualizacion localStorage ------------------------ //
 
   useEffect(() => {
-    localStorage.setItem("arrayProductsSelected", JSON.stringify(dataSelected));
-    localStorage.setItem("totalProducts", JSON.stringify(totalOfProducts));
-    localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
-    localStorage.setItem("totalDelivery", JSON.stringify(totalDelivery));
+    if (isInitialized) {
+      localStorage.setItem("arrayProductsSelected", JSON.stringify(dataSelected));
+      localStorage.setItem("totalProducts", JSON.stringify(totalOfProducts));
+      localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+      localStorage.setItem("totalDelivery", JSON.stringify(totalDelivery));
+    }
   }, [dataSelected, totalOfProducts, totalPrice, totalDelivery]);
 
   // -------------- Estado del envio --------------------------- //

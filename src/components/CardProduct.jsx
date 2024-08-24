@@ -5,8 +5,15 @@ import Buttons from "./Buttons";
 import { ProductsContext } from "@/context/ProductsContext";
 
 const CardProduct = ({ data }) => {
-  const { dataSelected, productCount, setTotalOfProducts, setTotalPrice } =
-    useContext(ProductsContext);
+  const {
+    dataSelected,
+    productCount,
+    setTotalOfProducts,
+    setTotalPrice,
+    totalOfProducts,
+    totalPrice,
+    setDataSelected
+  } = useContext(ProductsContext);
 
   const handleClick = () => {
     const productSelect = {
@@ -16,9 +23,21 @@ const CardProduct = ({ data }) => {
       price: data.price,
       count: 1,
     };
+
     setTotalOfProducts((prev) => (prev += 1));
     setTotalPrice((prev) => prev + productSelect.price);
     productCount(productSelect, dataSelected);
+
+    // let sumTotalOfProducts = totalOfProducts + 1;
+    // setTotalOfProducts(sumTotalOfProducts);
+    // localStorage.setItem("totalProducts", JSON.stringify(sumTotalOfProducts));
+
+    // let sumTotalPrice = totalPrice + productSelect.price;
+    // setTotalPrice(sumTotalPrice);
+    // localStorage.setItem("totalPrice", JSON.stringify(sumTotalPrice));
+  
+    // productCount(productSelect, dataSelected);
+    // localStorage.setItem("arrayProductsSelected", JSON.stringify(dataSelected));
   };
 
   const styleAvailable = () => {
