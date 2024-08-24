@@ -87,12 +87,14 @@ export default function ProductsContextProvider({ children }) {
     if (product.count > 1) {
       product.count--;
     } else {
-      const deleteProduct = dataSelected.findIndex((productFind) => {
-        return productFind.id === product.id;
-      });
-      dataSelected.splice(deleteProduct, 1);
+      const deleteIndex = dataSelected.findIndex(
+        (productFind) => productFind.id === product.id
+      );
+      if (deleteIndex !== -1) {
+        dataSelected.splice(deleteIndex, 1);
+      }
     }
-    setTotalOfProducts((prev) => (prev -= 1));
+    setTotalOfProducts((prev) => prev - 1);
     setTotalPrice((prev) => prev - product.price);
   };
 
@@ -119,13 +121,12 @@ export default function ProductsContextProvider({ children }) {
     }
 
     if (isInitialized && dataSelected.length === 0) {
-      console.log("Carrito vacío: cambiando a envío gratuito")
+      console.log("Carrito vacío: cambiando a envío gratuito");
       setSelectedShipping("free");
-      setTotalDelivery(0)
+      setTotalDelivery(0);
       localStorage.setItem("selectedShipping", "free");
       localStorage.setItem("totalDelivery", JSON.stringify(totalDelivery));
     }
-
   }, [
     dataSelected,
     totalOfProducts,
@@ -133,7 +134,6 @@ export default function ProductsContextProvider({ children }) {
     totalDelivery,
     selectedShipping,
   ]);
-  
 
   // ----------- Reestablecer envio con el carrito vacio ------------- //
 

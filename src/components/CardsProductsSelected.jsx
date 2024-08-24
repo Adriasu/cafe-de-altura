@@ -1,12 +1,38 @@
 "use client";
 import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ProductsContext } from "@/context/ProductsContext";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "./ui/alert-dialog";
 
 const CardsProductsSelected = ({ selectedProduct, index, component }) => {
   const { btnAddProducts, btnSubtractProducts, dataSelected } =
     useContext(ProductsContext);
+
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleSubtract = () => {
+    if (selectedProduct.count > 1) {
+      btnSubtractProducts(selectedProduct, dataSelected);
+    } else {
+      setIsDialogOpen(true);
+    }
+  };
+
+  const handleConfirmDelete = () => {
+    btnSubtractProducts(selectedProduct, dataSelected);
+    setIsDialogOpen(false);
+  };
 
   const styleTextDescription = "text-sm leading-4";
 
@@ -18,10 +44,26 @@ const CardsProductsSelected = ({ selectedProduct, index, component }) => {
     >
       {component === "bag" ? (
         <div className="flex w-[88px] h-[55.66px] gap-2 items-center justify-center">
-          <Minus
-            onClick={() => btnSubtractProducts(selectedProduct, dataSelected)}
-            className="w-6 h-6 cursor-pointer"
-          />
+          <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <AlertDialogTrigger asChild>
+            <button onClick={handleSubtract} className="w-6 h-6 cursor-pointer">
+                <Minus />
+              </button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Quitar artículo</AlertDialogTitle>
+                <AlertDialogDescription>
+                  ¿Estás seguro que quieres eliminar el artículo de tu cesta?
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel onClick={() => setIsDialogOpen(false)}>Cancelar</AlertDialogCancel>
+                <AlertDialogAction onClick={handleConfirmDelete}>Continuar</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+
           <p className="w-6 h-6 bg-[#2A5B451A] flex justify-center items-center text-xs font-normal leading-4 text-[#2A5B45] rounded-[50%]">
             {selectedProduct.count}
           </p>
@@ -40,7 +82,11 @@ const CardsProductsSelected = ({ selectedProduct, index, component }) => {
         height={55.66}
         width={55.66}
       />
-      <div className={`${component === "bag" ? "w-[506.34px]" : "w-[994.34px]"} h-9 flex flex-col justify-start gap-1`}>
+      <div
+        className={`${
+          component === "bag" ? "w-[506.34px]" : "w-[994.34px]"
+        } h-9 flex flex-col justify-start gap-1`}
+      >
         <p className={`${styleTextDescription} font-semibold`}>
           {selectedProduct.nameProduct}
         </p>
@@ -54,4 +100,3 @@ const CardsProductsSelected = ({ selectedProduct, index, component }) => {
 };
 
 export default CardsProductsSelected;
-
