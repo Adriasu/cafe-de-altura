@@ -8,26 +8,36 @@ export default function ProductsContextProvider({ children }) {
   // --------------- Estados iniciales al cargar pagina ----------------- //
 
   const [dataCoffee, setDataCoffee] = useState([]);
-  const [dataSelected, setDataSelected] = useState([])
-  const [totalPrice, setTotalPrice] = useState(0)
-  const [totalOfProducts, setTotalOfProducts] = useState(0)
-  const [totalDelivery, setTotalDelivery] = useState(0)
+  const [dataSelected, setDataSelected] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalOfProducts, setTotalOfProducts] = useState(0);
+  const [totalDelivery, setTotalDelivery] = useState(0);
   const [selectedShipping, setSelectedShipping] = useState("");
   const [isInitialized, setIsInitialized] = useState(false);
 
   // ----------- Estado Inicial con LocalStorage -------------- //
 
   useEffect(() => {
-    const dataSelectedLS = JSON.parse(localStorage.getItem("arrayProductsSelected") || "[]")
+    const dataSelectedLS = JSON.parse(
+      localStorage.getItem("arrayProductsSelected") || "[]"
+    );
     const totalPriceLS = JSON.parse(localStorage.getItem("totalPrice") || "0");
-    const totalProductsLS = JSON.parse(localStorage.getItem("totalProducts") || "0");
-    const totalDeliveryLS = JSON.parse(localStorage.getItem("totalDelivery") || "0");
-    setDataSelected(dataSelectedLS)
-    setTotalPrice(totalPriceLS)
-    setTotalOfProducts(totalProductsLS)
-    setTotalDelivery(totalDeliveryLS)
+    const totalProductsLS = JSON.parse(
+      localStorage.getItem("totalProducts") || "0"
+    );
+    const totalDeliveryLS = JSON.parse(
+      localStorage.getItem("totalDelivery") || "0"
+    );
+    const selectedShippingLS =
+      localStorage.getItem("selectedShipping") || "free";
+
+    setDataSelected(dataSelectedLS);
+    setTotalPrice(totalPriceLS);
+    setTotalOfProducts(totalProductsLS);
+    setTotalDelivery(totalDeliveryLS);
     setIsInitialized(true);
-  }, [])
+    setSelectedShipping(selectedShippingLS);
+  }, []);
 
   // ----------- Fetch Data ---------------- //
 
@@ -61,7 +71,7 @@ export default function ProductsContextProvider({ children }) {
       return acc;
     }, false);
     if (!productsCount) {
-      const newDataSelected = [...dataSelected, productSelected]
+      const newDataSelected = [...dataSelected, productSelected];
       setDataSelected(newDataSelected);
     }
     return arraySelected;
@@ -76,47 +86,56 @@ export default function ProductsContextProvider({ children }) {
   const btnSubtractProducts = (product, dataSelected) => {
     if (product.count > 1) {
       product.count--;
+      setTotalOfProducts((prev) => prev - 1);
+      setTotalPrice((prev) => prev - product.price);
     } else {
-      const deleteProduct = dataSelected.findIndex((productFind) => {
-        return productFind.id === product.id;
-      });
-      dataSelected.splice(deleteProduct, 1);
+      const updatedDataSelected = dataSelected.filter(
+        (item) => item.id !== product.id
+      );
+      setDataSelected(updatedDataSelected);
+      setTotalOfProducts((prev) => prev - 1);
+      setTotalPrice((prev) => prev - product.price);
     }
-    setTotalOfProducts((prev) => (prev -= 1));
-    setTotalPrice((prev) => prev - product.price);
   };
 
   const btnClearCart = (dataSelected) => {
     dataSelected.splice(0, dataSelected.length);
     setTotalOfProducts(0);
     setTotalPrice(0);
-    setTotalDelivery(0)
-    setSelectedShipping("free")
+    setTotalDelivery(0);
+    setSelectedShipping("free");
   };
 
   // --------------- Actualizacion localStorage ------------------------ //
 
   useEffect(() => {
     if (isInitialized) {
-      localStorage.setItem("arrayProductsSelected", JSON.stringify(dataSelected));
+      localStorage.setItem(
+        "arrayProductsSelected",
+        JSON.stringify(dataSelected)
+      );
       localStorage.setItem("totalProducts", JSON.stringify(totalOfProducts));
       localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
       localStorage.setItem("totalDelivery", JSON.stringify(totalDelivery));
+      localStorage.setItem("selectedShipping", selectedShipping);
     }
-  }, [dataSelected, totalOfProducts, totalPrice, totalDelivery]);
 
-  // -------------- Estado del envio --------------------------- //
+    if (isInitialized && dataSelected.length === 0) {
+      console.log("Carrito vacío: cambiando a envío gratuito");
+      setSelectedShipping("free");
+      setTotalDelivery(0);
+      localStorage.setItem("selectedShipping", "free");
+      localStorage.setItem("totalDelivery", JSON.stringify(totalDelivery));
+    }
+  }, [
+    dataSelected,
+    totalOfProducts,
+    totalPrice,
+    totalDelivery,
+    selectedShipping,
+  ]);
 
-  useEffect(() => {
-    const checkDelivery = () => {
-      if (totalDelivery == "0") {
-        setSelectedShipping("free");
-      } else {
-        setSelectedShipping("urgent");
-      }
-    };
-    checkDelivery();
-  }, []);
+  // ----------- Reestablecer envio con el carrito vacio ------------- //
 
   return (
     <ProductsContext.Provider

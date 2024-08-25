@@ -10,7 +10,8 @@ const TotalPrice = ({
   typeBtnTwo,
   isFormValid,
 }) => {
-  const { totalPrice, totalDelivery } = useContext(ProductsContext);
+  const { totalPrice, totalDelivery, dataSelected } =
+    useContext(ProductsContext);
 
   const styleCarrDetails = "flex justify-between w-[336px]";
   const styleSubtotalAndSend = "text-sm leading-4";
@@ -53,10 +54,22 @@ const TotalPrice = ({
         <div className="w-[310px] h-10 flex gap-4">
           {textBtnOne === "Pagar y realizar pedido" ? (
             <div className={`${isFormValid ? "" : "opacity-30"}`}>
-              <Buttons text={textBtnOne} typeBtn={typeBtnOne} type="submit" disabled={!isFormValid} />
+              <Buttons
+                text={textBtnOne}
+                typeBtn={typeBtnOne}
+                type="submit"
+                disabled={!isFormValid}
+              />
             </div>
           ) : (
-            <Buttons text={textBtnOne} typeBtn={typeBtnOne} link="/checkOut" />
+            <div className={`${dataSelected.length === 0 ? "opacity-30" : ""}`}>
+              <Buttons
+                text={textBtnOne}
+                typeBtn={typeBtnOne}
+                link="/checkOut"
+                disabled={dataSelected.length === 0}
+              />
+            </div>
           )}
 
           <Buttons text={textBtnTwo} typeBtn={typeBtnTwo} link={"/shop"} />

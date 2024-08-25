@@ -10,11 +10,11 @@ const BagProductsSend = () => {
     setTotalDelivery,
     selectedShipping,
     setSelectedShipping,
-  } = useContext(ProductsContext);
- 
+  } = useContext(ProductsContext); 
 
   const handleShippingChange = (event) => {
-    setSelectedShipping(event.target.id);
+    const newShipping = event.target.id;
+    setSelectedShipping(newShipping);
     setTotalDelivery(event.target.value);
   };
 

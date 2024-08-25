@@ -47,7 +47,7 @@ const SplitTwoToneDesktop = () => {
           </div>
         </div>
 
-        <div className="w-[588px] min-h-[552px] flex justify-center items-center shadow-[0px_4px_4px_0px_#00000040] bg-[#FFFFFF]">
+        <div className="w-[588px] min-h-[552px] flex items-center shadow-[0px_4px_4px_0px_#00000040] bg-[#FFFFFF]">
           <ContactForm/>
         </div>
       </div>
