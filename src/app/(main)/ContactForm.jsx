@@ -31,7 +31,7 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="min-w-[470px] min-h-[488px] flex flex-col items-start gap-6 text-xs font-normal leading-4 text-gray-700"
+      className="ml-[67px] mr-[51px] my-[32px] w-[470px] min-h-[488px] flex flex-col items-start gap-6 text-xs font-normal leading-4 text-gray-700"
     >
       <div className={inputText}>
         <label htmlFor="fullName">Nombre completo</label>
