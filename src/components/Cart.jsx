@@ -3,12 +3,23 @@ import React, { useContext } from "react";
 import Buttons from "./Buttons";
 import { ProductsContext } from "@/context/ProductsContext";
 import CardProductsCart from "./CardProductsCart";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "./ui/alert-dialog";
 
 const Cart = () => {
   const { dataSelected, totalPrice, btnClearCart } =
     useContext(ProductsContext);
 
-    const styleBtn =  dataSelected.length > 0 ? "cart" : "soldOut";
+  const styleBtn = dataSelected.length > 0 ? "cart" : "soldOut";
 
   return (
     <div className="w-[300px] min-h-[32px] max-h-[440px] bg-[white] gap-2.5 flex flex-col items-center justify-start p-[15px] rounded-[20px] border-2 border-solid border-[#2A5B45]">
@@ -18,7 +29,13 @@ const Cart = () => {
           <p className="text-[rgba(0,0,0,0.4)]">El carrito está vacío.</p>
         ) : (
           dataSelected.map((productSelected, i) => {
-            return <CardProductsCart key={i} product={productSelected} />;
+            return (
+              <CardProductsCart
+                key={i}
+                product={productSelected}
+                location={"cart"}
+              />
+            );
           })
         )}
       </div>
@@ -29,11 +46,26 @@ const Cart = () => {
           link={dataSelected.length > 0 ? "/bag" : ""}
         />
 
-        <Buttons
-          text={"Clear"}
-          typeBtn={styleBtn}
-          onClick={() => btnClearCart(dataSelected)}
-        />
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Buttons text={"Clear"} typeBtn={styleBtn} />
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Vaciar carrito</AlertDialogTitle>
+              <AlertDialogDescription>
+                ¿Estás seguro que quieres eliminar todos los artículos de tu
+                cesta?
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancelar</AlertDialogCancel>
+              <AlertDialogAction onClick={() => btnClearCart(dataSelected)}>
+                Continuar
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
     </div>
   );

@@ -1,20 +1,20 @@
 "use client";
 import React, { useContext } from "react";
 import { ProductsContext } from "@/context/ProductsContext";
-import CardsProductsSelected from "@/components/CardsProductsSelected";
+import CardProductsCart from "@/components/CardProductsCart";
 
 const TotalOrder = () => {
   const { dataSelected, totalPrice, totalDelivery } =
     useContext(ProductsContext);
 
-    const styleSizeDetails = "text-sm leading-4 flex justify-between"
+  const styleSizeDetails = "text-sm leading-4 flex justify-between";
   return (
     <section className="w-[1200px] min-h-[391.32px] rounded-[10px] flex flex-col gap-6 bg-[#F7F5F3] justify-center items-center p-6">
       <h3 className="text-lg font-semibold leading-6 w-[1152px]">Tu pedido</h3>
 
       <div className="w-[1152px] flex flex-col gap-6">
         {dataSelected.map((product, i) => {
-          return <CardsProductsSelected key={i} selectedProduct={product} />;
+          return <CardProductsCart key={i} product={product} />;
         })}
       </div>
 
@@ -26,7 +26,9 @@ const TotalOrder = () => {
         </div>
         <div className={`${styleSizeDetails}`}>
           <p>ENVÍO</p>
-          <p className="font-semibold">{totalDelivery == "0" ? "GRATIS" : "9.00 €"}</p>
+          <p className="font-semibold">
+            {totalDelivery == "0" ? "GRATIS" : "9.00 €"}
+          </p>
         </div>
         <hr />
         <div className={`${styleSizeDetails}`}>
