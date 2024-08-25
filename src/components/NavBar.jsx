@@ -16,21 +16,25 @@ const NavBar = () => {
   const { totalOfProducts } = useContext(ProductsContext);
   const pathName = usePathname();
 
-  const showHideCart = (event) => {
-    event.stopPropagation();
-    setIsCartVisible(!isCartVisible);
+  const showHideCart = () => {
+    isCartVisible === false ? setIsCartVisible(true) : setIsCartVisible(false);
   };
 
-  const closeCart = useCallback(() => {
-    if (isCartVisible) {
-      setIsCartVisible(false);
-    }
-  }, [isCartVisible]);
+  // const showHideCart = (event) => {
+  //   event.stopPropagation();
+  //   setIsCartVisible(!isCartVisible);
+  // };
 
-  const cartRef = UseOutsideClick(closeCart, CartIconRef);
+  // const closeCart = useCallback(() => {
+  //   if (isCartVisible) {
+  //     setIsCartVisible(false);
+  //   }
+  // }, [isCartVisible]);
+
+  // const cartRef = UseOutsideClick(closeCart, CartIconRef);
 
   const cartPointerAvailable = pathName === "/" || pathName === "/shop";
-  const bagEmpty = pathName === "/success"
+  const bagEmpty = pathName === "/success";
 
   return (
     <nav className="bg-[#2B2A2B] min-h-16 flex justify-around items-center text-[#FFFFFF] w-full fixed z-[1] top-0">
@@ -59,12 +63,13 @@ const NavBar = () => {
       </div>
 
       <div
-        ref={CartIconRef}
-        onClick={showHideCart}
+        // ref={CartIconRef}
+        // onClick={showHideCart}
         className="flex items-center gap-2"
       >
         {totalOfProducts === 0 || bagEmpty ? (
           <Image
+            onClick={showHideCart}
             className={`${
               cartPointerAvailable ? "cursor-pointer" : "cursor-default"
             }`}
@@ -75,6 +80,7 @@ const NavBar = () => {
           />
         ) : (
           <Image
+            onClick={showHideCart}
             className={`${
               cartPointerAvailable ? "cursor-pointer" : "cursor-default"
             }`}
@@ -96,8 +102,8 @@ const NavBar = () => {
 
       {isCartVisible && cartPointerAvailable && (
         <div
-          onClick={(e) => e.stopPropagation()}
-          ref={cartRef}
+          // onClick={(e) => e.stopPropagation()}
+          // ref={cartRef}
           className={`absolute right-[30px] top-[55px]`}
         >
           <Cart />

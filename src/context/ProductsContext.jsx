@@ -86,14 +86,16 @@ export default function ProductsContextProvider({ children }) {
   const btnSubtractProducts = (product, dataSelected) => {
     if (product.count > 1) {
       product.count--;
+      setTotalOfProducts((prev) => prev - 1);
+      setTotalPrice((prev) => prev - product.price);
     } else {
-      const deleteProduct = dataSelected.findIndex((productFind) => {
-        return productFind.id === product.id;
-      });
-      dataSelected.splice(deleteProduct, 1);
+      const updatedDataSelected = dataSelected.filter(
+        (item) => item.id !== product.id
+      );
+      setDataSelected(updatedDataSelected);
+      setTotalOfProducts((prev) => prev - 1);
+      setTotalPrice((prev) => prev - product.price);
     }
-    setTotalOfProducts((prev) => (prev -= 1));
-    setTotalPrice((prev) => prev - product.price);
   };
 
   const btnClearCart = (dataSelected) => {
