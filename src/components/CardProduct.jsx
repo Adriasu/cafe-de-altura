@@ -11,9 +11,6 @@ const CardProduct = ({ data }) => {
     productCount,
     setTotalOfProducts,
     setTotalPrice,
-    totalOfProducts,
-    totalPrice,
-    setDataSelected,
   } = useContext(ProductsContext);
 
   const handleClick = () => {

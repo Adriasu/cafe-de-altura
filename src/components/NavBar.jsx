@@ -6,32 +6,17 @@ import Link from "next/link";
 import Image from "next/image";
 import LinksMenuWrapper from "./LinksMenuWrapper";
 import Cart from "./Cart";
-import UseOutsideClick from "./UseOutsideClick";
 import { ProductsContext } from "@/context/ProductsContext";
 import { usePathname } from "next/navigation";
 
 const NavBar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
-  const CartIconRef = useRef(null);
   const { totalOfProducts } = useContext(ProductsContext);
   const pathName = usePathname();
 
   const showHideCart = () => {
     isCartVisible === false ? setIsCartVisible(true) : setIsCartVisible(false);
   };
-
-  // const showHideCart = (event) => {
-  //   event.stopPropagation();
-  //   setIsCartVisible(!isCartVisible);
-  // };
-
-  // const closeCart = useCallback(() => {
-  //   if (isCartVisible) {
-  //     setIsCartVisible(false);
-  //   }
-  // }, [isCartVisible]);
-
-  // const cartRef = UseOutsideClick(closeCart, CartIconRef);
 
   const cartPointerAvailable = pathName === "/" || pathName === "/shop";
   const bagEmpty = pathName === "/success";
@@ -63,8 +48,6 @@ const NavBar = () => {
       </div>
 
       <div
-        // ref={CartIconRef}
-        // onClick={showHideCart}
         className="flex items-center gap-2"
       >
         {totalOfProducts === 0 || bagEmpty ? (
@@ -102,8 +85,6 @@ const NavBar = () => {
 
       {isCartVisible && cartPointerAvailable && (
         <div
-          // onClick={(e) => e.stopPropagation()}
-          // ref={cartRef}
           className={`absolute right-[30px] top-[55px]`}
         >
           <Cart />
