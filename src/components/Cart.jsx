@@ -22,9 +22,9 @@ const Cart = () => {
   const styleBtn = dataSelected.length > 0 ? "cart" : "soldOut";
 
   return (
-    <div className="w-[300px] min-h-[32px] max-h-[440px] bg-[white] gap-2.5 flex flex-col items-center justify-start p-[15px] rounded-[20px] border-2 border-solid border-[#2A5B45]">
+    <div className="w-[310px] min-h-[32px] max-h-[440px] bg-[white] gap-2.5 flex flex-col items-center justify-start p-[15px] rounded-[20px] border-2 border-solid border-[#2A5B45]">
       <h2 className="text-[#2A5B45] text-xl leading-7 font-semibold">Cesta</h2>
-      <div className="flex flex-col gap-2.5 overflow-y-auto scrollbar-hide">
+      <div className="flex flex-col gap-2.5 overflow-y-auto pr-2 cart-scrollbar">
         {dataSelected.length === 0 ? (
           <p className="text-[rgba(0,0,0,0.4)]">El carrito está vacío.</p>
         ) : (
