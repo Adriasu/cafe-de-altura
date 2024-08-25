@@ -121,7 +121,6 @@ export default function ProductsContextProvider({ children }) {
     }
 
     if (isInitialized && dataSelected.length === 0) {
-      console.log("Carrito vacío: cambiando a envío gratuito");
       setSelectedShipping("free");
       setTotalDelivery(0);
       localStorage.setItem("selectedShipping", "free");
