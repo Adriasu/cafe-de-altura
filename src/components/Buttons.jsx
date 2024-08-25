@@ -36,9 +36,9 @@ const Buttons = ({
 
   if (typeBtn === "soldOut") {
     return (
-      <span className={`${commonClasses} ${buttonStyle()}`}>
+      <button disabled className={`${commonClasses} ${buttonStyle()}`}>
         {icon} {text}
-      </span>
+      </button>
     );
   }
 
