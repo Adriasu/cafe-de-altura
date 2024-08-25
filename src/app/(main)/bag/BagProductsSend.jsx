@@ -2,7 +2,7 @@
 import TotalPrice from "@/components/TotalPrice";
 import React, { useContext, useState, useEffect } from "react";
 import { ProductsContext } from "@/context/ProductsContext";
-import CardsProductsSelected from "@/components/CardsProductsSelected";
+import CardProductsCart from "@/components/CardProductsCart";
 
 const BagProductsSend = () => {
   const {
@@ -10,7 +10,7 @@ const BagProductsSend = () => {
     setTotalDelivery,
     selectedShipping,
     setSelectedShipping,
-  } = useContext(ProductsContext); 
+  } = useContext(ProductsContext);
 
   const handleShippingChange = (event) => {
     const newShipping = event.target.id;
@@ -38,9 +38,9 @@ const BagProductsSend = () => {
           ) : (
             dataSelected.map((product, i) => {
               return (
-                <CardsProductsSelected
+                <CardProductsCart
                   key={i}
-                  selectedProduct={product}
+                  product={product}
                   index={i}
                   component={"bag"}
                 />

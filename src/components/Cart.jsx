@@ -18,7 +18,7 @@ const Cart = () => {
           <p className="text-[rgba(0,0,0,0.4)]">El carrito está vacío.</p>
         ) : (
           dataSelected.map((productSelected, i) => {
-            return <CardProductsCart key={i} product={productSelected} />;
+            return <CardProductsCart key={i} product={productSelected} location={"cart"} />;
           })
         )}
       </div>
