@@ -1,9 +1,10 @@
+import PageConstruction from '@/components/PageConstruction'
 import React from 'react'
 
 const Contact = () => {
   return (
-    <div className='mt-[64px]'>
-      Contacto
+    <div >
+      <PageConstruction location={"Contacto"}/>
     </div>
   )
 }
