@@ -1,6 +1,6 @@
 "use client";
 import { Phone } from "lucide-react";
-import React, { useState, useCallback, useRef, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Buttons from "./Buttons";
 import Link from "next/link";
 import Image from "next/image";
@@ -17,6 +17,10 @@ const NavBar = () => {
   const showHideCart = () => {
     isCartVisible === false ? setIsCartVisible(true) : setIsCartVisible(false);
   };
+
+  useEffect(() => {
+    setIsCartVisible(false);
+  }, [pathName]); 
 
   const cartPointerAvailable = pathName === "/" || pathName === "/shop";
   const bagEmpty = pathName === "/success";

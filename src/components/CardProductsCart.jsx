@@ -69,7 +69,7 @@ const CardProductsCart = ({ product, location, index, component }) => {
   
           <Plus
             onClick={() => btnAddProducts(product)}
-            className="cursor-pointer border-b-[1px] border-b-[#E3DED7] text-black"
+            className="cursor-pointer border-b-[1px] border-b-[#E3DED7] text-black hover:scale-[1.15]"
           />
           <p className="w-5 h-5 bg-[#2A5B45B2] flex justify-center items-center text-[white] text-xs rounded-[50%]">
             {product.count}
@@ -79,7 +79,7 @@ const CardProductsCart = ({ product, location, index, component }) => {
             onClick={handleSubtract}
             className="cursor-pointer border-t-[1px] border-t-[#E3DED7] text-black"
           >
-            <Minus />
+            <Minus className="hover:scale-[1.15]" />
           </button>
         </div>
       </div>
@@ -113,7 +113,7 @@ const CardProductsCart = ({ product, location, index, component }) => {
             </AlertDialog>
   
             <button onClick={handleSubtract} className="w-6 h-6 cursor-pointer">
-              <Minus />
+              <Minus className="hover:scale-[1.15]" />
             </button>
   
             <p className="w-6 h-6 bg-[#2A5B451A] flex justify-center items-center text-xs font-normal leading-4 text-[#2A5B45] rounded-[50%]">
@@ -122,7 +122,7 @@ const CardProductsCart = ({ product, location, index, component }) => {
   
             <Plus
               onClick={() => btnAddProducts(product, dataSelected)}
-              className="w-6 h-6 cursor-pointer"
+              className="w-6 h-6 cursor-pointer hover:scale-[1.15]"
             />
           </div>
         ) : (
