@@ -3,27 +3,11 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import TotalOrder from "./TotalOrder";
 import Buttons from "@/components/Buttons";
-import { useRouter } from "next/navigation";
 import { ProductsContext } from "@/context/ProductsContext";
 
 const OrderPlaced = () => {
-  const {
-    setDataSelected,
-    setTotalPrice,
-    setTotalOfProducts,
-    setTotalDelivery,
-  } = useContext(ProductsContext);
-  const router = useRouter();
-
-  const clearLs = () => {
-    localStorage.clear();
-    setDataSelected([]);
-    setTotalPrice(0);
-    setTotalOfProducts(0);
-    setTotalDelivery(0);
-    router.push("/shop");
-  };
-
+  const { clearLs } = useContext(ProductsContext);
+  
   return (
     <div className="mt-[64px] min-h-[1054px] flex flex-col gap-6 p-10 items-center">
       <div className="w-[64px] h-[64px] bg-[#2A5B45] flex justify-center items-center rounded-[20px]">

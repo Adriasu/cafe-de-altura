@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 
 const NavBar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
-  const { totalOfProducts } = useContext(ProductsContext);
+  const { totalOfProducts, clearLs } = useContext(ProductsContext);
   const pathName = usePathname();
 
   const showHideCart = () => {
@@ -27,7 +27,7 @@ const NavBar = () => {
 
   return (
     <nav className="bg-[#2B2A2B] min-h-16 flex justify-around items-center text-[#FFFFFF] w-full fixed z-[1] top-0">
-      <Link href={"/"}>
+      <Link onClick={bagEmpty ? clearLs : ""} href={"/"}>
         <div className="flex gap-[7.33px] items-center">
           <p className="text-[23.46px] font-normal leading-[35.19px]">
             cafedealtura.com
