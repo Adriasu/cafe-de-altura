@@ -20,9 +20,11 @@ const NavBar = () => {
 
   useEffect(() => {
     setIsCartVisible(false);
-  }, [pathName]); 
+  }, [pathName]);
 
-  const cartPointerAvailable = pathName === "/" || pathName === "/shop";
+  const cartPointerdisabled =
+    pathName !== "/bag" && pathName !== "/checkOut" && pathName !== "/success";
+
   const bagEmpty = pathName === "/success";
 
   return (
@@ -51,14 +53,12 @@ const NavBar = () => {
         <Buttons text={"Iniciar sesión"} typeBtn={"gray"} link={"/login"} />
       </div>
 
-      <div
-        className="flex items-center gap-2"
-      >
+      <div className="flex items-center gap-2">
         {totalOfProducts === 0 || bagEmpty ? (
           <Image
             onClick={showHideCart}
             className={`${
-              cartPointerAvailable ? "cursor-pointer" : "cursor-default"
+              cartPointerdisabled ? "cursor-pointer" : "cursor-default"
             }`}
             src="/images/Carr.png"
             alt="bag"
@@ -69,7 +69,7 @@ const NavBar = () => {
           <Image
             onClick={showHideCart}
             className={`${
-              cartPointerAvailable ? "cursor-pointer" : "cursor-default"
+              cartPointerdisabled ? "cursor-pointer" : "cursor-default"
             }`}
             src="/images/CarrLleno.png"
             alt="bagFull"
@@ -87,10 +87,8 @@ const NavBar = () => {
         </p>
       </div>
 
-      {isCartVisible && cartPointerAvailable && (
-        <div
-          className={`absolute right-[30px] top-[55px]`}
-        >
+      {isCartVisible && cartPointerdisabled && (
+        <div className={`absolute right-[30px] top-[55px]`}>
           <Cart />
         </div>
       )}

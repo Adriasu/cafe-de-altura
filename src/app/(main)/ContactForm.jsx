@@ -21,7 +21,7 @@ const ContactForm = () => {
   });
 
   const onSubmit = (data) => {
-   formSubmit(data, setDataUsers, "dataUsers", dataUsers)
+    formSubmit(data, setDataUsers, "dataUsers", dataUsers);
     reset();
   };
 
@@ -36,22 +36,26 @@ const ContactForm = () => {
       <div className={inputText}>
         <label htmlFor="fullName">Nombre completo</label>
         <input
-          {...register("fullName", {required: true})}
+          {...register("fullName", { required: true })}
           className={`${inputs} h-[34px]`}
           type="text"
           id="fullName"
         />
-        {errors.fullName?.type === "required" && <span className="text-red-600">Este campo no puede estar vacío.</span>}
+        {errors.fullName?.type === "required" && (
+          <span className="text-red-600">Este campo no puede estar vacío.</span>
+        )}
       </div>
       <div className={inputText}>
         <label htmlFor="email">Email</label>
         <input
-          {...register("email", {required: true})}
+          {...register("email", { required: true })}
           className={`${inputs} h-[34px]`}
           type="email"
           id="email"
         />
-        {errors.email?.type === "required" && <span className="text-red-600">Este campo no puede estar vacío.</span>}
+        {errors.email?.type === "required" && (
+          <span className="text-red-600">Este campo no puede estar vacío.</span>
+        )}
       </div>
       <div className={inputText}>
         <label htmlFor="phone">Teléfono</label>
@@ -68,46 +72,57 @@ const ContactForm = () => {
             </select>
           </div>
           <input
-            {...register("phone", {required: true, pattern: /^[0-9]+$/ })}
+            {...register("phone", { required: true, pattern: /^[0-9]+$/ })}
             className="w-full placeholder:text-gray-500 outline-none px-[10px]"
             type="tel"
             id="phone"
             placeholder="+1 (555) 987-6543"
           />
         </div>
-          {errors.phone?.type === "required" && <span className="text-red-600">Este campo no puede estar vacío.</span>}
-          {errors.phone?.type === "pattern" && <span className="text-red-600">Este campo sólo acepta números.</span>}
+        {errors.phone?.type === "required" && (
+          <span className="text-red-600">Este campo no puede estar vacío.</span>
+        )}
+        {errors.phone?.type === "pattern" && (
+          <span className="text-red-600">Este campo sólo acepta números.</span>
+        )}
       </div>
 
       <div className={`${inputText} min-h-[142px]`}>
         <label htmlFor="help">Comentarios</label>
         <textarea
-          {...register("comments", {required: true})}
+          {...register("comments", { required: true })}
           className={`${inputs} placeholder:text-gray-500 placeholder:text-sm h-[122px] pl-[17px] pr-[13px] pt-[13px]`}
           id="help"
           placeholder="¿En qué podemos ayudarte?"
         ></textarea>
-        {errors.comments?.type === "required" && <span className="text-red-600">Este campo no puede estar vacío.</span>}
+        {errors.comments?.type === "required" && (
+          <span className="text-red-600">Este campo no puede estar vacío.</span>
+        )}
       </div>
 
-      <div className="flex gap-3 items-center text-sm">
-        <input
-          {...register("conditions")}
-          className="accent-[#2A5B45]"
-          type="checkbox"
-          id="privacy"
-        />
-        <label htmlFor="privacy">
-          Acepto la{" "}
-          <Link className="text-gray-700 font-semibold underline" href={"/"}>
-            Política de Privacidad
-          </Link>{" "}
-          y los{" "}
-          <Link className="text-gray-700 font-semibold underline" href={"/"}>
-            Términos y condiciones
-          </Link>
-          .
-        </label>
+      <div>
+        <div className="flex gap-3 items-center text-sm">
+          <input
+            {...register("conditions", { required: true })}
+            className="accent-[#2A5B45]"
+            type="checkbox"
+            id="privacy"
+          />
+          <label htmlFor="privacy">
+            Acepto la{" "}
+            <Link className="text-gray-700 font-semibold underline" href={"/"}>
+              Política de Privacidad
+            </Link>{" "}
+            y los{" "}
+            <Link className="text-gray-700 font-semibold underline" href={"/"}>
+              Términos y condiciones
+            </Link>
+            .
+          </label>
+        </div>
+        {errors.conditions?.type === "required" && (
+          <span className="text-red-600">Este campo no puede estar vacío.</span>
+        )}
       </div>
 
       <Buttons text={"Enviar"} typeBtn={"green"} type="submit" />
