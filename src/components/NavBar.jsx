@@ -48,7 +48,7 @@ const NavBar = () => {
           <Phone className="w-6 h-6" />
           <p className="leading-4">+34 919 49 05 18</p>
         </div>
-        <Buttons text={"Iniciar sesión"} typeBtn={"gray"} />
+        <Buttons text={"Iniciar sesión"} typeBtn={"gray"} link={"/login"} />
       </div>
 
       <div

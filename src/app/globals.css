@@ -83,7 +83,7 @@
 }
 
 .custom-toast-style {
-  width: 150px !important;
+  width: 180px !important;  
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -114,3 +114,7 @@
     background-color: #2A5B45; /* Color al hacer hover */
   }
 }
+
+
+
+

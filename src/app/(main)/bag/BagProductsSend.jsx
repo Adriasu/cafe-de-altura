@@ -93,7 +93,7 @@ const BagProductsSend = () => {
                   realizados antes de las 13:00).
                 </p>
               </div>
-              <h3 className={`${styleH3ProductsSend}`}>9.00 €</h3>
+              <h3 className={`${styleH3ProductsSend} w-[64px] flex justify-end`}>9.00 €</h3>
             </div>
           </form>
         </div>

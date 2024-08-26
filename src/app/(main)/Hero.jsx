@@ -15,7 +15,7 @@ const Hero = () => {
             hogar.
           </p>
           <div className="flex items-center min-w-[321px] min-h-[40px] gap-4 font-semibold text-sm leading-4">
-            <Buttons text={"Descubrir orígenes"} typeBtn={"brown"} />
+            <Buttons text={"Descubrir orígenes"} typeBtn={"brown"} link={"discoverOrigins"} />
             <Buttons text={"Comprar café"} typeBtn={"green"} link={"/shop"}/>
           </div>
         </div>
