@@ -26,11 +26,11 @@ const BagProductsSend = () => {
   const styleContainTextDelivery =
     "min-h-[36px] text-sm leading-4 flex flex-col gap-1 justify-center";
   return (
-    <section className="min-h-[772px] flex flex-col grow shrink gap-6 items-center mt-16 p-10">
+    <section className="min-h-full flex flex-col grow shrink gap-6 justify-start items-center mt-16 p-10">
       <h2 className="text-[#2A5B45] text-2xl font-medium leading-7">
         Cesta ({totalOfProducts})
       </h2>
-      <div className="w-[1200px] min-h-[415.32px] flex gap-6">
+      <div className="w-[1200px] flex gap-6">
         <div className="w-[792PX] min-h-[415.32px] flex flex-col gap-4 p-2 justify-start">
           <h3 className={`${styleH3ProductsSend}`}>Productos</h3>
 
