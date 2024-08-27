@@ -79,7 +79,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
               Número de la tarjeta*
             </label>
             <input
-              className={`${styleInputs} ${stylePlaceholder}`}
+              className={`${styleInputs} ${stylePlaceholder} appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
               type="number"
               {...register("numCard", {
                 required: true,
@@ -142,7 +142,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
                 CVC*
               </label>
               <input
-                className={`${styleInputs} ${stylePlaceholder}`}
+                className={`${styleInputs} ${stylePlaceholder} appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
                 type="number"
                 {...register("cvc", {
                   required: true,
@@ -350,7 +350,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
               CP*
             </label>
             <input
-              className={`${styleInputs}`}
+              className={`${styleInputs} appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
               type="number"
               {...register("cp", { required: true })}
               id="cp"
@@ -385,7 +385,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
             </label>
             <input
               className={`${styleInputs}`}
-              type="number"
+              type="text"
               {...register("numStreet", { required: true })}
               id="numStreet"
             />
