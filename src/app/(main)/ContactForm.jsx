@@ -119,6 +119,7 @@ const ContactForm = () => {
             </Link>
             .
           </label>
+          
         </div>
         {errors.conditions?.type === "required" && (
           <span className="text-red-600">Este campo no puede estar vacío.</span>
