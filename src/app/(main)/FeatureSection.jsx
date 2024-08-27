@@ -18,7 +18,7 @@ const FeatureSection = () => {
           <div>
             <Link
               className="leading-4 font-semibold text-black flex gap-4 items-center text-sm underline"
-              href={"/"}
+              href={"/location"}
             >
               Cómo llegar <ArrowRight />
             </Link>

@@ -25,11 +25,11 @@ const FormCheckOut = ({ register, watch, errors }) => {
   const styleLabel = "text-xs font-normal leading-4";
   const stylePlaceholder =
     "placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-[#515051]";
-  const styleFormAddress = "flex flex-col gap-[3px] w-[521px] h-[55px]";
-  const styleDetailsAddress = "flex flex-col w-[112.25px] h-[55px] gap-[3px]";
+  const styleFormAddress = "flex flex-col gap-[3px] w-[521px] ";
+  const styleDetailsAddress = "flex flex-col w-[112.25px] gap-[3px]";
 
   return (
-    <div className="flex flex-col w-[792px] h-[972px] gap-6 p-2">
+    <div className="flex flex-col w-[792px] min-h-[972px] gap-6 p-2">
       <h3 className={`${styleTitleH3}`}>Seleccionar método de pago</h3>
 
       <div className="flex justify-between items-center">
@@ -211,19 +211,23 @@ const FormCheckOut = ({ register, watch, errors }) => {
           <label className="font-semibold" htmlFor="bizumPayment">
             Bizum
           </label>
+
           {watchShowPaymentMethod === "bizum" && (
-            <p className="font-normal">
-              Será necesario recibir el comprobante de la transferencia para
-              preparar tu pedido
-            </p>
+            <div className="flex justify-center items-center gap-5">
+              <p className="font-normal">
+                Será necesario recibir el comprobante de la transferencia para
+                preparar tu pedido
+              </p>
+
+              <Image
+                src={"/images/bizum.png"}
+                alt="bizum"
+                width={69.23}
+                height={30}
+              />
+            </div>
           )}
         </div>
-        <Image
-          src={"/images/bizum.png"}
-          alt="bizum"
-          width={69.23}
-          height={30}
-        />
         <div>
           <p></p>
         </div>
@@ -231,7 +235,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
 
       <h3 className={`${styleTitleH3}`}>Dirección de envío</h3>
 
-      <div className="w-[521px] h-[433px] flex flex-col gap-2">
+      <div className="w-[521px] min-h-[433px] flex flex-col gap-2">
         <div className={`${styleFormAddress}`}>
           <label className={`${styleLabel}`} htmlFor="nameUser">
             Nombre*
@@ -324,8 +328,8 @@ const FormCheckOut = ({ register, watch, errors }) => {
             </span>
           )}
         </div>
-        <div className="w-[521px] h-[55px] flex gap-6 justify-between items-center">
-          <div className="flex flex-col w-[248.5px] h-[55px] gap-[3px]">
+        <div className="w-[521px] flex gap-6 justify-between items-center">
+          <div className="flex flex-col w-[248.5px] gap-[3px]">
             <label className={`${styleLabel}`} for="population">
               Población*
             </label>
@@ -341,7 +345,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
               </span>
             )}
           </div>
-          <div className="flex flex-col w-[248.5px] h-[55px] gap-[3px]">
+          <div className="flex flex-col w-[248.5px] gap-[3px]">
             <label className={`${styleLabel}`} for="cp">
               CP*
             </label>
@@ -358,7 +362,7 @@ const FormCheckOut = ({ register, watch, errors }) => {
             )}
           </div>
         </div>
-        <div className="flex w-[521px] h-[55px] gap-6">
+        <div className="flex w-[521px] gap-6">
           <div className={`${styleDetailsAddress}`}>
             <label className={`${styleLabel}`} for="street">
               Calle*

@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 
 const NavBar = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
-  const { totalOfProducts } = useContext(ProductsContext);
+  const { totalOfProducts, clearLs } = useContext(ProductsContext);
   const pathName = usePathname();
 
   const showHideCart = () => {
@@ -20,14 +20,16 @@ const NavBar = () => {
 
   useEffect(() => {
     setIsCartVisible(false);
-  }, [pathName]); 
+  }, [pathName]);
 
-  const cartPointerAvailable = pathName === "/" || pathName === "/shop";
+  const cartPointerdisabled =
+    pathName !== "/bag" && pathName !== "/checkOut" && pathName !== "/success";
+
   const bagEmpty = pathName === "/success";
 
   return (
     <nav className="bg-[#2B2A2B] min-h-16 flex justify-around items-center text-[#FFFFFF] w-full fixed z-[1] top-0">
-      <Link href={"/"}>
+      <Link onClick={bagEmpty ? clearLs : ""} href={"/"}>
         <div className="flex gap-[7.33px] items-center">
           <p className="text-[23.46px] font-normal leading-[35.19px]">
             cafedealtura.com
@@ -48,17 +50,15 @@ const NavBar = () => {
           <Phone className="w-6 h-6" />
           <p className="leading-4">+34 919 49 05 18</p>
         </div>
-        <Buttons text={"Iniciar sesión"} typeBtn={"gray"} />
+        <Buttons text={"Iniciar sesión"} typeBtn={"gray"} link={"/login"} />
       </div>
 
-      <div
-        className="flex items-center gap-2"
-      >
+      <div className="flex items-center gap-2">
         {totalOfProducts === 0 || bagEmpty ? (
           <Image
             onClick={showHideCart}
             className={`${
-              cartPointerAvailable ? "cursor-pointer" : "cursor-default"
+              cartPointerdisabled ? "cursor-pointer" : "cursor-default"
             }`}
             src="/images/Carr.png"
             alt="bag"
@@ -69,7 +69,7 @@ const NavBar = () => {
           <Image
             onClick={showHideCart}
             className={`${
-              cartPointerAvailable ? "cursor-pointer" : "cursor-default"
+              cartPointerdisabled ? "cursor-pointer" : "cursor-default"
             }`}
             src="/images/CarrLleno.png"
             alt="bagFull"
@@ -87,10 +87,8 @@ const NavBar = () => {
         </p>
       </div>
 
-      {isCartVisible && cartPointerAvailable && (
-        <div
-          className={`absolute right-[30px] top-[55px]`}
-        >
+      {isCartVisible && cartPointerdisabled && (
+        <div className={`absolute right-[30px] top-[55px]`}>
           <Cart />
         </div>
       )}

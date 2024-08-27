@@ -1,10 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { createContext, useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 export const ProductsContext = createContext(null);
 
 export default function ProductsContextProvider({ children }) {
+
+  const router = useRouter();
   // --------------- Estados iniciales al cargar pagina ----------------- //
 
   const [dataCoffee, setDataCoffee] = useState([]);
@@ -106,6 +109,16 @@ export default function ProductsContextProvider({ children }) {
     setSelectedShipping("free");
   };
 
+  const clearLs = () => {
+    localStorage.clear();
+    setDataSelected([]);
+    setTotalPrice(0);
+    setTotalOfProducts(0);
+    setTotalDelivery(0);
+    router.push("/shop");
+  };
+
+
   // --------------- Actualizacion localStorage ------------------------ //
 
   useEffect(() => {
@@ -154,6 +167,7 @@ export default function ProductsContextProvider({ children }) {
         btnClearCart,
         setTotalDelivery,
         setSelectedShipping,
+        clearLs
       }}
     >
       {children}

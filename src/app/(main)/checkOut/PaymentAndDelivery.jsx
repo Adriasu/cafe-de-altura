@@ -38,7 +38,7 @@ const PaymentAndDelivery = () => {
   };
 
   return (
-    <section className="flex flex-col justify-center items-center gap-6 h-[1108px] mt-16 mb-11">
+    <section className="flex flex-col justify-start items-center gap-6 min-h-[1108px] mt-16 mb-11 pt-10">
       <h2 className="text-[#2A5B45] text-2xl font-medium leading-7">
         Checkout
       </h2>

@@ -25,7 +25,7 @@ const Buttons = ({
       case "white":
         return "px-6 py-3 rounded text-[#2A5B45]";
       case "cart":
-        return "min-w-[60px] p-2 text-white rounded bg-[#2A5B45B2] hover:bg-[#2A5B45]";
+        return "min-w-[60px] p-2 text-white rounded bg-[#2A5B45] hover:scale-[1.1]";
       default:
         return "";
     }
