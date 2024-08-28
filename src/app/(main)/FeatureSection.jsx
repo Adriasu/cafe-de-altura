@@ -17,7 +17,7 @@ const FeatureSection = () => {
           </p>
           <div>
             <Link
-              className="leading-4 font-semibold text-black flex gap-4 items-center text-sm underline"
+              className="leading-4 font-semibold text-[#000000] flex gap-4 items-center text-sm underline"
               href={"/location"}
             >
               Cómo llegar <MoveRight/>
