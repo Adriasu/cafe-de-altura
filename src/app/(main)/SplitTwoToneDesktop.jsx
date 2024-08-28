@@ -39,7 +39,7 @@ const SplitTwoToneDesktop = () => {
             </div>
             <Link href={"/jobCenter"}>
               ¿Buscas un trabajo?{" "}
-              <span className="underline text-black font-semibold">
+              <span className="underline text-gray-900 font-semibold">
                 Ver nuestras ofertas
               </span>
               .
