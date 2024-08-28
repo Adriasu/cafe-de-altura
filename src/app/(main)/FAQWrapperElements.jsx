@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ArrowRight } from "lucide-react";
+import { MoveRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -74,7 +74,7 @@ const FAQWrapperElements = () => {
           className="h-6 items-center gap-4 flex justify-center text-sm font-semibold leading-4 text-white underline"
         >
           Resolvemos tus dudas
-          <ArrowRight className="h-6 w-6" />
+          <MoveRight className="h-6 w-6"/>
         </Link>
       </div>
     </div>
