@@ -42,6 +42,7 @@ const NavBar = () => {
           />
         </div>
       </Link>
+      
 
       <LinksMenuWrapper direction={"row"} />
 

@@ -19,7 +19,9 @@ const Cart = () => {
   const { dataSelected, totalPrice, btnClearCart } =
     useContext(ProductsContext);
 
-  const styleBtn = dataSelected.length > 0 ? "cart" : "soldOut";
+  const styleBtnBag = dataSelected.length > 0 ? "cart" : "soldOut";
+  const styleBtnClear = dataSelected.length > 0 ? "clear" : "soldOut";
+
 
   return (
     <div className="w-[310px] min-h-[32px] max-h-[440px] bg-[white] gap-2.5 flex flex-col items-center justify-start p-[15px] rounded-[20px] border-2 border-solid border-[#2A5B45]">
@@ -41,14 +43,14 @@ const Cart = () => {
       </div>
       <div className="flex items-center justify-between w-60">
         <Buttons
-          text={`Check-Out: ${totalPrice.toFixed(2)} €`}
-          typeBtn={styleBtn}
+          text={`Ir a la Cesta: ${totalPrice.toFixed(2)} €`}
+          typeBtn={styleBtnBag}
           link={dataSelected.length > 0 ? "/bag" : ""}
         />
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Buttons text={"Clear"} typeBtn={styleBtn} />
+            <Buttons text={"Clear"} typeBtn={styleBtnClear} />
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
