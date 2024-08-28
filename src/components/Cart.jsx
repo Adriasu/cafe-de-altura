@@ -24,7 +24,7 @@ const Cart = () => {
 
 
   return (
-    <div className="w-[310px] min-h-[32px] max-h-[440px] bg-[white] gap-2.5 flex flex-col items-center justify-start p-[15px] rounded-[20px] border-2 border-solid border-[#2A5B45]">
+    <div className="w-[310px] min-h-[32px] max-h-[467px] bg-[white] gap-2.5 flex flex-col items-center justify-start p-[15px] rounded-[20px] border-2 border-solid border-[#2A5B45]">
       <h2 className="text-[#2A5B45] text-xl leading-7 font-semibold">Cesta</h2>
       <div className="flex flex-col gap-2.5 overflow-y-auto pr-2 cart-scrollbar">
         {dataSelected.length === 0 ? (
@@ -41,9 +41,9 @@ const Cart = () => {
           })
         )}
       </div>
-      <div className="flex items-center justify-between w-60">
+      <div className="flex items-center justify-between w-52">
         <Buttons
-          text={`Ir a la Cesta: ${totalPrice.toFixed(2)} €`}
+          text={`Ir a la Cesta`}
           typeBtn={styleBtnBag}
           link={dataSelected.length > 0 ? "/bag" : ""}
         />
@@ -69,6 +69,7 @@ const Cart = () => {
           </AlertDialogContent>
         </AlertDialog>
       </div>
+      <p className="text-[#2B2A2B] font-bold">{`TOTAL: ${totalPrice.toFixed(2)} €`}</p>
     </div>
   );
 };
