@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { ProductsContext } from "@/context/ProductsContext";
 import CardProduct from "./CardProduct";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { MoveRight } from "lucide-react";
 
 const ContainCarsdProducts = ({ location, title }) => {
   const { dataCoffee } = useContext(ProductsContext);
@@ -32,7 +32,7 @@ const ContainCarsdProducts = ({ location, title }) => {
           href={"/shop"}
         >
           Ver todos
-          <ArrowRight className="h-6 w-6" />
+          <MoveRight className="h-6 w-6"/>
         </Link>
         </div>
       ) : ""}
