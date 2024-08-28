@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const PageConstruction = ({location}) => {
   return (
-    <div className='mt-[64px] flex flex-col justify-start items-center h-screen'>
+    <div className='min-h-screen mt-[64px] flex flex-col justify-start items-center h-screen'>
         <h2 className='font-semibold text-[40px] leading-[44px] text-[#2A5B45] mt-5'>{location}</h2>
       <Image
         src={
