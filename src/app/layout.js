@@ -1,7 +1,6 @@
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
-import FormContextProvider from "@/context/FormContext";
 import ProductsContextProvider from "@/context/ProductsContext";
 import CopyRight from "@/components/CopyRight";
 import FormInfoContextProvider from "@/context/FormInfoContext";
@@ -23,12 +22,10 @@ export default function RootLayout({ children }) {
       <body className="">
         <ProductsContextProvider>
           <FormInfoContextProvider>
-            <FormContextProvider>
-              <NavBar />
-              {children}
-              <Toaster/>
-              <CopyRight />
-            </FormContextProvider>
+            <NavBar />
+            {children}
+            <Toaster />
+            <CopyRight />
           </FormInfoContextProvider>
         </ProductsContextProvider>
       </body>

@@ -41,7 +41,7 @@ const Cart = () => {
           })
         )}
       </div>
-      <div className="flex items-center justify-between w-52">
+      <div className="flex items-center justify-between min-w-60">
         <Buttons
           text={`Ir a la Cesta`}
           typeBtn={styleBtnBag}
@@ -50,7 +50,7 @@ const Cart = () => {
 
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Buttons text={"Clear"} typeBtn={styleBtnClear} />
+            <Buttons text={"Limpiar cesta"} typeBtn={styleBtnClear} />
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
