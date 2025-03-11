@@ -14,7 +14,7 @@ const NavBar = () => {
   const { totalOfProducts, clearLs } = useContext(ProductsContext);
   const pathName = usePathname();
 
-  const showHideCart = () => {
+   const showHideCart = () => {
     isCartVisible === false ? setIsCartVisible(true) : setIsCartVisible(false);
   };
 
