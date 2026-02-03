@@ -1,52 +1,52 @@
 ﻿# Café de Altura 
 
-**Descripción**
-Café de Altura es una tienda demo construida con Next.js 14 y Tailwind CSS, que muestra catálogo de productos (café), carrito y una API de productos con MongoDB/Mongoose.
+**Description**
+Café de Altura is a demo e-commerce site built with Next.js 14 and Tailwind CSS. It showcases a coffee product catalog, shopping cart, and a products API backed by MongoDB/Mongoose.
 
 ---
 
-## Contenidos
-1.  Requisitos
-2.  Inicio rápido
-3.  Estructura del proyecto
-4.  Variables de entorno
-5.  Scripts importantes
-6.  Endpoints de la API
-7.  Buenas prácticas y tareas recomendadas
-8.  Licencia y contacto
+## Table of Contents
+1.  Requirements
+2.  Quick Start
+3.  Project Structure
+4.  Environment Variables
+5.  Important Scripts
+6.  API Endpoints
+7.  Best Practices & Recommendations
+8.  License & Contact
 
 ---
 
-##  Requisitos
-- Node.js v18+ (recomendado)
-- npm (o yarn/pnpm)
-- Una base de datos MongoDB (URI en `.env`)
+##  Requirements
+- Node.js v18+ (recommended)
+- npm (or yarn/pnpm)
+- A MongoDB database (URI in `.env`)
 
 ---
 
-##  Inicio rápido
+##  Quick Start
 
-1. Clonar el repositorio:
+1. Clone the repository:
    ```bash
    git clone <repo-url>
    cd cafe-de-altura
    ```
 
-2. Instalar dependencias:
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-3. Crear el archivo de entorno:
-   - Copia `.env.example` a `.env` y rellena la variable `MONGODB_URI`.
+3. Create the environment file:
+   - Copy `.env.example` to `.env` and fill in the `MONGODB_URI` variable.
 
-4. Levantar en desarrollo:
+4. Start the development server:
    ```bash
    npm run dev
-   # abre http://localhost:3000
+   # open http://localhost:3000
    ```
 
-5. Generar build para producción:
+5. Build for production:
    ```bash
    npm run build
    npm start
@@ -54,28 +54,29 @@ Café de Altura es una tienda demo construida con Next.js 14 y Tailwind CSS, que
 
 ---
 
-##  Estructura principal del proyecto
-- `src/app/(main)/`  rutas principales y `page.jsx`
-- `src/app/layout.js`  layout global (tipografía, providers, nav)
-- `src/components/`  componentes reutilizables (NavBar, Footer, Card, Cart, etc.)
-- `src/context/`  providers (por ejemplo `ProductsContext`)
-- `src/app/api/products/route.jsx`  API REST para productos (GET paginado, POST)
-- `lib/mongodb.mjs`  conexión a MongoDB
-- `models/Product.mjs`  esquema y validaciones de producto
-- `scripts/seedProducts.js`  script para poblar la BD con productos de ejemplo
+##  Project Structure
+- `src/app/(main)/`  main routes and `page.jsx`
+- `src/app/layout.js`  global layout (fonts, providers, navbar)
+- `src/components/`  reusable components (NavBar, Footer, Card, Cart, etc.)
+- `src/context/`  context providers (e.g., `ProductsContext`)
+- `src/app/api/products/route.jsx`  products REST API (paginated GET, POST)
+- `lib/mongodb.mjs`  MongoDB connection helper
+- `models/Product.mjs`  product schema and validation
+- `scripts/seedProducts.js`  script to seed the DB with example products
 - `tailwind.config.js`, `postcss.config.mjs`, etc.
 
 ---
 
-##  Variables de entorno
-Crea un archivo `.env` (no subirlo al repo). Variables esperadas:
+##  Environment Variables
+Create a `.env` file (do not commit it). Expected variables:
+
 ```env
 MONGODB_URI=your_mongodb_connection_string
 ```
 
->  **Seguridad importante:** No incluyas credenciales en el repositorio. Si el proyecto contiene un `.env` con credenciales, elimínalo del repo y rota las credenciales (usar BFG o `git filter-repo` para limpiar el historial si es necesario).
+>  **Security note:** Do not store credentials in the repository. If a `.env` with secrets was ever committed, remove it from the repo and rotate credentials. Use tools like BFG or `git filter-repo` to scrub secrets from the Git history if necessary.
 
-Ejemplo ` .env.example`:
+Example `.env.example`:
 ```env
 # .env.example
 MONGODB_URI=
@@ -83,45 +84,44 @@ MONGODB_URI=
 
 ---
 
-##  Scripts útiles (en `package.json`)
-- `npm run dev`  Ejecuta Next.js en modo desarrollo
-- `npm run build`  Construye la app para producción
-- `npm run start`  Inicia la app en producción
-- `npm run lint`  Linter (Next core web vitals)
-- `npm run seed`  Poblado de productos de ejemplo (agregado)
+##  Useful Scripts (in `package.json`)
+- `npm run dev`  Run Next.js in development mode
+- `npm run build`  Build the app for production
+- `npm run start`  Start the production server
+- `npm run lint`  Run linter (Next.js core web vitals)
+- `npm run seed`  Seed the database with example products
 
 ---
 
-##  API - Endpoints principales
-- `GET /api/products?page=1&limit=10`  Lista paginada de productos (devuelve `{ products, total, page, limit }`)
-- `POST /api/products`  Crear nuevo producto (body  propiedades del producto)
+##  API - Main Endpoints
+- `GET /api/products?page=1&limit=10`  Returns paginated products `{ products, total, page, limit }`
+- `POST /api/products`  Create a new product (body should contain product fields)
 
-El endpoint de productos implementa CORS y manejo básico de errores.
-
----
-
-##  Buenas prácticas y mejoras recomendadas
--  **Seguridad:** Rotar la URI de MongoDB y eliminarla del historial del repo (usar BFG o `git filter-repo` si es necesario).
--  Añadir `LICENSE` (p.ej. MIT).
--  Añadir `README` mejorado (este archivo).
--  Crear `scripts.seed` en `package.json`.
--  Añadir `.env.example` y documentación para despliegue.
--  Opcional: añadir tests unitarios y CI (GitHub Actions).
--  Opcional: configurar despliegue en Vercel (Next.js  integración fácil).
+The products endpoint includes basic CORS headers and error handling.
 
 ---
 
-##  Stack tecnológico
+##  Best Practices & Recommendations
+-  **Security:** Rotate your MongoDB URI if it was exposed and remove it from repo history.
+-  Add a `LICENSE` file (e.g., MIT).
+-  Add `CONTRIBUTING.md` if you expect external contributions.
+-  Keep `.env.example` up to date and never commit `.env`.
+-  Optional: add unit tests and CI (GitHub Actions).
+-  Optional: configure deployment on Vercel for seamless Next.js hosting.
+
+---
+
+##  Tech Stack
 - Next.js 14 + React 18
 - Tailwind CSS
 - MongoDB + Mongoose
-- Librerías UI: Radix UI, sonner, lucide-react
-- Cloudinary (imágenes públicas usadas en `scripts`)
+- UI libraries: Radix UI, Sonner, Lucide React
+- Cloudinary (used for example images in `scripts`)
 
 ---
 
-##  Notas finales
-Si quieres, puedo:
-- Generar un `.env.example` y añadir el script `seed` al `package.json`.
-- Crear un checklist para limpiar el historial git de las credenciales.
-- Añadir un archivo `CONTRIBUTING.md` y `LICENSE`.
+##  Final Notes
+If you want, I can:
+- Fix the imports in `scripts/seedProducts.js` (they currently reference index paths that may cause issues).
+- Run `npm run seed` locally (requires a valid `.env` with `MONGODB_URI`).
+- Create a checklist and steps to scrub any leaked secrets from Git history.
