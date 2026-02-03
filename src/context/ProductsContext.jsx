@@ -147,7 +147,6 @@ export default function ProductsContextProvider({ children }) {
     selectedShipping,
   ]);
 
-  // ----------- Reestablecer envio con el carrito vacio ------------- //
 
   return (
     <ProductsContext.Provider
